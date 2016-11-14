@@ -15,6 +15,8 @@ class HomeViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    self.navigationController?.navigationBarHidden = true
 
     newCompButton.layer.borderWidth = 1
     newCompButton.layer.borderColor = UIColor.blackColor().CGColor
@@ -23,9 +25,15 @@ class HomeViewController: UIViewController {
     instructionsButton.layer.borderColor = UIColor.blackColor().CGColor
   }
 
+  
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
+  }
+  
+  
+  override func viewWillDisappear(animated: Bool) {
+    self.navigationController?.navigationBarHidden = false
   }
     
 
