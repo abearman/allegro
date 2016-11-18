@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD1DF04C1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1DF04B1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift */; };
+		BD5C32531DDF974B007F7A92 /* KeySignatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C32521DDF974B007F7A92 /* KeySignatureViewController.swift */; };
+		BD8F24711DDB9BE800BE94E9 /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8F24701DDB9BE800BE94E9 /* InstructionsViewController.swift */; };
+		BD8F24741DDBA06600BE94E9 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8F24731DDBA06600BE94E9 /* ComposeViewController.swift */; };
 		BDA672171DDA6F740003938F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA672161DDA6F740003938F /* AppDelegate.swift */; };
-		BDA672191DDA6F740003938F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA672181DDA6F740003938F /* ViewController.swift */; };
 		BDA6721C1DDA6F740003938F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDA6721A1DDA6F740003938F /* Main.storyboard */; };
 		BDA6721F1DDA6F740003938F /* Allegro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BDA6721D1DDA6F740003938F /* Allegro.xcdatamodeld */; };
 		BDA672211DDA6F740003938F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDA672201DDA6F740003938F /* Assets.xcassets */; };
@@ -17,9 +20,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BD1DF04B1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSignatureViewController.swift; sourceTree = "<group>"; };
+		BD5C32521DDF974B007F7A92 /* KeySignatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeySignatureViewController.swift; sourceTree = "<group>"; };
+		BD8F24701DDB9BE800BE94E9 /* InstructionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
+		BD8F24731DDBA06600BE94E9 /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		BDA672131DDA6F740003938F /* Allegro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Allegro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDA672161DDA6F740003938F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BDA672181DDA6F740003938F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BDA6721B1DDA6F740003938F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BDA6721E1DDA6F740003938F /* Allegro.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Allegro.xcdatamodel; sourceTree = "<group>"; };
 		BDA672201DDA6F740003938F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -39,6 +45,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD8F24721DDB9BF900BE94E9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BDA672161DDA6F740003938F /* AppDelegate.swift */,
+				BDA672221DDA6F740003938F /* LaunchScreen.storyboard */,
+				BDA672251DDA6F740003938F /* Info.plist */,
+				BDA6721D1DDA6F740003938F /* Allegro.xcdatamodeld */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		BDA6720A1DDA6F740003938F = {
 			isa = PBXGroup;
 			children = (
@@ -58,14 +75,14 @@
 		BDA672151DDA6F740003938F /* Allegro */ = {
 			isa = PBXGroup;
 			children = (
-				BDA672161DDA6F740003938F /* AppDelegate.swift */,
+				BD8F24721DDB9BF900BE94E9 /* Supporting Files */,
 				BDA672311DDA7CBA0003938F /* HomeViewController.swift */,
-				BDA672181DDA6F740003938F /* ViewController.swift */,
+				BD8F24701DDB9BE800BE94E9 /* InstructionsViewController.swift */,
+				BD8F24731DDBA06600BE94E9 /* ComposeViewController.swift */,
+				BD1DF04B1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift */,
+				BD5C32521DDF974B007F7A92 /* KeySignatureViewController.swift */,
 				BDA6721A1DDA6F740003938F /* Main.storyboard */,
 				BDA672201DDA6F740003938F /* Assets.xcassets */,
-				BDA672221DDA6F740003938F /* LaunchScreen.storyboard */,
-				BDA672251DDA6F740003938F /* Info.plist */,
-				BDA6721D1DDA6F740003938F /* Allegro.xcdatamodeld */,
 			);
 			path = Allegro;
 			sourceTree = "<group>";
@@ -141,10 +158,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDA672191DDA6F740003938F /* ViewController.swift in Sources */,
+				BD8F24741DDBA06600BE94E9 /* ComposeViewController.swift in Sources */,
 				BDA6721F1DDA6F740003938F /* Allegro.xcdatamodeld in Sources */,
+				BD1DF04C1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift in Sources */,
 				BDA672171DDA6F740003938F /* AppDelegate.swift in Sources */,
 				BDA672321DDA7CBA0003938F /* HomeViewController.swift in Sources */,
+				BD5C32531DDF974B007F7A92 /* KeySignatureViewController.swift in Sources */,
+				BD8F24711DDB9BE800BE94E9 /* InstructionsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +314,7 @@
 				BDA6722A1DDA6F740003938F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
