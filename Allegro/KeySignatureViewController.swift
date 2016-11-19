@@ -15,6 +15,14 @@ class KeySignatureViewController: UIViewController {
   var numSharps: Int = 0
   var numFlats: Int = 0
   
+  let sharpKeys = ["C Major / A Minor", "G Major / E Minor", "D Major / B Minor",
+                   "A Major / F♯ Minor", "E Major / C♯ Minor", "B Major / G♯ Minor",
+                   "F♯ Major / D♯ Minor", "C♯ Major / A♯ Minor"]
+  
+  let flatKeys = ["C Major / A Minor", "F Major / D Minor", "B♭ Major / G Minor",
+                   "E♭ Major / C Minor", "A♭ Major / F Minor", "D♭ Major / B♭ Minor",
+                   "G♭ Major / E♭ Minor", "C♭ Major / A♭ Minor"]
+  
   @IBOutlet weak var keySignatureLabel: UILabel!
   @IBOutlet weak var doneButton: UIButton!
   
@@ -24,6 +32,7 @@ class KeySignatureViewController: UIViewController {
   @IBOutlet weak var sharpView: UIView!
   @IBOutlet weak var flatView: UIView!
   @IBOutlet weak var buttonView: UIView!
+  @IBOutlet weak var keySigLabel: UILabel!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -52,14 +61,19 @@ class KeySignatureViewController: UIViewController {
       return
     }
     
+    // Add a sharp
     if (numFlats == 0) {
       flatView.hidden = true
       sharpView.hidden = false
       sharpImages[numSharps].hidden = false
       numSharps += 1
+      keySigLabel.text = sharpKeys[numSharps]
+      
+    // Subtract a flat
     } else {
-      flatImages[numFlats-1].hidden = true
       numFlats -= 1
+      flatImages[numFlats].hidden = true
+      keySigLabel.text = flatKeys[numFlats]
     }
     
     
@@ -73,14 +87,19 @@ class KeySignatureViewController: UIViewController {
       return
     }
     
+    // Add a flat
     if (numSharps == 0) {
       flatView.hidden = false
       sharpView.hidden = true
       flatImages[numFlats].hidden = false
       numFlats += 1
+      keySigLabel.text = flatKeys[numFlats]
+      
+    // Subtract a sharp
     } else {
-      sharpImages[numSharps-1].hidden = true
       numSharps -= 1
+      sharpImages[numSharps].hidden = true
+      keySigLabel.text = sharpKeys[numSharps]
     }
   }
   

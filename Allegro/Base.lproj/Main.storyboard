@@ -493,6 +493,12 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="C Major / A Minor" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8M4-Qi-4Gq">
+                                <rect key="frame" x="173" y="315" width="344" height="21"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -502,6 +508,7 @@
                         <outlet property="buttonView" destination="7dg-Du-a6q" id="B72-cJ-IGH"/>
                         <outlet property="doneButton" destination="VAd-Xg-Wac" id="5Y0-wp-Rvt"/>
                         <outlet property="flatView" destination="4h9-pg-3q1" id="hxu-uW-gL6"/>
+                        <outlet property="keySigLabel" destination="8M4-Qi-4Gq" id="xMc-eJ-42r"/>
                         <outlet property="keySignatureLabel" destination="sFI-YV-e8z" id="sVd-XC-ZAP"/>
                         <outlet property="sharpView" destination="Iay-5b-klh" id="aSh-HT-RnK"/>
                         <outletCollection property="sharpImages" destination="GEG-kv-KA9" collectionClass="NSMutableArray" id="Ol5-kU-CYF"/>
