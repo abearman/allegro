@@ -12,6 +12,7 @@ class ComposeViewController: UIViewController {
 
   @IBOutlet weak var notesView: UIView!
   @IBOutlet var noteButtons: [UIButton]!
+  @IBOutlet weak var staffView: UIView!
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,10 +37,12 @@ class ComposeViewController: UIViewController {
     print(sender.tag)
     
     for noteButton in noteButtons {
-      noteButton.backgroundColor = UIColor.clearColor()
+      noteButton.superview?.backgroundColor = UIColor.whiteColor()
+      setViewBorder(noteButton.superview!, color: UIColor.clearColor(), width: 0)
     }
     
-    sender.backgroundColor = UIColor.blueColor()
+    sender.superview?.backgroundColor = BLUE_COLOR
+    setViewBorder(sender.superview!, color: UIColor.blackColor(), width: 1)
   }
   
   @IBAction func prepareForUnwindToCompose(sender: UIStoryboardSegue) {

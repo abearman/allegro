@@ -163,12 +163,33 @@
                         <viewControllerLayoutGuide type="bottom" id="uov-yA-1Pu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aLi-Wv-ic5">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="staff" translatesAutoresizingMaskIntoConstraints="NO" id="e5S-vT-vXX">
-                                <rect key="frame" x="48" y="28" width="552" height="296"/>
-                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6zU-RF-drT" userLabel="Controls View">
+                                <rect key="frame" x="0.0" y="332" width="667" height="43"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tto-Xg-d3e">
+                                        <rect key="frame" x="64" y="11" width="34" height="30"/>
+                                        <state key="normal" title="Time"/>
+                                        <connections>
+                                            <segue destination="KR1-fJ-sQL" kind="show" id="ArJ-zf-8WZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRT-bw-xgO">
+                                        <rect key="frame" x="143" y="11" width="30" height="30"/>
+                                        <state key="normal" title="Key"/>
+                                        <connections>
+                                            <segue destination="DWk-hT-Of1" kind="show" id="VBB-UO-0KQ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.73333333329999995" green="0.6705882353" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MUz-WX-9dc" userLabel="Staff View">
+                                <rect key="frame" x="48" y="20" width="599" height="304"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ncb-oK-gLJ" userLabel="Home Button">
                                 <rect key="frame" x="485" y="20" width="30" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -193,78 +214,96 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1BF-Ah-lMK" userLabel="Notes View">
                                 <rect key="frame" x="5" y="20" width="35" height="304"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OQI-Of-Vf8" userLabel="Whole Note">
-                                        <rect key="frame" x="2" y="8" width="30" height="18"/>
-                                        <state key="normal" image="whole note"/>
-                                        <connections>
-                                            <action selector="noteDurationChanged:" destination="QDs-4S-QIt" eventType="touchUpInside" id="ArM-zc-kM3"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYI-Bj-c7k" userLabel="Half Note">
-                                        <rect key="frame" x="2" y="42" width="30" height="50"/>
-                                        <state key="normal" image="half note"/>
-                                        <connections>
-                                            <action selector="noteDurationChanged:" destination="QDs-4S-QIt" eventType="touchUpInside" id="RJM-vz-Je8"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qwZ-Cz-GE3" userLabel="Quarter Note">
-                                        <rect key="frame" x="2" y="100" width="30" height="50"/>
-                                        <state key="normal" image="quarter note"/>
-                                        <connections>
-                                            <action selector="noteDurationChanged:" destination="QDs-4S-QIt" eventType="touchUpInside" id="nxU-xy-ltV"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ReJ-OE-M6w" userLabel="Eighth Note">
-                                        <rect key="frame" x="2" y="158" width="30" height="50"/>
-                                        <state key="normal" image="eighth note"/>
-                                        <connections>
-                                            <action selector="noteDurationChanged:" destination="QDs-4S-QIt" eventType="touchUpInside" id="TgV-O7-RlM"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GdJ-25-zyG" userLabel="Sixteenth Note">
-                                        <rect key="frame" x="2" y="221" width="30" height="50"/>
-                                        <state key="normal" image="sixteenth note"/>
-                                        <connections>
-                                            <action selector="noteDurationChanged:" destination="QDs-4S-QIt" eventType="touchUpInside" id="8OZ-uM-tP1"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Du9-Aa-4oq" userLabel="32nd Note">
-                                        <rect key="frame" x="2" y="281" width="30" height="48"/>
-                                        <state key="normal" image="32nd note"/>
-                                        <connections>
-                                            <action selector="noteDurationChanged:" destination="QDs-4S-QIt" eventType="touchUpInside" id="Bmk-x0-5GO"/>
-                                        </connections>
-                                    </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JME-3E-4em" userLabel="Whole Note View">
+                                        <rect key="frame" x="0.0" y="0.0" width="35" height="38"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OQI-Of-Vf8" userLabel="Whole Note">
+                                                <rect key="frame" x="3" y="11" width="30" height="18"/>
+                                                <state key="normal" image="whole note"/>
+                                                <connections>
+                                                    <action selector="noteDurationChanged:" destination="QDs-4S-QIt" eventType="touchUpInside" id="ArM-zc-kM3"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cqV-3C-0av" userLabel="Half Note View">
+                                        <rect key="frame" x="0.0" y="38" width="35" height="52"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYI-Bj-c7k" userLabel="Half Note">
+                                                <rect key="frame" x="6" y="5" width="25" height="41"/>
+                                                <state key="normal" image="half note"/>
+                                                <connections>
+                                                    <action selector="noteDurationChanged:" destination="QDs-4S-QIt" eventType="touchUpInside" id="RJM-vz-Je8"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZMd-lj-tTM" userLabel="Quarter Note View">
+                                        <rect key="frame" x="0.0" y="90" width="35" height="54"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qwZ-Cz-GE3" userLabel="Quarter Note">
+                                                <rect key="frame" x="6" y="5" width="25" height="41"/>
+                                                <state key="normal" image="quarter note"/>
+                                                <connections>
+                                                    <action selector="noteDurationChanged:" destination="QDs-4S-QIt" eventType="touchUpInside" id="nxU-xy-ltV"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9hw-Ae-fvY" userLabel="Eighth Note View">
+                                        <rect key="frame" x="0.0" y="144" width="35" height="54"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ReJ-OE-M6w" userLabel="Eighth Note">
+                                                <rect key="frame" x="6" y="5" width="24" height="41"/>
+                                                <state key="normal" image="eighth note"/>
+                                                <connections>
+                                                    <action selector="noteDurationChanged:" destination="QDs-4S-QIt" eventType="touchUpInside" id="TgV-O7-RlM"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Q8-YY-hNO" userLabel="Sixteenth Note View">
+                                        <rect key="frame" x="0.0" y="198" width="35" height="56"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GdJ-25-zyG" userLabel="Sixteenth Note">
+                                                <rect key="frame" x="6" y="5" width="25" height="41"/>
+                                                <state key="normal" image="sixteenth note"/>
+                                                <connections>
+                                                    <action selector="noteDurationChanged:" destination="QDs-4S-QIt" eventType="touchUpInside" id="8OZ-uM-tP1"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lJU-Fz-mnl" userLabel="32nd Note View">
+                                        <rect key="frame" x="0.0" y="254" width="35" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Du9-Aa-4oq" userLabel="32nd Note">
+                                                <rect key="frame" x="6" y="0.0" width="25" height="42"/>
+                                                <state key="normal" image="32nd note"/>
+                                                <connections>
+                                                    <action selector="noteDurationChanged:" destination="QDs-4S-QIt" eventType="touchUpInside" id="Bmk-x0-5GO"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6zU-RF-drT">
-                                <rect key="frame" x="0.0" y="332" width="600" height="52"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tto-Xg-d3e">
-                                        <rect key="frame" x="64" y="11" width="34" height="30"/>
-                                        <state key="normal" title="Time"/>
-                                        <connections>
-                                            <segue destination="KR1-fJ-sQL" kind="show" id="ArJ-zf-8WZ"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRT-bw-xgO">
-                                        <rect key="frame" x="143" y="11" width="30" height="30"/>
-                                        <state key="normal" title="Key"/>
-                                        <connections>
-                                            <segue destination="DWk-hT-Of1" kind="show" id="VBB-UO-0KQ"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.73333333329999995" green="0.6705882353" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="STL-aI-Smk"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="notesView" destination="1BF-Ah-lMK" id="2sU-g4-18s"/>
+                        <outlet property="staffView" destination="MUz-WX-9dc" id="HeR-YZ-xMr"/>
                         <outletCollection property="noteButtons" destination="OQI-Of-Vf8" collectionClass="NSMutableArray" id="gyG-JW-EC9"/>
                         <outletCollection property="noteButtons" destination="LYI-Bj-c7k" collectionClass="NSMutableArray" id="B8F-LR-FDY"/>
                         <outletCollection property="noteButtons" destination="qwZ-Cz-GE3" collectionClass="NSMutableArray" id="dfK-f0-juF"/>
@@ -275,7 +314,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ubn-9q-uas" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="599" y="224"/>
+            <point key="canvasLocation" x="598.5" y="223.5"/>
         </scene>
         <!--Time Signature View Controller-->
         <scene sceneID="0Ok-KK-NIA">
@@ -544,7 +583,6 @@
         <image name="quarter note" width="268" height="512"/>
         <image name="sharp" width="461" height="1462"/>
         <image name="sixteenth note" width="199" height="298"/>
-        <image name="staff" width="597" height="225"/>
         <image name="transcribe" width="2126" height="2400"/>
         <image name="whole note" width="2000" height="1167"/>
     </resources>

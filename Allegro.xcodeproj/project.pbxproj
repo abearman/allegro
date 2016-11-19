@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BD1DF04C1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1DF04B1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift */; };
 		BD5C32531DDF974B007F7A92 /* KeySignatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C32521DDF974B007F7A92 /* KeySignatureViewController.swift */; };
+		BD5C32551DDFD4ED007F7A92 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C32541DDFD4ED007F7A92 /* Constants.swift */; };
 		BD8F24711DDB9BE800BE94E9 /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8F24701DDB9BE800BE94E9 /* InstructionsViewController.swift */; };
 		BD8F24741DDBA06600BE94E9 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8F24731DDBA06600BE94E9 /* ComposeViewController.swift */; };
 		BDA672171DDA6F740003938F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA672161DDA6F740003938F /* AppDelegate.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		BD1DF04B1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSignatureViewController.swift; sourceTree = "<group>"; };
 		BD5C32521DDF974B007F7A92 /* KeySignatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeySignatureViewController.swift; sourceTree = "<group>"; };
+		BD5C32541DDFD4ED007F7A92 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BD8F24701DDB9BE800BE94E9 /* InstructionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
 		BD8F24731DDBA06600BE94E9 /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		BDA672131DDA6F740003938F /* Allegro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Allegro.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +84,7 @@
 				BD1DF04B1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift */,
 				BD5C32521DDF974B007F7A92 /* KeySignatureViewController.swift */,
 				BDA6721A1DDA6F740003938F /* Main.storyboard */,
+				BD5C32541DDFD4ED007F7A92 /* Constants.swift */,
 				BDA672201DDA6F740003938F /* Assets.xcassets */,
 			);
 			path = Allegro;
@@ -165,6 +168,7 @@
 				BDA672321DDA7CBA0003938F /* HomeViewController.swift in Sources */,
 				BD5C32531DDF974B007F7A92 /* KeySignatureViewController.swift in Sources */,
 				BD8F24711DDB9BE800BE94E9 /* InstructionsViewController.swift in Sources */,
+				BD5C32551DDFD4ED007F7A92 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
