@@ -10,6 +10,8 @@ import UIKit
 
 class StaffView: UIView {
   
+  var noteDuration: Int = 0
+  
   var noteWidth: CGFloat = 0.0
   var noteHeight: CGFloat = 0.0 {
     didSet {
@@ -46,7 +48,7 @@ class StaffView: UIView {
       let location = gesture.locationInView(self)
       print(location.x, ", ", location.y)
       
-      addNote(location)
+      addNote(location, filledNote: shouldFillInNote())
       
       
       /*let note = UIImage(named: "eighth note")
@@ -60,7 +62,7 @@ class StaffView: UIView {
   }
   
   
-  func addNote(tapLocation: CGPoint) {
+  func addNote(tapLocation: CGPoint, filledNote: Bool) {
     let noteX = tapLocation.x - CGFloat(noteWidth/2)
     //let ovalY = tapLocation.y - CGFloat(noteHeight/2)
     let noteY = getNoteBarline(tapLocation.y)
@@ -69,10 +71,13 @@ class StaffView: UIView {
     let shapeLayer = CAShapeLayer()
     shapeLayer.path = notePath.CGPath
     
-    //change the fill color
-    shapeLayer.fillColor = UIColor.blackColor().CGColor
-    //you can change the stroke color
     shapeLayer.strokeColor = UIColor.blackColor().CGColor
+    if (filledNote) {
+      shapeLayer.fillColor = UIColor.blackColor().CGColor
+    } else {
+      shapeLayer.fillColor = UIColor.clearColor().CGColor
+      shapeLayer.lineWidth = 4
+    }
     
     self.layer.addSublayer(shapeLayer)
   }
@@ -104,6 +109,11 @@ class StaffView: UIView {
     print(noteY)
     //return (largeBar-smallBar)/2 //- CGFloat(NOTE_HEIGHT/2)
     return noteY
+  }
+  
+  
+  func shouldFillInNote() -> Bool {
+    return noteDuration > 1
   }
   
 

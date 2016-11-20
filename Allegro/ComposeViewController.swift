@@ -35,8 +35,6 @@ class ComposeViewController: UIViewController {
   
 
   @IBAction func noteDurationChanged(sender: UIButton) {
-    print(sender.tag)
-    
     for noteButton in noteButtons {
       noteButton.superview?.backgroundColor = UIColor.whiteColor()
       setViewBorder(noteButton.superview!, color: UIColor.clearColor(), width: 0)
@@ -47,8 +45,12 @@ class ComposeViewController: UIViewController {
   
   
   func selectNoteButton(noteButton: UIButton) {
+    // Highlight the selected note button in blue
     noteButton.superview?.backgroundColor = BLUE_COLOR
     setViewBorder(noteButton.superview!, color: UIColor.blackColor(), width: 1)
+    
+    // Update the selected duration in the StaffView
+    staffView.noteDuration = noteButton.tag
   }
   
   
