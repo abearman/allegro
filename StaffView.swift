@@ -57,18 +57,23 @@ class StaffView: UIView {
     case .Ended:
       let location = gesture.locationInView(self)
       
-      /* Check to see if we tapped an existing note. If so, select it */
+      /* Check to see if we tapped an existing Note.
+       * If so, select/de-select it. */
       var foundExistingNote = false
       for note in existingNotes {
         if (CGPathContainsPoint(note.shapeLayer.path, nil, location, false)) {
           foundExistingNote = true
-          selectNote(note.shapeLayer)
+          if (note.isSelected) {
+            deselectNote(note)
+          } else {
+            selectNote(note)
+          }
         }
       }
       
+      /* Otherwise, add a new Note. */
       if (!foundExistingNote) {
-        var noteLayer = addNote(location, filledNote: shouldFillInNote())
-        selectNote(noteLayer)
+        addNote(location, isFilled: shouldFillInNote())
       }
   
     default:
@@ -77,41 +82,54 @@ class StaffView: UIView {
   }
   
   
-  func selectNote(selectedNoteLayer: CAShapeLayer) {
+  func selectNote(selectedNote: Note) {
     /* De-select all notes */
     for note in existingNotes {
-      note.shapeLayer.fillColor = UIColor.blackColor().CGColor
+      deselectNote(note)
     }
     
-    selectedNoteLayer.fillColor = BLUE_COLOR.CGColor
+    selectedNote.isSelected = true
+    
+    selectedNote.shapeLayer.fillColor = BLUE_COLOR.CGColor
+    selectedNote.shapeLayer.strokeColor = UIColor.blackColor().CGColor
+    if (selectedNote.isFilled) {
+      selectedNote.shapeLayer.lineWidth = 0
+    } else {
+      selectedNote.shapeLayer.lineWidth = 4
+    }
+    
     setNeedsDisplay()
   }
   
   
-  func addNote(tapLocation: CGPoint, filledNote: Bool) -> CAShapeLayer {
+  func deselectNote(selectedNote: Note) {
+    selectedNote.isSelected = false
+    
+    if (selectedNote.isFilled) {
+      selectedNote.shapeLayer.fillColor = UIColor.blackColor().CGColor
+    } else {
+      selectedNote.shapeLayer.fillColor = UIColor.clearColor().CGColor
+    }
+    
+    setNeedsDisplay()
+  }
+  
+  
+  func addNote(tapLocation: CGPoint, isFilled: Bool) {
     let noteX = tapLocation.x - CGFloat(noteWidth/2)
-    //let noteY = tapLocation.y
     let noteY = getNoteBarline(tapLocation.y)
     let notePath = UIBezierPath(ovalInRect: CGRectMake(noteX, noteY, noteWidth, noteHeight))
     
     let shapeLayer = CAShapeLayer()
     shapeLayer.path = notePath.CGPath
     
-    shapeLayer.strokeColor = UIColor.blackColor().CGColor
-    if (filledNote) {
-      shapeLayer.fillColor = UIColor.blackColor().CGColor
-    } else {
-      shapeLayer.fillColor = UIColor.clearColor().CGColor
-      shapeLayer.lineWidth = 4
-    }
-    
     /* Add Note to array */
-    let newNote = Note(shapeLayer: shapeLayer)
+    let newNote = Note(shapeLayer: shapeLayer, isFilled: isFilled)
     existingNotes.append(newNote)
     
     /* Add note layer to superview */
+    selectNote(newNote)
     self.layer.addSublayer(shapeLayer)
-    return shapeLayer
   }
   
   

@@ -11,9 +11,12 @@ import UIKit
 class Note {
 
   var shapeLayer: CAShapeLayer = CAShapeLayer()
+  var isSelected: Bool = false
+  var isFilled: Bool = true
   
-  init(shapeLayer: CAShapeLayer) {
+  init(shapeLayer: CAShapeLayer, isFilled: Bool) {
     self.shapeLayer = shapeLayer
+    self.isFilled = isFilled
   }
   
 }
