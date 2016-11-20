@@ -29,6 +29,8 @@ class ComposeViewController: UIViewController {
     notesView.layer.borderWidth = 1
     notesView.layer.borderColor = UIColor.blackColor().CGColor
     
+    // Auto-select middle note
+    selectNoteButton(noteButtons[noteButtons.count/2])
   }
   
 
@@ -40,8 +42,13 @@ class ComposeViewController: UIViewController {
       setViewBorder(noteButton.superview!, color: UIColor.clearColor(), width: 0)
     }
     
-    sender.superview?.backgroundColor = BLUE_COLOR
-    setViewBorder(sender.superview!, color: UIColor.blackColor(), width: 1)
+    selectNoteButton(sender)
+  }
+  
+  
+  func selectNoteButton(noteButton: UIButton) {
+    noteButton.superview?.backgroundColor = BLUE_COLOR
+    setViewBorder(noteButton.superview!, color: UIColor.blackColor(), width: 1)
   }
   
   
