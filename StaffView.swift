@@ -18,13 +18,26 @@ class StaffView: UIView {
       noteWidth = 1.4 * noteHeight
     }
   }
-
   
-  // List of y-value positions of the bar lines on the screen, from high to low
-  var barlines = [CGFloat]()
+  var existingNotes: [Note] = []
+  
+  /* List of y-value positions of the bar lines on the screen, from high to low */
+  var barlines = [CGFloat]() {
+    didSet {
+      /* Set note width and height */
+      if barlines.count > 1 {
+        noteHeight = barlines[1] - barlines[0]
+      }
+    }
+  }
+  
   
   override func drawRect(rect: CGRect) {
-    /* Draw bar lines */
+    drawBarLines()
+  }
+  
+  
+  func drawBarLines() {
     for i in 1...NUM_STAFF_LINES {
       let aPath = UIBezierPath()
       let yVal = CGFloat(i) * self.frame.height / CGFloat(NUM_STAFF_LINES + 1)
@@ -36,9 +49,6 @@ class StaffView: UIView {
       UIColor.blackColor().set()
       aPath.stroke()
     }
-    
-    /* Set note width and height */
-    noteHeight = barlines[1] - barlines[0]
   }
   
   
@@ -46,25 +56,41 @@ class StaffView: UIView {
     switch gesture.state {
     case .Ended:
       let location = gesture.locationInView(self)
-      print(location.x, ", ", location.y)
       
-      addNote(location, filledNote: shouldFillInNote())
+      /* Check to see if we tapped an existing note. If so, select it */
+      var foundExistingNote = false
+      for note in existingNotes {
+        if (CGPathContainsPoint(note.shapeLayer.path, nil, location, false)) {
+          foundExistingNote = true
+          selectNote(note.shapeLayer)
+        }
+      }
       
-      
-      /*let note = UIImage(named: "eighth note")
-      let noteView = UIImageView(image: note)
-      noteView.frame = CGRect(x: 0, y:0, width: note!.size.width, height: note!.size.height)
-      self.addSubview(noteView)*/
-      
+      if (!foundExistingNote) {
+        var noteLayer = addNote(location, filledNote: shouldFillInNote())
+        selectNote(noteLayer)
+      }
+  
     default:
       break
     }
   }
   
   
-  func addNote(tapLocation: CGPoint, filledNote: Bool) {
+  func selectNote(selectedNoteLayer: CAShapeLayer) {
+    /* De-select all notes */
+    for note in existingNotes {
+      note.shapeLayer.fillColor = UIColor.blackColor().CGColor
+    }
+    
+    selectedNoteLayer.fillColor = BLUE_COLOR.CGColor
+    setNeedsDisplay()
+  }
+  
+  
+  func addNote(tapLocation: CGPoint, filledNote: Bool) -> CAShapeLayer {
     let noteX = tapLocation.x - CGFloat(noteWidth/2)
-    //let ovalY = tapLocation.y - CGFloat(noteHeight/2)
+    //let noteY = tapLocation.y
     let noteY = getNoteBarline(tapLocation.y)
     let notePath = UIBezierPath(ovalInRect: CGRectMake(noteX, noteY, noteWidth, noteHeight))
     
@@ -79,7 +105,13 @@ class StaffView: UIView {
       shapeLayer.lineWidth = 4
     }
     
+    /* Add Note to array */
+    let newNote = Note(shapeLayer: shapeLayer)
+    existingNotes.append(newNote)
+    
+    /* Add note layer to superview */
     self.layer.addSublayer(shapeLayer)
+    return shapeLayer
   }
   
   
@@ -90,11 +122,9 @@ class StaffView: UIView {
     
     for barlineY in barlines {
       if ( (tapY > barlineY) && (barlineY > smallBar) ) {
-        print("Found small bar")
         smallBar = barlineY
       }
       if ( (tapY < barlineY) && (barlineY < largeBar) ) {
-        print("Found large bar")
         largeBar = barlineY
       }
       
@@ -102,12 +132,7 @@ class StaffView: UIView {
         return barlineY - CGFloat(noteHeight/2)
       }
     }
-    print("Got to middle note")
-    print("Low bar: ", largeBar)
-    print("High bar: ", smallBar)
     let noteY = smallBar + (largeBar-smallBar)/2 - CGFloat(noteHeight/2)
-    print(noteY)
-    //return (largeBar-smallBar)/2 //- CGFloat(NOTE_HEIGHT/2)
     return noteY
   }
   
