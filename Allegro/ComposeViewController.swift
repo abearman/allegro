@@ -12,26 +12,25 @@ class ComposeViewController: UIViewController {
 
   @IBOutlet weak var notesView: UIView!
   @IBOutlet var noteButtons: [UIButton]!
-  @IBOutlet weak var staffView: UIView!
   
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      
-      notesView.backgroundColor = UIColor.whiteColor()
-      notesView.layer.borderWidth = 1
-      notesView.layer.borderColor = UIColor.blackColor().CGColor
+  @IBOutlet weak var staffView: StaffView! {
+    /* Add gesture recognizers */
+    didSet {
+      staffView.addGestureRecognizer(UITapGestureRecognizer(
+        target: staffView, action: #selector(StaffView.tappedView(_:))
+      ))
     }
+  }
+  
+  override func viewDidLoad() {
+      super.viewDidLoad()
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    notesView.backgroundColor = UIColor.whiteColor()
+    notesView.layer.borderWidth = 1
+    notesView.layer.borderColor = UIColor.blackColor().CGColor
+    
+  }
+  
 
   @IBAction func noteDurationChanged(sender: UIButton) {
     print(sender.tag)
@@ -45,9 +44,11 @@ class ComposeViewController: UIViewController {
     setViewBorder(sender.superview!, color: UIColor.blackColor(), width: 1)
   }
   
+  
   @IBAction func prepareForUnwindToCompose(sender: UIStoryboardSegue) {
     // No code needed here
   }
+
 
   
 }
