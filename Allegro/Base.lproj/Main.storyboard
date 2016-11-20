@@ -169,18 +169,29 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6zU-RF-drT" userLabel="Controls View">
                                 <rect key="frame" x="0.0" y="332" width="667" height="43"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRT-bw-xgO" userLabel="Key Signature">
-                                        <rect key="frame" x="143" y="-9" width="30" height="52"/>
-                                        <state key="normal" title="Key"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRT-bw-xgO" userLabel="Key Signature">
+                                        <rect key="frame" x="165" y="1" width="47" height="40"/>
+                                        <state key="normal" image="C major"/>
                                         <connections>
                                             <segue destination="DWk-hT-Of1" kind="show" id="VBB-UO-0KQ"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pi8-kK-CAw">
+                                        <rect key="frame" x="70" y="3" width="15" height="38"/>
+                                        <state key="normal" image="treble clef"/>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tto-Xg-d3e" userLabel="Time Signature">
-                                        <rect key="frame" x="67" y="0.0" width="20" height="41"/>
-                                        <state key="normal" image="time signature"/>
+                                        <rect key="frame" x="116" y="22" width="15" height="19"/>
+                                        <state key="normal" image="4"/>
                                         <connections>
                                             <segue destination="KR1-fJ-sQL" kind="show" id="ArJ-zf-8WZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfk-0F-gnG" userLabel="Time Signature">
+                                        <rect key="frame" x="116" y="2" width="15" height="19"/>
+                                        <state key="normal" image="4"/>
+                                        <connections>
+                                            <segue destination="jLh-Xe-0gV" kind="show" id="Shu-fW-drC"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -305,8 +316,10 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="bottomTimeSigButton" destination="Tto-Xg-d3e" id="SrF-zg-XlO"/>
                         <outlet property="notesView" destination="1BF-Ah-lMK" id="2sU-g4-18s"/>
                         <outlet property="staffView" destination="MUz-WX-9dc" id="HeR-YZ-xMr"/>
+                        <outlet property="topTimeSigButton" destination="rfk-0F-gnG" id="xQz-Yv-Jbd"/>
                         <outletCollection property="noteButtons" destination="OQI-Of-Vf8" collectionClass="NSMutableArray" id="gyG-JW-EC9"/>
                         <outletCollection property="noteButtons" destination="LYI-Bj-c7k" collectionClass="NSMutableArray" id="B8F-LR-FDY"/>
                         <outletCollection property="noteButtons" destination="qwZ-Cz-GE3" collectionClass="NSMutableArray" id="dfK-f0-juF"/>
@@ -578,6 +591,8 @@
     </scenes>
     <resources>
         <image name="32nd note" width="2000" height="4267"/>
+        <image name="4" width="116" height="139"/>
+        <image name="C major" width="840" height="720"/>
         <image name="arrange" width="512" height="512"/>
         <image name="eighth note" width="199" height="302"/>
         <image name="flat" width="2000" height="4333"/>
@@ -587,8 +602,8 @@
         <image name="quarter note" width="268" height="512"/>
         <image name="sharp" width="461" height="1462"/>
         <image name="sixteenth note" width="199" height="298"/>
-        <image name="time signature" width="492" height="1187"/>
         <image name="transcribe" width="2126" height="2400"/>
+        <image name="treble clef" width="661" height="1707"/>
         <image name="whole note" width="2000" height="1167"/>
     </resources>
 </document>

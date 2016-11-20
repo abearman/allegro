@@ -14,7 +14,11 @@ class TimeSignatureViewController: UIViewController, UIPickerViewDelegate, UIPic
   @IBOutlet weak var doneButton: UIButton!
   @IBOutlet weak var picker: UIPickerView!
   
-  let pickerData: [Int] = Array(1...8)
+  let pickerData: [Int] = [2, 3, 4, 6, 8]
+  
+  var topTimeSig: Int = 4
+  var bottomTimeSig: Int = 4
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -27,7 +31,10 @@ class TimeSignatureViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     picker.delegate = self
     picker.dataSource = self
-
+    
+    /* Set default selected time signature to whatever was last selected */
+    picker.selectRow(pickerData.indexOf(topTimeSig)!, inComponent: 0, animated: true)
+    picker.selectRow(pickerData.indexOf(bottomTimeSig)!, inComponent: 1, animated: true)
   }
 
   
@@ -47,6 +54,14 @@ class TimeSignatureViewController: UIViewController, UIPickerViewDelegate, UIPic
   
   
   func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    /* Top time signature */
+    if (component == 0) {
+      topTimeSig = pickerData[row]
+    /* Bottom time signature */
+    } else if (component == 1) {
+      bottomTimeSig = pickerData[row]
+    }
+    
     picker.reloadAllComponents()
   }
   

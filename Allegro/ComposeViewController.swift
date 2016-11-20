@@ -9,7 +9,14 @@
 import UIKit
 
 class ComposeViewController: UIViewController {
+  
+  /* Time signature */
+  @IBOutlet weak var topTimeSigButton: UIButton!
+  @IBOutlet weak var bottomTimeSigButton: UIButton!
+  var topTimeSig: Int = 4
+  var bottomTimeSig: Int = 4
 
+  /* Note duration panel */
   @IBOutlet weak var notesView: UIView!
   @IBOutlet var noteButtons: [UIButton]!
   
@@ -54,8 +61,22 @@ class ComposeViewController: UIViewController {
   }
   
   
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if let timeSigVC = segue.destinationViewController as? TimeSignatureViewController {
+      timeSigVC.topTimeSig = topTimeSig
+      timeSigVC.bottomTimeSig = bottomTimeSig
+    }
+  }
+  
+  
   @IBAction func prepareForUnwindToCompose(sender: UIStoryboardSegue) {
-    // No code needed here
+    if let timeSigVC = sender.sourceViewController as? TimeSignatureViewController {
+      topTimeSigButton.setImage(UIImage(named: String(timeSigVC.topTimeSig)), forState: .Normal)
+      bottomTimeSigButton.setImage(UIImage(named: String(timeSigVC.bottomTimeSig)), forState: .Normal)
+      
+      topTimeSig = timeSigVC.topTimeSig
+      bottomTimeSig = timeSigVC.bottomTimeSig
+    }
   }
 
 
