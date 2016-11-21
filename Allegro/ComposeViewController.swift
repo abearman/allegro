@@ -13,7 +13,13 @@ class ComposeViewController: UIViewController {
   /* Time signature */
   @IBOutlet weak var topTimeSigButton: UIButton!
   @IBOutlet weak var bottomTimeSigButton: UIButton!
-  var topTimeSig: Int = 4
+  var topTimeSig: Int = 4 {
+    didSet {
+      if let _ = staffView {
+        staffView.topTimeSig = topTimeSig
+      }
+    }
+  }
   var bottomTimeSig: Int = 4
 
   /* Note duration panel */

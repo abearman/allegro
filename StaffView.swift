@@ -10,9 +10,20 @@ import UIKit
 
 class StaffView: UIView {
   
+  var topTimeSig: Int = 4 {
+    didSet {
+      setXPositions()
+    }
+  }
+  
   var noteDuration: Int = 0
   
-  var noteWidth: CGFloat = 0.0
+  var noteSep: CGFloat = 0.0
+  var noteWidth: CGFloat = 0.0 {
+    didSet {
+      noteSep = noteWidth
+    }
+  }
   var noteHeight: CGFloat = 0.0 {
     didSet {
       noteWidth = 1.4 * noteHeight
@@ -30,10 +41,11 @@ class StaffView: UIView {
       }
     }
   }
-  
+  var xPositions = [CGFloat]()
   
   override func drawRect(rect: CGRect) {
     drawBarLines()
+    setXPositions()
   }
   
   
@@ -49,6 +61,36 @@ class StaffView: UIView {
       UIColor.blackColor().set()
       aPath.stroke()
     }
+  }
+  
+  
+  func setXPositions() {
+    /* Top time sig is 2, 4, or 8 */
+    var numNotes = 4
+    
+    /* Top time sig is 3 or 6 */
+    if (topTimeSig == 3 || topTimeSig == 6) {
+      numNotes = 6
+    }
+    
+    /* Clear any existing xPositions */
+    xPositions.removeAll()
+    
+    var lastXVal = CGFloat(0)
+    for i in 1...numNotes {
+      let xVal = CGFloat(i) * self.frame.width / CGFloat(numNotes)
+      let noteXVal = lastXVal + ((xVal - lastXVal) / 2) - CGFloat(noteWidth/2)
+      xPositions.append(noteXVal)
+      lastXVal = xVal
+      
+      /*let aPath = UIBezierPath()
+      aPath.moveToPoint(CGPoint(x:xVal, y:0))
+      aPath.addLineToPoint(CGPoint(x:xVal, y:self.frame.height))
+      aPath.closePath()
+      UIColor.blackColor().set()
+      aPath.stroke()*/
+    }
+    setNeedsDisplay()
   }
   
   
@@ -116,7 +158,8 @@ class StaffView: UIView {
   
   
   func addNote(tapLocation: CGPoint, isFilled: Bool) {
-    let noteX = tapLocation.x - CGFloat(noteWidth/2)
+    //let noteX = tapLocation.x - CGFloat(noteWidth/2)
+    let noteX = getNoteXPos(tapLocation.x)
     let noteY = getNoteBarline(tapLocation.y)
     let notePath = UIBezierPath(ovalInRect: CGRectMake(noteX, noteY, noteWidth, noteHeight))
     
@@ -130,6 +173,22 @@ class StaffView: UIView {
     /* Add note layer to superview */
     selectNote(newNote)
     self.layer.addSublayer(shapeLayer)
+  }
+  
+  
+  func getNoteXPos(tapX: CGFloat) -> CGFloat {
+    var smallestXDiff = self.frame.width
+    var bestXPos = xPositions[0]
+    
+    for xPos in xPositions {
+      let xDiff = abs(xPos - tapX)
+      if (xDiff < smallestXDiff) {
+        smallestXDiff = xDiff
+        bestXPos = xPos
+      }
+    }
+    
+    return bestXPos
   }
   
   
