@@ -12,6 +12,8 @@
 		BD5C32551DDFD4ED007F7A92 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C32541DDFD4ED007F7A92 /* Constants.swift */; };
 		BD5C32591DDFDA61007F7A92 /* StaffView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C32581DDFDA61007F7A92 /* StaffView.swift */; };
 		BD5C325B1DE23BC0007F7A92 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C325A1DE23BC0007F7A92 /* Note.swift */; };
+		BD81262C1DE4DBB000BDE1CC /* NoteGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81262B1DE4DBB000BDE1CC /* NoteGestureRecognizer.swift */; };
+		BD8126321DE4DFFD00BDE1CC /* CircleFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8126311DE4DFFD00BDE1CC /* CircleFit.swift */; };
 		BD8F24711DDB9BE800BE94E9 /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8F24701DDB9BE800BE94E9 /* InstructionsViewController.swift */; };
 		BD8F24741DDBA06600BE94E9 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8F24731DDBA06600BE94E9 /* ComposeViewController.swift */; };
 		BDA672171DDA6F740003938F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA672161DDA6F740003938F /* AppDelegate.swift */; };
@@ -28,6 +30,8 @@
 		BD5C32541DDFD4ED007F7A92 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BD5C32581DDFDA61007F7A92 /* StaffView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StaffView.swift; path = ../StaffView.swift; sourceTree = "<group>"; };
 		BD5C325A1DE23BC0007F7A92 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Note.swift; path = ../Note.swift; sourceTree = "<group>"; };
+		BD81262B1DE4DBB000BDE1CC /* NoteGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteGestureRecognizer.swift; sourceTree = "<group>"; };
+		BD8126311DE4DFFD00BDE1CC /* CircleFit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleFit.swift; sourceTree = "<group>"; };
 		BD8F24701DDB9BE800BE94E9 /* InstructionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
 		BD8F24731DDBA06600BE94E9 /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		BDA672131DDA6F740003938F /* Allegro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Allegro.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +55,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD81262D1DE4DBB300BDE1CC /* Gesture Recognizers */ = {
+			isa = PBXGroup;
+			children = (
+				BD8126311DE4DFFD00BDE1CC /* CircleFit.swift */,
+				BD81262B1DE4DBB000BDE1CC /* NoteGestureRecognizer.swift */,
+			);
+			name = "Gesture Recognizers";
+			sourceTree = "<group>";
+		};
+		BD81262E1DE4DBBE00BDE1CC /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BDA672311DDA7CBA0003938F /* HomeViewController.swift */,
+				BD8F24701DDB9BE800BE94E9 /* InstructionsViewController.swift */,
+				BD8F24731DDBA06600BE94E9 /* ComposeViewController.swift */,
+				BD1DF04B1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift */,
+				BD5C32521DDF974B007F7A92 /* KeySignatureViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		BD81262F1DE4DBC800BDE1CC /* Swift Classes */ = {
+			isa = PBXGroup;
+			children = (
+				BD5C325A1DE23BC0007F7A92 /* Note.swift */,
+				BD5C32541DDFD4ED007F7A92 /* Constants.swift */,
+			);
+			name = "Swift Classes";
+			sourceTree = "<group>";
+		};
+		BD8126301DE4DBCD00BDE1CC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BD5C32581DDFDA61007F7A92 /* StaffView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		BD8F24721DDB9BF900BE94E9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -82,15 +124,11 @@
 			isa = PBXGroup;
 			children = (
 				BD8F24721DDB9BF900BE94E9 /* Supporting Files */,
-				BDA672311DDA7CBA0003938F /* HomeViewController.swift */,
-				BD8F24701DDB9BE800BE94E9 /* InstructionsViewController.swift */,
-				BD8F24731DDBA06600BE94E9 /* ComposeViewController.swift */,
-				BD1DF04B1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift */,
-				BD5C32521DDF974B007F7A92 /* KeySignatureViewController.swift */,
+				BD81262E1DE4DBBE00BDE1CC /* View Controllers */,
 				BDA6721A1DDA6F740003938F /* Main.storyboard */,
-				BD5C32581DDFDA61007F7A92 /* StaffView.swift */,
-				BD5C325A1DE23BC0007F7A92 /* Note.swift */,
-				BD5C32541DDFD4ED007F7A92 /* Constants.swift */,
+				BD8126301DE4DBCD00BDE1CC /* Views */,
+				BD81262D1DE4DBB300BDE1CC /* Gesture Recognizers */,
+				BD81262F1DE4DBC800BDE1CC /* Swift Classes */,
 				BDA672201DDA6F740003938F /* Assets.xcassets */,
 			);
 			path = Allegro;
@@ -172,9 +210,11 @@
 				BD5C32591DDFDA61007F7A92 /* StaffView.swift in Sources */,
 				BD8F24741DDBA06600BE94E9 /* ComposeViewController.swift in Sources */,
 				BDA6721F1DDA6F740003938F /* Allegro.xcdatamodeld in Sources */,
+				BD81262C1DE4DBB000BDE1CC /* NoteGestureRecognizer.swift in Sources */,
 				BD1DF04C1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift in Sources */,
 				BDA672171DDA6F740003938F /* AppDelegate.swift in Sources */,
 				BD5C325B1DE23BC0007F7A92 /* Note.swift in Sources */,
+				BD8126321DE4DFFD00BDE1CC /* CircleFit.swift in Sources */,
 				BDA672321DDA7CBA0003938F /* HomeViewController.swift in Sources */,
 				BD5C32531DDF974B007F7A92 /* KeySignatureViewController.swift in Sources */,
 				BD8F24711DDB9BE800BE94E9 /* InstructionsViewController.swift in Sources */,

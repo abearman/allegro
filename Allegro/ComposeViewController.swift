@@ -28,12 +28,15 @@ class ComposeViewController: UIViewController {
   @IBOutlet weak var staffView: StaffView! {
     /* Add gesture recognizers */
     didSet {
-      staffView.addGestureRecognizer(UITapGestureRecognizer(
-        target: staffView, action: #selector(StaffView.tappedView(_:))
-      ))
-      
-      staffView.addGestureRecognizer(UIPanGestureRecognizer(
+      /*staffView.addGestureRecognizer(UIPanGestureRecognizer(
         target: staffView, action: #selector(StaffView.handlePan(_:))
+      ))*/
+      
+      /*staffView.addGestureRecognizer(UITapGestureRecognizer(
+        target: staffView, action: #selector(StaffView.tappedView(_:))
+      ))*/
+      
+      staffView.addGestureRecognizer(NoteGestureRecognizer(target: staffView, action: #selector(StaffView.handleNoteGesture(_:))
       ))
       
     }
@@ -45,6 +48,7 @@ class ComposeViewController: UIViewController {
     // Auto-select middle note
     selectNoteButton(noteButtons[noteButtons.count/2])
   }
+  
   
   @IBAction func noteDurationChanged(_ sender: UIButton) {
     for noteButton in noteButtons {

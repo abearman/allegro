@@ -273,39 +273,39 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eLu-sq-tGU" userLabel="Half note">
-                                        <rect key="frame" x="0.0" y="42" width="46" height="52"/>
-                                        <inset key="contentEdgeInsets" minX="0.0" minY="2" maxX="0.0" maxY="2"/>
+                                        <rect key="frame" x="0.0" y="42" width="46" height="54"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="2" maxX="0.0" maxY="4"/>
                                         <state key="normal" image="half note small"/>
                                         <connections>
                                             <action selector="noteDurationChanged:" destination="QDs-4S-QIt" eventType="touchUpInside" id="vww-HI-aF3"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hU9-0o-I4J" userLabel="Quarter note">
-                                        <rect key="frame" x="0.0" y="94" width="46" height="54"/>
-                                        <inset key="contentEdgeInsets" minX="0.0" minY="2" maxX="0.0" maxY="2"/>
+                                        <rect key="frame" x="0.0" y="96" width="46" height="58"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="4" maxX="0.0" maxY="4"/>
                                         <state key="normal" image="quarter note small"/>
                                         <connections>
                                             <action selector="noteDurationChanged:" destination="QDs-4S-QIt" eventType="touchUpInside" id="ugf-Km-RXO"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AMe-fD-Hfr" userLabel="Eighth note">
-                                        <rect key="frame" x="0.0" y="148" width="46" height="50"/>
-                                        <inset key="contentEdgeInsets" minX="5" minY="2" maxX="0.0" maxY="2"/>
+                                        <rect key="frame" x="0.0" y="154" width="46" height="54"/>
+                                        <inset key="contentEdgeInsets" minX="5" minY="4" maxX="0.0" maxY="4"/>
                                         <state key="normal" image="eighth note small"/>
                                         <connections>
                                             <action selector="noteDurationChanged:" destination="QDs-4S-QIt" eventType="touchUpInside" id="Dlm-Xh-57N"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9AA-pg-wEz" userLabel="Sixteenth note">
-                                        <rect key="frame" x="0.0" y="198" width="46" height="49"/>
-                                        <inset key="contentEdgeInsets" minX="5" minY="2" maxX="0.0" maxY="2"/>
+                                        <rect key="frame" x="0.0" y="208" width="46" height="53"/>
+                                        <inset key="contentEdgeInsets" minX="5" minY="4" maxX="0.0" maxY="4"/>
                                         <state key="normal" image="sixteenth note small"/>
                                         <connections>
                                             <action selector="noteDurationChanged:" destination="QDs-4S-QIt" eventType="touchUpInside" id="Kg8-1w-Hgn"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pOu-Ls-are" userLabel="32nd note">
-                                        <rect key="frame" x="0.0" y="247" width="46" height="74"/>
+                                        <rect key="frame" x="0.0" y="261" width="46" height="60"/>
                                         <inset key="contentEdgeInsets" minX="5" minY="2" maxX="0.0" maxY="2"/>
                                         <state key="normal" image="32nd note small"/>
                                         <connections>
@@ -632,7 +632,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="32nd note small" width="30" height="70"/>
+        <image name="32nd note small" width="30" height="56"/>
         <image name="4" width="116" height="139"/>
         <image name="C major" width="840" height="720"/>
         <image name="arrange" width="512" height="512"/>

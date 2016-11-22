@@ -100,35 +100,7 @@ class StaffView: UIView {
   }
   
   
-  func tappedView(_ gesture: UITapGestureRecognizer) {
-    switch gesture.state {
-    case .ended:
-      let location = gesture.location(in: self)
-      
-      /* Check to see if we tapped an existing Note.
-       * If so, select/de-select it. */
-      var foundExistingNote = false
-      for note in existingNotes {
-        if (note.shapeLayer.path?.contains(location))! {
-          foundExistingNote = true
-          if (note.isSelected) {
-            deselectNote(note)
-          } else {
-            selectNote(note)
-          }
-        }
-      }
-      
-      /* Otherwise, add a new Note. */
-      if (!foundExistingNote) {
-        addNote(location, isFilled: shouldFillInNote())
-      }
-  
-    default:
-      break
-    }
-  }
-  
+  // MARK - Gesture Recognizers
   
   func handlePan(_ gesture: UIPanGestureRecognizer) {
     let location = gesture.location(in: self)
@@ -153,6 +125,39 @@ class StaffView: UIView {
     }
   }
   
+  
+  func handleNoteGesture(_ gesture: NoteGestureRecognizer) {
+    
+    if ((gesture.state == .ended) &&
+        (gesture.noteState == NoteGestureRecognizer.NoteGestureRecognizerState.newNote)) {
+      let location = gesture.location(in: self)
+      
+      /* Check to see if we tapped an existing Note.
+       * If so, select/de-select it. */
+      var foundExistingNote = false
+      for note in existingNotes {
+        if (note.shapeLayer.path?.contains(location))! {
+          foundExistingNote = true
+          print("Found existing note")
+          if (note.isSelected) {
+            deselectNote(note)
+          } else {
+            selectNote(note)
+          }
+        }
+      }
+      
+      /* Otherwise, add a new Note. */
+      if (!foundExistingNote) {
+        print("Adding new note")
+        addNote(location, isFilled: shouldFillInNote())
+      }
+    }
+      
+  }
+  
+  
+  // MARK - Manipulate Notes
   
   func selectNote(_ selectedNote: Note) {
     /* De-select all notes */
