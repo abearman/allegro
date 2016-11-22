@@ -13,6 +13,7 @@ class Note {
   var shapeLayer: CAShapeLayer = CAShapeLayer()
   var isSelected: Bool = false
   var isFilled: Bool = true
+  var location: CGPoint = CGPoint(x:0, y:0)
   
   init(shapeLayer: CAShapeLayer, isFilled: Bool) {
     self.shapeLayer = shapeLayer

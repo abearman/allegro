@@ -32,6 +32,10 @@ class ComposeViewController: UIViewController {
         target: staffView, action: #selector(StaffView.tappedView(_:))
       ))
       
+      staffView.addGestureRecognizer(UIPanGestureRecognizer(
+        target: staffView, action: #selector(StaffView.handlePan(_:))
+      ))
+      
     }
   }
   
@@ -43,7 +47,6 @@ class ComposeViewController: UIViewController {
   }
   
   @IBAction func noteDurationChanged(_ sender: UIButton) {
-    print ("Got here, ", sender.tag)
     for noteButton in noteButtons {
       noteButton.backgroundColor = UIColor.white
       setViewBorder(noteButton, color: UIColor.clear, width: 0)

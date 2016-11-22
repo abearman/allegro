@@ -51,15 +51,21 @@ class StaffView: UIView {
   
   func drawBarLines() {
     for i in 1...NUM_STAFF_LINES {
-      let aPath = UIBezierPath()
+      let path = UIBezierPath()
       let yVal = CGFloat(i) * self.frame.height / CGFloat(NUM_STAFF_LINES + 1)
       barlines.append(yVal)
-      aPath.move(to: CGPoint(x:0, y:yVal))
-      aPath.addLine(to: CGPoint(x:self.frame.width, y:yVal))
-      aPath.close()
-      
+      path.move(to: CGPoint(x:0, y:yVal))
+      path.addLine(to: CGPoint(x:self.frame.width, y:yVal))
+      path.close()
       UIColor.black.set()
-      aPath.stroke()
+      
+      /* Dotted line for upper and lower bar lines */
+      if ((i == 1) || (i == NUM_STAFF_LINES)) {
+        let dashes: [ CGFloat ] = [4.0, 8.0]
+        path.setLineDash(dashes, count: dashes.count, phase: 0)
+        UIColor.lightGray.set()
+      }
+      path.stroke()
     }
   }
   
@@ -124,6 +130,30 @@ class StaffView: UIView {
   }
   
   
+  func handlePan(_ gesture: UIPanGestureRecognizer) {
+    let location = gesture.location(in: self)
+    
+    switch gesture.state {
+    case .changed:
+      for note in existingNotes {
+        if (note.shapeLayer.path?.contains(location))! {
+          selectNote(note)
+          moveNote(note: note, panLocation: location, snap: false)
+        }
+      }
+    case .ended:
+      for note in existingNotes {
+        if (note.shapeLayer.path?.contains(location))! {
+          selectNote(note)
+          moveNote(note: note, panLocation: location, snap: true)
+        }
+      }
+    default:
+      break
+    }
+  }
+  
+  
   func selectNote(_ selectedNote: Note) {
     /* De-select all notes */
     for note in existingNotes {
@@ -137,9 +167,8 @@ class StaffView: UIView {
     if (selectedNote.isFilled) {
       selectedNote.shapeLayer.lineWidth = 0
     } else {
-      selectedNote.shapeLayer.lineWidth = 4
+      selectedNote.shapeLayer.lineWidth = 2
     }
-    
     setNeedsDisplay()
   }
   
@@ -152,14 +181,13 @@ class StaffView: UIView {
     } else {
       selectedNote.shapeLayer.fillColor = UIColor.clear.cgColor
     }
-    
     setNeedsDisplay()
   }
   
   
   func addNote(_ tapLocation: CGPoint, isFilled: Bool) {
-    //let noteX = tapLocation.x - CGFloat(noteWidth/2)
     let noteX = getNoteXPos(tapLocation.x)
+    
     let noteY = getNoteBarline(tapLocation.y)
     let notePath = UIBezierPath(ovalIn: CGRect(x: noteX, y: noteY, width: noteWidth, height: noteHeight))
     
@@ -168,11 +196,27 @@ class StaffView: UIView {
     
     /* Add Note to array */
     let newNote = Note(shapeLayer: shapeLayer, isFilled: isFilled)
+    newNote.location = CGPoint(x:noteX, y:noteY)
     existingNotes.append(newNote)
     
     /* Add note layer to superview */
     selectNote(newNote)
     self.layer.addSublayer(shapeLayer)
+  }
+  
+  
+  func moveNote(note: Note, panLocation: CGPoint, snap: Bool) {
+    var noteX = panLocation.x - CGFloat(noteWidth/2)
+    var noteY = panLocation.y - CGFloat(noteHeight/2)
+    if (snap) {
+      noteX = getNoteXPos(panLocation.x)
+      noteY = getNoteBarline(panLocation.y)
+    }
+    
+    let notePath = UIBezierPath(ovalIn: CGRect(x: noteX, y: noteY, width: noteWidth, height: noteHeight))
+    note.shapeLayer.path = notePath.cgPath
+    note.location = CGPoint(x: noteX, y: noteY)
+    setNeedsDisplay()
   }
   
   

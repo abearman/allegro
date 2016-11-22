@@ -354,7 +354,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ubn-9q-uas" sceneMemberID="firstResponder"/>
                 <exit id="a2T-o5-6zh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="597.75112443778119" y="221.59999999999999"/>
+            <point key="canvasLocation" x="944" y="250"/>
         </scene>
         <!--Time Signature View Controller-->
         <scene sceneID="0Ok-KK-NIA">
