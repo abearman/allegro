@@ -16,22 +16,22 @@ class HomeViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.navigationController?.navigationBarHidden = true
+    self.navigationController?.isNavigationBarHidden = true
 
     newCompButton.layer.borderWidth = 2
-    newCompButton.layer.borderColor = UIColor.blackColor().CGColor
+    newCompButton.layer.borderColor = UIColor.black.cgColor
   
     instructionsButton.layer.borderWidth = 2
-    instructionsButton.layer.borderColor = UIColor.blackColor().CGColor
+    instructionsButton.layer.borderColor = UIColor.black.cgColor
   }
 
   
-  override func viewWillDisappear(animated: Bool) {
+  override func viewWillDisappear(_ animated: Bool) {
     //self.navigationController?.navigationBarHidden = false
   }
   
   
-  @IBAction func prepareForUnwindToHome(sender: UIStoryboardSegue) {
+  @IBAction func prepareForUnwindToHome(_ sender: UIStoryboardSegue) {
     // No code needed here
   }
 

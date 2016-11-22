@@ -23,7 +23,6 @@ class ComposeViewController: UIViewController {
   var bottomTimeSig: Int = 4
 
   /* Note duration panel */
-  @IBOutlet weak var notesView: UIView!
   @IBOutlet var noteButtons: [UIButton]!
   
   @IBOutlet weak var staffView: StaffView! {
@@ -32,53 +31,49 @@ class ComposeViewController: UIViewController {
       staffView.addGestureRecognizer(UITapGestureRecognizer(
         target: staffView, action: #selector(StaffView.tappedView(_:))
       ))
+      
     }
   }
   
   override func viewDidLoad() {
       super.viewDidLoad()
     
-    notesView.backgroundColor = UIColor.whiteColor()
-    notesView.layer.borderWidth = 1
-    notesView.layer.borderColor = UIColor.blackColor().CGColor
-    
     // Auto-select middle note
     selectNoteButton(noteButtons[noteButtons.count/2])
   }
   
-
-  @IBAction func noteDurationChanged(sender: UIButton) {
+  @IBAction func noteDurationChanged(_ sender: UIButton) {
+    print ("Got here, ", sender.tag)
     for noteButton in noteButtons {
-      noteButton.superview?.backgroundColor = UIColor.whiteColor()
-      setViewBorder(noteButton.superview!, color: UIColor.clearColor(), width: 0)
+      noteButton.backgroundColor = UIColor.white
+      setViewBorder(noteButton, color: UIColor.clear, width: 0)
     }
-    
-    selectNoteButton(sender)
+    selectNoteButton(noteButtons[sender.tag])
   }
   
   
-  func selectNoteButton(noteButton: UIButton) {
+  func selectNoteButton(_ noteButton: UIButton) {
     // Highlight the selected note button in blue
-    noteButton.superview?.backgroundColor = BLUE_COLOR
-    setViewBorder(noteButton.superview!, color: UIColor.blackColor(), width: 1)
+    noteButton.backgroundColor = BLUE_COLOR
+    setViewBorder(noteButton, color: UIColor.black, width: 1)
     
     // Update the selected duration in the StaffView
     staffView.noteDuration = noteButton.tag
   }
   
   
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    if let timeSigVC = segue.destinationViewController as? TimeSignatureViewController {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let timeSigVC = segue.destination as? TimeSignatureViewController {
       timeSigVC.topTimeSig = topTimeSig
       timeSigVC.bottomTimeSig = bottomTimeSig
     }
   }
   
   
-  @IBAction func prepareForUnwindToCompose(sender: UIStoryboardSegue) {
-    if let timeSigVC = sender.sourceViewController as? TimeSignatureViewController {
-      topTimeSigButton.setImage(UIImage(named: String(timeSigVC.topTimeSig)), forState: .Normal)
-      bottomTimeSigButton.setImage(UIImage(named: String(timeSigVC.bottomTimeSig)), forState: .Normal)
+  @IBAction func prepareForUnwindToCompose(_ sender: UIStoryboardSegue) {
+    if let timeSigVC = sender.source as? TimeSignatureViewController {
+      topTimeSigButton.setImage(UIImage(named: String(timeSigVC.topTimeSig)), for: UIControlState())
+      bottomTimeSigButton.setImage(UIImage(named: String(timeSigVC.bottomTimeSig)), for: UIControlState())
       
       topTimeSig = timeSigVC.topTimeSig
       bottomTimeSig = timeSigVC.bottomTimeSig

@@ -24,36 +24,36 @@ class TimeSignatureViewController: UIViewController, UIPickerViewDelegate, UIPic
     super.viewDidLoad()
     
     timeSignatureLabel.layer.borderWidth = 1
-    timeSignatureLabel.layer.borderColor = UIColor.blackColor().CGColor
+    timeSignatureLabel.layer.borderColor = UIColor.black.cgColor
     
-    doneButton.layer.borderColor = UIColor.blackColor().CGColor
+    doneButton.layer.borderColor = UIColor.black.cgColor
     doneButton.layer.borderWidth = 2
     
     picker.delegate = self
     picker.dataSource = self
     
     /* Set default selected time signature to whatever was last selected */
-    picker.selectRow(pickerData.indexOf(topTimeSig)!, inComponent: 0, animated: true)
-    picker.selectRow(pickerData.indexOf(bottomTimeSig)!, inComponent: 1, animated: true)
+    picker.selectRow(pickerData.index(of: topTimeSig)!, inComponent: 0, animated: true)
+    picker.selectRow(pickerData.index(of: bottomTimeSig)!, inComponent: 1, animated: true)
   }
 
   
-  func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
     return 2
   }
   
   
-  func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
     return pickerData.count
   }
 
   
-  func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
     return String(pickerData[row])
   }
   
   
-  func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+  func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
     /* Top time signature */
     if (component == 0) {
       topTimeSig = pickerData[row]

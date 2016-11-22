@@ -43,7 +43,7 @@ class StaffView: UIView {
   }
   var xPositions = [CGFloat]()
   
-  override func drawRect(rect: CGRect) {
+  override func draw(_ rect: CGRect) {
     drawBarLines()
     setXPositions()
   }
@@ -54,11 +54,11 @@ class StaffView: UIView {
       let aPath = UIBezierPath()
       let yVal = CGFloat(i) * self.frame.height / CGFloat(NUM_STAFF_LINES + 1)
       barlines.append(yVal)
-      aPath.moveToPoint(CGPoint(x:0, y:yVal))
-      aPath.addLineToPoint(CGPoint(x:self.frame.width, y:yVal))
-      aPath.closePath()
+      aPath.move(to: CGPoint(x:0, y:yVal))
+      aPath.addLine(to: CGPoint(x:self.frame.width, y:yVal))
+      aPath.close()
       
-      UIColor.blackColor().set()
+      UIColor.black.set()
       aPath.stroke()
     }
   }
@@ -94,16 +94,16 @@ class StaffView: UIView {
   }
   
   
-  func tappedView(gesture: UITapGestureRecognizer) {
+  func tappedView(_ gesture: UITapGestureRecognizer) {
     switch gesture.state {
-    case .Ended:
-      let location = gesture.locationInView(self)
+    case .ended:
+      let location = gesture.location(in: self)
       
       /* Check to see if we tapped an existing Note.
        * If so, select/de-select it. */
       var foundExistingNote = false
       for note in existingNotes {
-        if (CGPathContainsPoint(note.shapeLayer.path, nil, location, false)) {
+        if (note.shapeLayer.path?.contains(location))! {
           foundExistingNote = true
           if (note.isSelected) {
             deselectNote(note)
@@ -124,7 +124,7 @@ class StaffView: UIView {
   }
   
   
-  func selectNote(selectedNote: Note) {
+  func selectNote(_ selectedNote: Note) {
     /* De-select all notes */
     for note in existingNotes {
       deselectNote(note)
@@ -132,8 +132,8 @@ class StaffView: UIView {
     
     selectedNote.isSelected = true
     
-    selectedNote.shapeLayer.fillColor = BLUE_COLOR.CGColor
-    selectedNote.shapeLayer.strokeColor = UIColor.blackColor().CGColor
+    selectedNote.shapeLayer.fillColor = BLUE_COLOR.cgColor
+    selectedNote.shapeLayer.strokeColor = UIColor.black.cgColor
     if (selectedNote.isFilled) {
       selectedNote.shapeLayer.lineWidth = 0
     } else {
@@ -144,27 +144,27 @@ class StaffView: UIView {
   }
   
   
-  func deselectNote(selectedNote: Note) {
+  func deselectNote(_ selectedNote: Note) {
     selectedNote.isSelected = false
     
     if (selectedNote.isFilled) {
-      selectedNote.shapeLayer.fillColor = UIColor.blackColor().CGColor
+      selectedNote.shapeLayer.fillColor = UIColor.black.cgColor
     } else {
-      selectedNote.shapeLayer.fillColor = UIColor.clearColor().CGColor
+      selectedNote.shapeLayer.fillColor = UIColor.clear.cgColor
     }
     
     setNeedsDisplay()
   }
   
   
-  func addNote(tapLocation: CGPoint, isFilled: Bool) {
+  func addNote(_ tapLocation: CGPoint, isFilled: Bool) {
     //let noteX = tapLocation.x - CGFloat(noteWidth/2)
     let noteX = getNoteXPos(tapLocation.x)
     let noteY = getNoteBarline(tapLocation.y)
-    let notePath = UIBezierPath(ovalInRect: CGRectMake(noteX, noteY, noteWidth, noteHeight))
+    let notePath = UIBezierPath(ovalIn: CGRect(x: noteX, y: noteY, width: noteWidth, height: noteHeight))
     
     let shapeLayer = CAShapeLayer()
-    shapeLayer.path = notePath.CGPath
+    shapeLayer.path = notePath.cgPath
     
     /* Add Note to array */
     let newNote = Note(shapeLayer: shapeLayer, isFilled: isFilled)
@@ -176,7 +176,7 @@ class StaffView: UIView {
   }
   
   
-  func getNoteXPos(tapX: CGFloat) -> CGFloat {
+  func getNoteXPos(_ tapX: CGFloat) -> CGFloat {
     var smallestXDiff = self.frame.width
     var bestXPos = xPositions[0]
     
@@ -192,7 +192,7 @@ class StaffView: UIView {
   }
   
   
-  func getNoteBarline(tapY: CGFloat) -> CGFloat {
+  func getNoteBarline(_ tapY: CGFloat) -> CGFloat {
     let barWidth = barlines[1] - barlines[0]
     var largeBar = barlines[barlines.count-1]  // Larger y-coord
     var smallBar = barlines[0]   // Smaller y-coord

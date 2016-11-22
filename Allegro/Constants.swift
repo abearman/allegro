@@ -12,7 +12,7 @@ import UIKit
 let NUM_STAFF_LINES: Int = 5
 let BLUE_COLOR = UIColor(red:0.68, green:0.92, blue:1.0, alpha:1.0)
 
-func setViewBorder(view: UIView, color: UIColor, width: Int) {
-  view.layer.borderColor = color.CGColor
+func setViewBorder(_ view: UIView, color: UIColor, width: Int) {
+  view.layer.borderColor = color.cgColor
   view.layer.borderWidth = CGFloat(width)
 }

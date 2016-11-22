@@ -17,10 +17,10 @@ class InstructionsViewController: UIViewController {
     super.viewDidLoad()
 
     gesturesLabel.layer.borderWidth = 1
-    gesturesLabel.layer.borderColor = UIColor.blackColor().CGColor
+    gesturesLabel.layer.borderColor = UIColor.black.cgColor
     
     doneButton.layer.borderWidth = 2
-    doneButton.layer.borderColor = UIColor.blackColor().CGColor
+    doneButton.layer.borderColor = UIColor.black.cgColor
   }
     
   

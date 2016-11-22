@@ -37,24 +37,24 @@ class KeySignatureViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    buttonView.layer.borderColor = UIColor.blackColor().CGColor
+    buttonView.layer.borderColor = UIColor.black.cgColor
     buttonView.layer.borderWidth = 2
     
-    sharpView.layer.borderColor = UIColor.blackColor().CGColor
+    sharpView.layer.borderColor = UIColor.black.cgColor
     sharpView.layer.borderWidth = 2
     
-    flatView.layer.borderColor = UIColor.blackColor().CGColor
+    flatView.layer.borderColor = UIColor.black.cgColor
     flatView.layer.borderWidth = 2
     
-    doneButton.layer.borderColor = UIColor.blackColor().CGColor
+    doneButton.layer.borderColor = UIColor.black.cgColor
     doneButton.layer.borderWidth = 2
     
-    keySignatureLabel.layer.borderColor = UIColor.blackColor().CGColor
+    keySignatureLabel.layer.borderColor = UIColor.black.cgColor
     keySignatureLabel.layer.borderWidth = 1
   }
 
     
-  @IBAction func sharpButtonClicked(sender: AnyObject) {
+  @IBAction func sharpButtonClicked(_ sender: AnyObject) {
     // If we've already clicked at least one flat, can't use any sharps
     if (numSharps >= MAX_ACCIDENTALS) {
       showAlertWithTitle("Too many sharps!", subtitle: "You can only enter up to 7 sharps.");
@@ -63,16 +63,16 @@ class KeySignatureViewController: UIViewController {
     
     // Add a sharp
     if (numFlats == 0) {
-      flatView.hidden = true
-      sharpView.hidden = false
-      sharpImages[numSharps].hidden = false
+      flatView.isHidden = true
+      sharpView.isHidden = false
+      sharpImages[numSharps].isHidden = false
       numSharps += 1
       keySigLabel.text = sharpKeys[numSharps]
       
     // Subtract a flat
     } else {
       numFlats -= 1
-      flatImages[numFlats].hidden = true
+      flatImages[numFlats].isHidden = true
       keySigLabel.text = flatKeys[numFlats]
     }
     
@@ -80,7 +80,7 @@ class KeySignatureViewController: UIViewController {
   }
 
 
-  @IBAction func flatButtonClicked(sender: AnyObject) {
+  @IBAction func flatButtonClicked(_ sender: AnyObject) {
     // If we've already clicked at least one sharp, can't use any flats
     if (numFlats >= MAX_ACCIDENTALS) {
       showAlertWithTitle("Too many flats!", subtitle: "You can only enter up to 7 flats.");
@@ -89,28 +89,28 @@ class KeySignatureViewController: UIViewController {
     
     // Add a flat
     if (numSharps == 0) {
-      flatView.hidden = false
-      sharpView.hidden = true
-      flatImages[numFlats].hidden = false
+      flatView.isHidden = false
+      sharpView.isHidden = true
+      flatImages[numFlats].isHidden = false
       numFlats += 1
       keySigLabel.text = flatKeys[numFlats]
       
     // Subtract a sharp
     } else {
       numSharps -= 1
-      sharpImages[numSharps].hidden = true
+      sharpImages[numSharps].isHidden = true
       keySigLabel.text = sharpKeys[numSharps]
     }
   }
   
   
-  func showAlertWithTitle(title: String, subtitle: String) {
-    let alertController = UIAlertController(title: title, message: subtitle, preferredStyle: .Alert)
+  func showAlertWithTitle(_ title: String, subtitle: String) {
+    let alertController = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
     
-    let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+    let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
     alertController.addAction(defaultAction)
     
-    presentViewController(alertController, animated: true, completion: nil)
+    present(alertController, animated: true, completion: nil)
   }
 
 }
