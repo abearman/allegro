@@ -41,7 +41,7 @@ class StaffView: UIView {
   var noteSize: CGSize = CGSize(width: 0, height: 0) {
     didSet {
       noteSep = noteSize.width
-      noteSize.width = 1.4 * noteSize.height
+      noteSize.width = 1.3 * noteSize.height
       
       flatSize.width = noteSize.width / 2
       sharpSize.width = noteSize.width / 3
@@ -265,11 +265,11 @@ class StaffView: UIView {
     selectedNote.isSelected = true
     
     selectedNote.shapeLayer.fillColor = BLUE_COLOR.cgColor
-    selectedNote.shapeLayer.strokeColor = UIColor.black.cgColor
+    selectedNote.shapeLayer.lineWidth = 2
     if (selectedNote.isFilled) {
-      selectedNote.shapeLayer.lineWidth = 0
+      selectedNote.shapeLayer.strokeColor = BLUE_COLOR.cgColor
     } else {
-      selectedNote.shapeLayer.lineWidth = 2
+      selectedNote.shapeLayer.strokeColor = UIColor.black.cgColor
     }
     setNeedsDisplay()
   }
@@ -278,6 +278,7 @@ class StaffView: UIView {
   func deselectNote(_ selectedNote: Note) {
     selectedNote.isSelected = false
     
+    selectedNote.shapeLayer.strokeColor = UIColor.black.cgColor
     if (selectedNote.isFilled) {
       selectedNote.shapeLayer.fillColor = UIColor.black.cgColor
     } else {
@@ -289,10 +290,11 @@ class StaffView: UIView {
   
   func addNote(_ tapLocation: CGPoint, isFilled: Bool) {
     let noteX = getNoteXPos(tapLocation.x)
-    
     let noteY = getNoteBarline(tapLocation.y)
+    
     let notePath = UIBezierPath(ovalIn:
       CGRect(x: noteX, y: noteY, width: noteSize.width, height: noteSize.height))
+    addNoteStem(notePath: notePath, noteX: noteX, noteY: noteY)
     
     let shapeLayer = CAShapeLayer()
     shapeLayer.path = notePath.cgPath
@@ -304,7 +306,16 @@ class StaffView: UIView {
     
     /* Add note layer to superview */
     selectNote(newNote)
+    
     self.layer.addSublayer(shapeLayer)
+  }
+  
+  
+  func addNoteStem(notePath: UIBezierPath, noteX: CGFloat, noteY: CGFloat) {
+    if (noteDuration > 0) {
+      notePath.addLine(to: CGPoint(x: noteX + noteSize.width,
+                                   y: noteY - 2 * noteSize.height))
+    }
   }
   
   

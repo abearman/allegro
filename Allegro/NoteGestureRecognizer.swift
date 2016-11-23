@@ -78,34 +78,40 @@ class NoteGestureRecognizer: UIGestureRecognizer {
   
   
   func isSharp() -> Bool {
-    let firstPoint = touchedPoints[0]
-    let lastPoint = touchedPoints[touchedPoints.count-1]
-    
-    if ((firstPoint.x < lastPoint.x) && (firstPoint.y > lastPoint.y)) {
-      return true
+    if (touchedPoints.count > 1) {
+      let firstPoint = touchedPoints[0]
+      let lastPoint = touchedPoints[touchedPoints.count-1]
+      
+      if ((firstPoint.x < lastPoint.x) && (firstPoint.y > lastPoint.y)) {
+        return true
+      }
     }
     return false
   }
   
   
   func isFlat() -> Bool {
-    let firstPoint = touchedPoints[0]
-    let lastPoint = touchedPoints[touchedPoints.count-1]
-    
-    if ((firstPoint.x < lastPoint.x) && (firstPoint.y < lastPoint.y)) {
-      return true
+    if (touchedPoints.count > 1) {
+      let firstPoint = touchedPoints[0]
+      let lastPoint = touchedPoints[touchedPoints.count-1]
+      
+      if ((firstPoint.x < lastPoint.x) && (firstPoint.y < lastPoint.y)) {
+        return true
+      }
     }
     return false
   }
   
   func isNatural() -> Bool {
-    let firstPoint = touchedPoints[0]
-    let lastPoint = touchedPoints[touchedPoints.count-1]
-    print("Natural error: ", abs(firstPoint.y - lastPoint.y))
-    
-    if ((firstPoint.x < lastPoint.x) &&
-          abs(firstPoint.y - lastPoint.y) < NATURAL_ERROR) {
-      return true
+    if (touchedPoints.count > 1) {
+      let firstPoint = touchedPoints[0]
+      let lastPoint = touchedPoints[touchedPoints.count-1]
+      print("Natural error: ", abs(firstPoint.y - lastPoint.y))
+      
+      if ((firstPoint.x < lastPoint.x) &&
+            abs(firstPoint.y - lastPoint.y) < NATURAL_ERROR) {
+        return true
+      }
     }
     return false
   }
