@@ -11,6 +11,8 @@ import UIKit
 class Note {
 
   var shapeLayer: CAShapeLayer = CAShapeLayer()
+  var accidentalImageView: UIImageView = UIImageView()
+  
   var isSelected: Bool = false
   var isFilled: Bool = true
   var location: CGPoint = CGPoint(x:0, y:0)

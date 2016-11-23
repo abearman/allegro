@@ -187,6 +187,7 @@ class StaffView: UIView {
                                        y: note.location.y - flatYOffset,
                                        width: flatSize.width,
                                        height: flatSize.height)
+          note.accidentalImageView = flatImageView
           self.addSubview(flatImageView)
         }
       
@@ -203,6 +204,7 @@ class StaffView: UIView {
                                         y: note.location.y - sharpYOffset,
                                         width: sharpSize.width,
                                         height: sharpSize.height)
+          note.accidentalImageView = sharpImageView
           self.addSubview(sharpImageView)
         }
       
@@ -220,6 +222,7 @@ class StaffView: UIView {
                                           y: note.location.y - naturalYOffset,
                                           width: naturalSize.width,
                                           height: naturalSize.height)
+          note.accidentalImageView = naturalImageView
           self.addSubview(naturalImageView)
         }
         
