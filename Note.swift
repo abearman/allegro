@@ -11,7 +11,7 @@ import UIKit
 class Note {
 
   var shapeLayer: CAShapeLayer = CAShapeLayer()
-  var accidentalImageView: UIImageView = UIImageView()
+  var accidentalImageView: UIImageView? = nil
   
   var isSelected: Bool = false
   var isFilled: Bool = true
