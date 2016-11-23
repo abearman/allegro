@@ -20,9 +20,6 @@ class NoteGestureRecognizer: UIGestureRecognizer {
   
   private var touchedPoints = [CGPoint]() // point history
   
-  var isCircle = false
-  var tolerance: CGFloat = 0.2
-  var fitResult = CircleResult()
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
     print("Touches began")
@@ -38,7 +35,6 @@ class NoteGestureRecognizer: UIGestureRecognizer {
   
   
   override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent) {
-    print("Touches moved")
     if state == .failed {
       return
     }
@@ -60,41 +56,42 @@ class NoteGestureRecognizer: UIGestureRecognizer {
       print("Detected new note tap")
       noteState = .newNote
       state = .ended
-      return
+
     } else {
-      noteState = .sharp
-    }
-    
-    fitResult = fitCircle(points: touchedPoints)
-    
-    let hasInside = anyPointsInTheMiddle()
-    
-    isCircle = fitResult.error <= tolerance && !hasInside
-    state = isCircle ? .ended : .failed
-    print("Is circle? ", isCircle)
-  }
-  
-  
-  private func anyPointsInTheMiddle() -> Bool {
-    // 1
-    let fitInnerRadius = fitResult.radius / sqrt(2) * tolerance
-    // 2
-    let innerBox = CGRect(
-      x: fitResult.center.x - fitInnerRadius,
-      y: fitResult.center.y - fitInnerRadius,
-      width: 2 * fitInnerRadius,
-      height: 2 * fitInnerRadius)
-    
-    // 3
-    var hasInside = false
-    for point in touchedPoints {
-      if innerBox.contains(point) {
-        hasInside = true
-        break
+      if isFlat() {
+        noteState = .flat
+        state = .ended
+      } else if isSharp() {
+        noteState = .sharp
+        state = .ended
       }
     }
     
-    return hasInside
   }
   
+  
+  
+  func isSharp() -> Bool {
+    let firstPoint = touchedPoints[0]
+    let lastPoint = touchedPoints[touchedPoints.count-1]
+    
+    if (firstPoint.x < lastPoint.x) && (firstPoint.y > lastPoint.y) {
+      return true
+    }
+    return false
+  }
+  
+  
+  func isFlat() -> Bool {
+    let firstPoint = touchedPoints[0]
+    let lastPoint = touchedPoints[touchedPoints.count-1]
+    
+    if (firstPoint.x < lastPoint.x) && (firstPoint.y < lastPoint.y) {
+      return true
+    }
+    return false
+  }
+  
+  
+
 }

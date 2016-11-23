@@ -18,26 +18,40 @@ class StaffView: UIView {
   
   var noteDuration: Int = 0
   
-  var noteSep: CGFloat = 0.0
-  var noteWidth: CGFloat = 0.0 {
+  var sharpYOffset: CGFloat = 0.0
+  var sharpSize: CGSize = CGSize(width: 0, height: 0) {
     didSet {
-      noteSep = noteWidth
+      sharpYOffset = sharpSize.height / 6
     }
   }
-  var noteHeight: CGFloat = 0.0 {
+  var flatYOffset: CGFloat = 0.0
+  var flatSize: CGSize = CGSize(width: 0, height: 0) {
     didSet {
-      noteWidth = 1.4 * noteHeight
+      flatYOffset = flatSize.height / 3
+    }
+  }
+  
+  var noteSep: CGFloat = 0.0
+  var noteSize: CGSize = CGSize(width: 0, height: 0) {
+    didSet {
+      noteSep = noteSize.width
+      noteSize.width = 1.4 * noteSize.height
+      
+      flatSize.width = noteSize.width / 2
+      sharpSize.width = noteSize.width / 3
     }
   }
   
   var existingNotes: [Note] = []
+  
+  var startGesture: CGPoint = CGPoint(x: 0, y: 0)
   
   /* List of y-value positions of the bar lines on the screen, from high to low */
   var barlines = [CGFloat]() {
     didSet {
       /* Set note width and height */
       if barlines.count > 1 {
-        noteHeight = barlines[1] - barlines[0]
+        noteSize.height = barlines[1] - barlines[0]
       }
     }
   }
@@ -85,7 +99,7 @@ class StaffView: UIView {
     var lastXVal = CGFloat(0)
     for i in 1...numNotes {
       let xVal = CGFloat(i) * self.frame.width / CGFloat(numNotes)
-      let noteXVal = lastXVal + ((xVal - lastXVal) / 2) - CGFloat(noteWidth/2)
+      let noteXVal = lastXVal + ((xVal - lastXVal) / 2) - CGFloat(noteSize.width/2)
       xPositions.append(noteXVal)
       lastXVal = xVal
       
@@ -127,33 +141,76 @@ class StaffView: UIView {
   
   
   func handleNoteGesture(_ gesture: NoteGestureRecognizer) {
+    let location = gesture.location(in: self)
     
-    if ((gesture.state == .ended) &&
-        (gesture.noteState == NoteGestureRecognizer.NoteGestureRecognizerState.newNote)) {
-      let location = gesture.location(in: self)
-      
-      /* Check to see if we tapped an existing Note.
-       * If so, select/de-select it. */
-      var foundExistingNote = false
-      for note in existingNotes {
-        if (note.shapeLayer.path?.contains(location))! {
-          foundExistingNote = true
-          print("Found existing note")
-          if (note.isSelected) {
+    if(gesture.state == .began) {
+      startGesture = location
+    
+    } else if (gesture.state == .ended) {
+    
+      /* Add (or select/de-select) a note */
+      if ((gesture.noteState == NoteGestureRecognizer.NoteGestureRecognizerState.newNote)) {
+        
+        /* Check to see if we tapped an existing Note.
+         * If so, select/de-select it. */
+        let existingNote = didTapExistingNote(location: location)
+        if let note = existingNote {
+          if note.isSelected {
             deselectNote(note)
           } else {
             selectNote(note)
           }
+          
+        /* Otherwise, add a new Note. */
+        } else {
+          print("Adding new note")
+          addNote(location, isFilled: shouldFillInNote())
+        }
+        
+      /* Add a flat accidental */
+      } else if (gesture.noteState == NoteGestureRecognizer.NoteGestureRecognizerState.flat) {
+        let existingNote = didTapExistingNote(location: startGesture)
+        if let note = existingNote {
+          let flatImage = UIImage(named: "flat")
+          let ratio = flatSize.width / (flatImage?.size.width)!
+          flatSize.height = ratio * (flatImage?.size.height)!
+          
+          let imageView = UIImageView(image: flatImage)
+          imageView.frame = CGRect(x: note.location.x - flatSize.width,
+                                   y: note.location.y - flatYOffset,
+                                   width: flatSize.width,
+                                   height: flatSize.height)
+          self.addSubview(imageView)
+        }
+      
+      /* Add a sharp accidental */
+      } else if (gesture.noteState == NoteGestureRecognizer.NoteGestureRecognizerState.sharp) {
+        let existingNote = didTapExistingNote(location: startGesture)
+        if let note = existingNote {
+          let sharpImage = UIImage(named: "sharp")
+          let ratio = sharpSize.width / (sharpImage?.size.width)!
+          sharpSize.height = ratio * (sharpImage?.size.height)!
+          
+          let imageView = UIImageView(image: sharpImage)
+          imageView.frame = CGRect(x: note.location.x - sharpSize.width,
+                                   y: note.location.y - sharpYOffset,
+                                   width: sharpSize.width,
+                                   height: sharpSize.height)
+          self.addSubview(imageView)
         }
       }
-      
-      /* Otherwise, add a new Note. */
-      if (!foundExistingNote) {
-        print("Adding new note")
-        addNote(location, isFilled: shouldFillInNote())
+    }
+  
+  }
+
+
+  func didTapExistingNote(location: CGPoint) -> Note? {
+    for note in existingNotes {
+      if (note.shapeLayer.path?.contains(location))! {
+        return note
       }
     }
-      
+    return nil
   }
   
   
@@ -194,7 +251,8 @@ class StaffView: UIView {
     let noteX = getNoteXPos(tapLocation.x)
     
     let noteY = getNoteBarline(tapLocation.y)
-    let notePath = UIBezierPath(ovalIn: CGRect(x: noteX, y: noteY, width: noteWidth, height: noteHeight))
+    let notePath = UIBezierPath(ovalIn:
+      CGRect(x: noteX, y: noteY, width: noteSize.width, height: noteSize.height))
     
     let shapeLayer = CAShapeLayer()
     shapeLayer.path = notePath.cgPath
@@ -211,14 +269,14 @@ class StaffView: UIView {
   
   
   func moveNote(note: Note, panLocation: CGPoint, snap: Bool) {
-    var noteX = panLocation.x - CGFloat(noteWidth/2)
-    var noteY = panLocation.y - CGFloat(noteHeight/2)
+    var noteX = panLocation.x - CGFloat(noteSize.width / 2)
+    var noteY = panLocation.y - CGFloat(noteSize.height / 2)
     if (snap) {
       noteX = getNoteXPos(panLocation.x)
       noteY = getNoteBarline(panLocation.y)
     }
     
-    let notePath = UIBezierPath(ovalIn: CGRect(x: noteX, y: noteY, width: noteWidth, height: noteHeight))
+    let notePath = UIBezierPath(ovalIn: CGRect(x: noteX, y: noteY, width: noteSize.width, height: noteSize.height))
     note.shapeLayer.path = notePath.cgPath
     note.location = CGPoint(x: noteX, y: noteY)
     setNeedsDisplay()
@@ -255,10 +313,10 @@ class StaffView: UIView {
       }
       
       if ( abs(tapY - barlineY) < (barWidth/4) ) {
-        return barlineY - CGFloat(noteHeight/2)
+        return barlineY - CGFloat(noteSize.height / 2)
       }
     }
-    let noteY = smallBar + (largeBar-smallBar)/2 - CGFloat(noteHeight/2)
+    let noteY = smallBar + (largeBar-smallBar)/2 - CGFloat(noteSize.height / 2)
     return noteY
   }
   
