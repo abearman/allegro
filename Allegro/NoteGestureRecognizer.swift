@@ -10,10 +10,13 @@ import UIKit.UIGestureRecognizerSubclass
 
 class NoteGestureRecognizer: UIGestureRecognizer {
   
+  let NATURAL_ERROR = CGFloat(40)
+  
   enum NoteGestureRecognizerState {
     case newNote
     case sharp
     case flat
+    case natural
   }
   
   var noteState: NoteGestureRecognizerState = .newNote
@@ -58,7 +61,10 @@ class NoteGestureRecognizer: UIGestureRecognizer {
       state = .ended
 
     } else {
-      if isFlat() {
+      if isNatural() {
+        noteState = .natural
+        state = .ended
+      } else if isFlat() {
         noteState = .flat
         state = .ended
       } else if isSharp() {
@@ -66,7 +72,6 @@ class NoteGestureRecognizer: UIGestureRecognizer {
         state = .ended
       }
     }
-    
   }
   
   
@@ -87,6 +92,18 @@ class NoteGestureRecognizer: UIGestureRecognizer {
     let lastPoint = touchedPoints[touchedPoints.count-1]
     
     if (firstPoint.x < lastPoint.x) && (firstPoint.y < lastPoint.y) {
+      return true
+    }
+    return false
+  }
+  
+  func isNatural() -> Bool {
+    let firstPoint = touchedPoints[0]
+    let lastPoint = touchedPoints[touchedPoints.count-1]
+    print("Natural error: ", abs(firstPoint.y - lastPoint.y))
+    
+    if ((firstPoint.x < lastPoint.x) &&
+          abs(firstPoint.y - lastPoint.y) < NATURAL_ERROR) {
       return true
     }
     return false

@@ -30,6 +30,12 @@ class StaffView: UIView {
       flatYOffset = flatSize.height / 3
     }
   }
+  var naturalYOffset: CGFloat = 0.0
+  var naturalSize: CGSize = CGSize(width: 0, height: 0) {
+    didSet {
+      naturalYOffset = naturalSize.height / 6
+    }
+  }
   
   var noteSep: CGFloat = 0.0
   var noteSize: CGSize = CGSize(width: 0, height: 0) {
@@ -39,6 +45,7 @@ class StaffView: UIView {
       
       flatSize.width = noteSize.width / 2
       sharpSize.width = noteSize.width / 3
+      naturalSize.width = noteSize.width / 3
     }
   }
   
@@ -175,12 +182,12 @@ class StaffView: UIView {
           let ratio = flatSize.width / (flatImage?.size.width)!
           flatSize.height = ratio * (flatImage?.size.height)!
           
-          let imageView = UIImageView(image: flatImage)
-          imageView.frame = CGRect(x: note.location.x - flatSize.width,
-                                   y: note.location.y - flatYOffset,
-                                   width: flatSize.width,
-                                   height: flatSize.height)
-          self.addSubview(imageView)
+          let flatImageView = UIImageView(image: flatImage)
+          flatImageView.frame = CGRect(x: note.location.x - flatSize.width,
+                                       y: note.location.y - flatYOffset,
+                                       width: flatSize.width,
+                                       height: flatSize.height)
+          self.addSubview(flatImageView)
         }
       
       /* Add a sharp accidental */
@@ -191,13 +198,31 @@ class StaffView: UIView {
           let ratio = sharpSize.width / (sharpImage?.size.width)!
           sharpSize.height = ratio * (sharpImage?.size.height)!
           
-          let imageView = UIImageView(image: sharpImage)
-          imageView.frame = CGRect(x: note.location.x - sharpSize.width,
-                                   y: note.location.y - sharpYOffset,
-                                   width: sharpSize.width,
-                                   height: sharpSize.height)
-          self.addSubview(imageView)
+          let sharpImageView = UIImageView(image: sharpImage)
+          sharpImageView.frame = CGRect(x: note.location.x - sharpSize.width,
+                                        y: note.location.y - sharpYOffset,
+                                        width: sharpSize.width,
+                                        height: sharpSize.height)
+          self.addSubview(sharpImageView)
         }
+      
+      /* Add a natural accidental */
+      } else if (gesture.noteState == NoteGestureRecognizer.NoteGestureRecognizerState.natural) {
+        print("Natural gesture")
+        let existingNote = didTapExistingNote(location: startGesture)
+        if let note = existingNote {
+          let naturalImage = UIImage(named: "natural")
+          let ratio = naturalSize.width / (naturalImage?.size.width)!
+          naturalSize.height = ratio * (naturalImage?.size.height)!
+          
+          let naturalImageView = UIImageView(image: naturalImage)
+          naturalImageView.frame = CGRect(x: note.location.x - naturalSize.width,
+                                          y: note.location.y - naturalYOffset,
+                                          width: naturalSize.width,
+                                          height: naturalSize.height)
+          self.addSubview(naturalImageView)
+        }
+        
       }
     }
   
