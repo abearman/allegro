@@ -313,8 +313,18 @@ class StaffView: UIView {
   
   func addNoteStem(notePath: UIBezierPath, noteX: CGFloat, noteY: CGFloat) {
     if (noteDuration > 0) {
-      notePath.addLine(to: CGPoint(x: noteX + noteSize.width,
-                                   y: noteY - 2 * noteSize.height))
+      /* Stem going up and on right side if note is on bottom half of staff */
+      var xEndPoint = noteX + noteSize.width
+      var yEndPoint = noteY - 2 * noteSize.height
+      
+      /* Stem going down and on left side if note is on upper half of staff */
+      if (noteY < self.frame.height/2) {
+        notePath.move(to: CGPoint(x: noteX, y: noteY + noteSize.width/3))
+        xEndPoint = noteX
+        yEndPoint = noteY + 3 * noteSize.height
+      }
+      notePath.addLine(to: CGPoint(x: xEndPoint,
+                                   y: yEndPoint))
     }
   }
   
