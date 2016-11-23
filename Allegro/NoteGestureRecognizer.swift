@@ -10,8 +10,8 @@ import UIKit.UIGestureRecognizerSubclass
 
 class NoteGestureRecognizer: UIGestureRecognizer {
   
-  let NATURAL_ERROR = CGFloat(40)
-  
+  let NATURAL_ERROR = CGFloat(30)
+
   enum NoteGestureRecognizerState {
     case newNote
     case sharp
@@ -27,6 +27,7 @@ class NoteGestureRecognizer: UIGestureRecognizer {
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
     print("Touches began")
     super.touchesBegan(touches, with: event)
+    touchedPoints.removeAll()
     
     /* If gesture was made with more than 1 finger */
     if touches.count != 1 {
@@ -80,7 +81,7 @@ class NoteGestureRecognizer: UIGestureRecognizer {
     let firstPoint = touchedPoints[0]
     let lastPoint = touchedPoints[touchedPoints.count-1]
     
-    if (firstPoint.x < lastPoint.x) && (firstPoint.y > lastPoint.y) {
+    if ((firstPoint.x < lastPoint.x) && (firstPoint.y > lastPoint.y)) {
       return true
     }
     return false
@@ -91,7 +92,7 @@ class NoteGestureRecognizer: UIGestureRecognizer {
     let firstPoint = touchedPoints[0]
     let lastPoint = touchedPoints[touchedPoints.count-1]
     
-    if (firstPoint.x < lastPoint.x) && (firstPoint.y < lastPoint.y) {
+    if ((firstPoint.x < lastPoint.x) && (firstPoint.y < lastPoint.y)) {
       return true
     }
     return false
