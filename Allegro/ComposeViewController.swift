@@ -45,8 +45,15 @@ class ComposeViewController: UIViewController {
   override func viewDidLoad() {
       super.viewDidLoad()
     
-    // Auto-select middle note
+    /* Auto-select middle note */
     selectNoteButton(noteButtons[noteButtons.count/2])
+   
+    if self.revealViewController() != nil {
+      /*slideButton.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)*/
+
+      self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+    }
+
   }
   
   
@@ -87,6 +94,14 @@ class ComposeViewController: UIViewController {
     }
   }
 
+  @IBOutlet weak var menuView: UIView!
 
   
 }
+
+
+
+
+
+
+

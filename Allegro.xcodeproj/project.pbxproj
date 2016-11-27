@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD0D736C1DEB6AB1006E5E56 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D736B1DEB6AB1006E5E56 /* UIViewExtensions.swift */; };
+		BD0D73861DEB7E2F006E5E56 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0D73851DEB7E2F006E5E56 /* SWRevealViewController.m */; };
 		BD1DF04C1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1DF04B1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift */; };
 		BD5C32531DDF974B007F7A92 /* KeySignatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C32521DDF974B007F7A92 /* KeySignatureViewController.swift */; };
 		BD5C32551DDFD4ED007F7A92 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C32541DDFD4ED007F7A92 /* Constants.swift */; };
@@ -24,6 +26,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BD0D736B1DEB6AB1006E5E56 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		BD0D73781DEB744F006E5E56 /* Allegro-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Allegro-Bridging-Header.h"; sourceTree = "<group>"; };
+		BD0D73841DEB7E2F006E5E56 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		BD0D73851DEB7E2F006E5E56 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		BD1DF04B1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSignatureViewController.swift; sourceTree = "<group>"; };
 		BD5C32521DDF974B007F7A92 /* KeySignatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeySignatureViewController.swift; sourceTree = "<group>"; };
 		BD5C32541DDFD4ED007F7A92 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -53,6 +59,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD0D73701DEB6F39006E5E56 /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BD0D73841DEB7E2F006E5E56 /* SWRevealViewController.h */,
+				BD0D73851DEB7E2F006E5E56 /* SWRevealViewController.m */,
+				BD0D73781DEB744F006E5E56 /* Allegro-Bridging-Header.h */,
+			);
+			name = SWRevealViewController;
+			sourceTree = "<group>";
+		};
 		BD81262D1DE4DBB300BDE1CC /* Gesture Recognizers */ = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +101,7 @@
 		BD8126301DE4DBCD00BDE1CC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BD0D736B1DEB6AB1006E5E56 /* UIViewExtensions.swift */,
 				BD5C32581DDFDA61007F7A92 /* StaffView.swift */,
 			);
 			name = Views;
@@ -124,6 +141,7 @@
 				BD81262E1DE4DBBE00BDE1CC /* View Controllers */,
 				BDA6721A1DDA6F740003938F /* Main.storyboard */,
 				BD8126301DE4DBCD00BDE1CC /* Views */,
+				BD0D73701DEB6F39006E5E56 /* SWRevealViewController */,
 				BD81262D1DE4DBB300BDE1CC /* Gesture Recognizers */,
 				BD81262F1DE4DBC800BDE1CC /* Swift Classes */,
 				BDA672201DDA6F740003938F /* Assets.xcassets */,
@@ -204,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD0D73861DEB7E2F006E5E56 /* SWRevealViewController.m in Sources */,
 				BD5C32591DDFDA61007F7A92 /* StaffView.swift in Sources */,
 				BD8F24741DDBA06600BE94E9 /* ComposeViewController.swift in Sources */,
 				BDA6721F1DDA6F740003938F /* Allegro.xcdatamodeld in Sources */,
@@ -214,6 +233,7 @@
 				BDA672321DDA7CBA0003938F /* HomeViewController.swift in Sources */,
 				BD5C32531DDF974B007F7A92 /* KeySignatureViewController.swift in Sources */,
 				BD8F24711DDB9BE800BE94E9 /* InstructionsViewController.swift in Sources */,
+				BD0D736C1DEB6AB1006E5E56 /* UIViewExtensions.swift in Sources */,
 				BD5C32551DDFD4ED007F7A92 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,6 +352,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.cs193p.abearman.Allegro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Allegro/Allegro-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -345,6 +366,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.cs193p.abearman.Allegro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Allegro/Allegro-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
