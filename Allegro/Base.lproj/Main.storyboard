@@ -301,9 +301,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="STL-aI-Smk"/>
                     <connections>
-                        <outlet property="bottomTimeSigButton" destination="Tto-Xg-d3e" id="SrF-zg-XlO"/>
                         <outlet property="staffView" destination="MUz-WX-9dc" id="HeR-YZ-xMr"/>
-                        <outlet property="topTimeSigButton" destination="rfk-0F-gnG" id="xQz-Yv-Jbd"/>
                         <outletCollection property="noteButtons" destination="BMV-oR-FFb" collectionClass="NSMutableArray" id="FTW-Ie-MDu"/>
                         <outletCollection property="noteButtons" destination="eLu-sq-tGU" collectionClass="NSMutableArray" id="VPe-0N-4yh"/>
                         <outletCollection property="noteButtons" destination="hU9-0o-I4J" collectionClass="NSMutableArray" id="TAz-NP-NZD"/>
@@ -320,7 +318,7 @@
         <!--Menu View Controller-->
         <scene sceneID="xqM-40-Dzy">
             <objects>
-                <viewController title="Menu View Controller" id="mvx-GZ-moT" sceneMemberID="viewController">
+                <viewController title="Menu View Controller" id="mvx-GZ-moT" customClass="MenuViewController" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="I6A-1S-Ebw"/>
                         <viewControllerLayoutGuide type="bottom" id="8DJ-4c-0xj"/>
@@ -329,37 +327,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRT-bw-xgO" userLabel="Key Signature">
-                                <rect key="frame" x="310" y="167" width="47" height="40.5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfk-0F-gnG" userLabel="Time Signature Top">
+                                <rect key="frame" x="617" y="129" width="30" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="C7r-br-v5h"/>
+                                    <constraint firstAttribute="width" constant="30" id="Vbv-Ct-zXR"/>
+                                </constraints>
+                                <state key="normal" image="4"/>
+                                <connections>
+                                    <segue destination="KR1-fJ-sQL" kind="show" id="oNV-wG-jxd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tto-Xg-d3e" userLabel="Time Signature Bottom">
+                                <rect key="frame" x="617" y="175" width="30" height="38"/>
+                                <state key="normal" image="4"/>
+                                <connections>
+                                    <segue destination="KR1-fJ-sQL" kind="show" id="m3h-H3-HX5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRT-bw-xgO" userLabel="Key Signature">
+                                <rect key="frame" x="600" y="63" width="47" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="47" id="sYM-9J-jTH"/>
+                                </constraints>
                                 <state key="normal" image="C major"/>
                                 <connections>
                                     <segue destination="DWk-hT-Of1" kind="show" id="VBB-UO-0KQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfk-0F-gnG" userLabel="Time Signature Top">
-                                <rect key="frame" x="326" y="178" width="15" height="19"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="19" id="mc5-MD-rMV"/>
-                                </constraints>
-                                <state key="normal" image="4"/>
-                                <connections>
-                                    <segue destination="jLh-Xe-0gV" kind="show" id="Shu-fW-drC"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tto-Xg-d3e" userLabel="Time Signature Bottom">
-                                <rect key="frame" x="326" y="178" width="15" height="19"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="19" id="sT3-8c-dYA"/>
-                                </constraints>
-                                <state key="normal" image="4"/>
-                                <connections>
-                                    <segue destination="KR1-fJ-sQL" kind="show" id="ArJ-zf-8WZ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.73333333329999995" green="0.6705882353" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="rfk-0F-gnG" firstAttribute="top" secondItem="yRT-bw-xgO" secondAttribute="bottom" constant="25" id="05b-x7-g2S"/>
+                            <constraint firstItem="8DJ-4c-0xj" firstAttribute="top" secondItem="Tto-Xg-d3e" secondAttribute="bottom" constant="162" id="4yp-cg-DUP"/>
+                            <constraint firstItem="rfk-0F-gnG" firstAttribute="trailing" secondItem="s6x-dY-ntL" secondAttribute="trailingMargin" id="MOT-C9-F14"/>
+                            <constraint firstItem="Tto-Xg-d3e" firstAttribute="trailing" secondItem="rfk-0F-gnG" secondAttribute="trailing" id="Mxv-kN-StL"/>
+                            <constraint firstItem="yRT-bw-xgO" firstAttribute="top" secondItem="I6A-1S-Ebw" secondAttribute="bottom" constant="43" id="TKe-3Q-T15"/>
+                            <constraint firstItem="yRT-bw-xgO" firstAttribute="trailing" secondItem="rfk-0F-gnG" secondAttribute="trailing" id="Tc2-Sm-QcX"/>
+                            <constraint firstItem="Tto-Xg-d3e" firstAttribute="top" secondItem="rfk-0F-gnG" secondAttribute="bottom" constant="8" symbolic="YES" id="Vo5-9V-Pug"/>
+                            <constraint firstItem="rfk-0F-gnG" firstAttribute="top" secondItem="I6A-1S-Ebw" secondAttribute="bottom" constant="109" id="iFC-Bi-DAw"/>
+                            <constraint firstItem="Tto-Xg-d3e" firstAttribute="leading" secondItem="rfk-0F-gnG" secondAttribute="leading" id="rOt-qt-ANL"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bottomTimeSigButton" destination="Tto-Xg-d3e" id="wzI-w3-id6"/>
+                        <outlet property="topTimeSigButton" destination="rfk-0F-gnG" id="h5O-vp-ZOu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g71-0V-NoR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -394,7 +407,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="fo3-Yf-itR" kind="unwind" unwindAction="prepareForUnwindToCompose:" id="0Bl-tC-tdY"/>
+                                    <segue destination="fo3-Yf-itR" kind="unwind" unwindAction="prepareForUnwindToCompose:" id="lFg-0u-UF2"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ENTER TIME SIGNATURE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwx-wl-LCd">
@@ -431,36 +444,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1WD-iX-eki" userLabel="Picker">
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1WD-iX-eki" userLabel="Picker">
                                 <rect key="frame" x="20" y="88" width="627" height="216"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qmx-YB-eMm">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qmx-YB-eMm">
                                 <rect key="frame" x="556" y="312" width="91" height="43"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="91" id="Xn8-T4-DWS"/>
-                                    <constraint firstAttribute="height" constant="43" id="gRf-Kp-hl5"/>
+                                    <constraint firstAttribute="height" constant="43" id="Fh9-4v-eE5"/>
+                                    <constraint firstAttribute="width" constant="91" id="H5o-bD-GcH"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="14"/>
                                 <state key="normal" title="DONE">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="b43-vi-4vy" kind="unwind" unwindAction="prepareForUnwindToCompose:" id="sbS-t6-Lsq"/>
+                                    <segue destination="b43-vi-4vy" kind="unwind" unwindAction="prepareForUnwindToCompose:" id="5i8-oh-9hm"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ENTER TIME SIGNATURE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuJ-0h-ecb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ENTER TIME SIGNATURE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuJ-0h-ecb">
                                 <rect key="frame" x="198" y="28" width="270" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.59607843140000005" green="1" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="270" id="EDs-7f-MIU"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="1WD-iX-eki" firstAttribute="leading" secondItem="I78-xD-cWZ" secondAttribute="leadingMargin" id="0n6-G7-8QB"/>
+                            <constraint firstItem="1WD-iX-eki" firstAttribute="trailing" secondItem="I78-xD-cWZ" secondAttribute="trailingMargin" id="9Ec-gz-tWc"/>
+                            <constraint firstItem="qmx-YB-eMm" firstAttribute="top" secondItem="1WD-iX-eki" secondAttribute="bottom" constant="8" symbolic="YES" id="IKL-Ia-8kx"/>
+                            <constraint firstItem="VuJ-0h-ecb" firstAttribute="top" secondItem="b6z-tU-e0t" secondAttribute="bottom" constant="8" symbolic="YES" id="LYO-Be-kIK"/>
+                            <constraint firstItem="VuJ-0h-ecb" firstAttribute="centerX" secondItem="1WD-iX-eki" secondAttribute="centerX" id="M9g-ii-faV"/>
+                            <constraint firstItem="1WD-iX-eki" firstAttribute="top" secondItem="VuJ-0h-ecb" secondAttribute="bottom" constant="5" id="eKb-X9-O1q"/>
+                            <constraint firstItem="qmx-YB-eMm" firstAttribute="trailing" secondItem="1WD-iX-eki" secondAttribute="trailing" id="xdt-Rw-sjR"/>
+                            <constraint firstItem="1WD-iX-eki" firstAttribute="top" secondItem="I78-xD-cWZ" secondAttribute="top" constant="88" id="zAw-qL-9r0"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="doneButton" destination="qmx-YB-eMm" id="WfG-ff-xUn"/>
@@ -656,4 +680,7 @@
         <image name="transcribe" width="2126" height="2400"/>
         <image name="whole note small" width="30" height="18"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="oNV-wG-jxd"/>
+    </inferredMetricsTieBreakers>
 </document>

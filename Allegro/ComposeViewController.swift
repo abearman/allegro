@@ -10,9 +10,10 @@ import UIKit
 
 class ComposeViewController: UIViewController {
   
+  /* Reference to right pull-out menu */
+  var menuViewController: MenuViewController!
+  
   /* Time signature */
-  @IBOutlet weak var topTimeSigButton: UIButton!
-  @IBOutlet weak var bottomTimeSigButton: UIButton!
   var topTimeSig: Int = 4 {
     didSet {
       if let _ = staffView {
@@ -52,6 +53,10 @@ class ComposeViewController: UIViewController {
       /*slideButton.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)*/
 
       self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+      
+      if let rightVC = self.revealViewController().rightViewController as? MenuViewController {
+        self.menuViewController = rightVC
+      }
     }
 
   }
@@ -86,15 +91,14 @@ class ComposeViewController: UIViewController {
   
   @IBAction func prepareForUnwindToCompose(_ sender: UIStoryboardSegue) {
     if let timeSigVC = sender.source as? TimeSignatureViewController {
-      topTimeSigButton.setImage(UIImage(named: String(timeSigVC.topTimeSig)), for: UIControlState())
-      bottomTimeSigButton.setImage(UIImage(named: String(timeSigVC.bottomTimeSig)), for: UIControlState())
       
+      menuViewController.topTimeSigButton.setImage(UIImage(named: String(timeSigVC.topTimeSig)), for: UIControlState())
+      menuViewController.bottomTimeSigButton.setImage(UIImage(named: String(timeSigVC.bottomTimeSig)), for: UIControlState())
+
       topTimeSig = timeSigVC.topTimeSig
       bottomTimeSig = timeSigVC.bottomTimeSig
     }
   }
-
-  @IBOutlet weak var menuView: UIView!
 
   
 }
