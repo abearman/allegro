@@ -32,7 +32,10 @@ class KeySignatureViewController: UIViewController {
   @IBOutlet weak var sharpView: UIView!
   @IBOutlet weak var flatView: UIView!
   @IBOutlet weak var buttonView: UIView!
-  @IBOutlet weak var keySigLabel: UILabel!
+  
+  @IBOutlet weak var sharpKeySigLabel: UILabel!
+  @IBOutlet weak var flatKeySigLabel: UILabel!
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -67,13 +70,13 @@ class KeySignatureViewController: UIViewController {
       sharpView.isHidden = false
       sharpImages[numSharps].isHidden = false
       numSharps += 1
-      keySigLabel.text = sharpKeys[numSharps]
+      sharpKeySigLabel.text = sharpKeys[numSharps]
       
     // Subtract a flat
     } else {
       numFlats -= 1
       flatImages[numFlats].isHidden = true
-      keySigLabel.text = flatKeys[numFlats]
+      flatKeySigLabel.text = flatKeys[numFlats]
     }
     
     
@@ -93,13 +96,13 @@ class KeySignatureViewController: UIViewController {
       sharpView.isHidden = true
       flatImages[numFlats].isHidden = false
       numFlats += 1
-      keySigLabel.text = flatKeys[numFlats]
+      flatKeySigLabel.text = flatKeys[numFlats]
       
     // Subtract a sharp
     } else {
       numSharps -= 1
       sharpImages[numSharps].isHidden = true
-      keySigLabel.text = sharpKeys[numSharps]
+      sharpKeySigLabel.text = sharpKeys[numSharps]
     }
   }
   

@@ -101,6 +101,10 @@ class ComposeViewController: UIViewController {
       topTimeSig = timeSigVC.topTimeSig
       bottomTimeSig = timeSigVC.bottomTimeSig
     }
+    
+    if let keySigVC = sender.source as? KeySignatureViewController {
+      print("got here")
+    }
   }
 
   
