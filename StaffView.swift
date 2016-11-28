@@ -12,30 +12,11 @@ class StaffView: UIView {
   
   var noteGR: NoteGestureRecognizer!
   var eraseGR: UIPanGestureRecognizer!
+  var measureGR: UISwipeGestureRecognizer!
   
   var composeMode: ComposeMode = ComposeMode.Note {
     didSet {
-      switch composeMode {
-      case .Note:
-        if eraseGR != nil {
-          self.removeGestureRecognizer(eraseGR)
-        }
-        
-        self.noteGR = NoteGestureRecognizer(target: self, action: #selector(handleNoteGesture(_:)))
-        self.addGestureRecognizer(noteGR)
-        
-      case .Erase:
-        if noteGR != nil {
-          self.removeGestureRecognizer(noteGR)
-        }
-        
-        self.eraseGR = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
-        self.addGestureRecognizer(eraseGR)
-          
-      default:
-        break
-      }
-      
+      updateGestureRecognizers()
     }
   }
   
@@ -162,7 +143,45 @@ class StaffView: UIView {
   
   // MARK - Gesture Recognizers
   
-  func handlePan(_ gesture: UIPanGestureRecognizer) {
+  func updateGestureRecognizers() {
+    /*if noteGR != nil {
+      self.removeGestureRecognizer(noteGR)
+    }
+    
+    self.measureGR = UISwipeGestureRecognizer(target: self, action: #selector(handleMeasureSwipe(_:)))
+    measureGR.direction = UISwipeGestureRecognizerDirection.right
+    measureGR.numberOfTouchesRequired = 1
+    self.addGestureRecognizer(measureGR)*/
+    
+    switch composeMode {
+    case .Note:
+      if eraseGR != nil {
+        self.removeGestureRecognizer(eraseGR)
+      }
+      
+      self.noteGR = NoteGestureRecognizer(target: self, action: #selector(handleNoteGesture(_:)))
+      self.addGestureRecognizer(noteGR)
+      
+    case .Erase:
+      if noteGR != nil {
+        self.removeGestureRecognizer(noteGR)
+      }
+      
+      self.eraseGR = UIPanGestureRecognizer(target: self, action: #selector(handleErasePan(_:)))
+      self.addGestureRecognizer(eraseGR)
+      
+    default:
+      break
+    }
+  }
+  
+  
+  func handleMeasureSwipe(_ gesture: UISwipeGestureRecognizer) {
+    print("Got measure swipe")
+  }
+  
+  
+  func handleErasePan(_ gesture: UIPanGestureRecognizer) {
     let location = gesture.location(in: self)
     
     switch gesture.state {
