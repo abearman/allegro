@@ -375,9 +375,9 @@ class StaffView: UIView {
   
   func eraseNote(note: Note) {
     note.shapeLayer.removeFromSuperlayer()
+    note.accidentalImageView?.layer.removeFromSuperlayer()
     if let index = existingNotes.index(where: {$0 === note}) {
       existingNotes.remove(at: index)
-      print("erasing note")
     }
   }
   
