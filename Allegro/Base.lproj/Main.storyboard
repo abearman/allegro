@@ -416,7 +416,7 @@
                                                 </constraints>
                                                 <state key="normal" image="4"/>
                                                 <connections>
-                                                    <segue destination="KR1-fJ-sQL" kind="showDetail" action="showViewController:sender:" id="oNV-wG-jxd"/>
+                                                    <segue destination="jLh-Xe-0gV" kind="show" id="tgz-CV-Xg5"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tto-Xg-d3e" userLabel="Time Signature Bottom">
@@ -427,7 +427,7 @@
                                                 </constraints>
                                                 <state key="normal" image="4"/>
                                                 <connections>
-                                                    <segue destination="KR1-fJ-sQL" kind="showDetail" action="showViewController:sender:" id="m3h-H3-HX5"/>
+                                                    <segue destination="jLh-Xe-0gV" kind="show" id="dON-yc-kS6"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -464,71 +464,6 @@
             <point key="canvasLocation" x="1616.1971830985915" y="52.5"/>
         </scene>
         <!--Time Signature View Controller-->
-        <scene sceneID="0Ok-KK-NIA">
-            <objects>
-                <viewController id="KR1-fJ-sQL" customClass="TimeSignatureViewController" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="OYz-CS-oPb"/>
-                        <viewControllerLayoutGuide type="bottom" id="pgJ-C0-1A3"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="COV-P5-5N1">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iaB-Gv-5kg" userLabel="Picker">
-                                <rect key="frame" x="20.5" y="33" width="527.5" height="216"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0l-UF-Cle">
-                                <rect key="frame" x="457" y="257" width="91" height="43"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="91" id="b5T-rG-Wdd"/>
-                                    <constraint firstAttribute="height" constant="43" id="gMM-iq-GbQ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="14"/>
-                                <state key="normal" title="DONE">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="fo3-Yf-itR" kind="unwind" unwindAction="prepareForUnwindToCompose:" id="lFg-0u-UF2"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ENTER TIME SIGNATURE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwx-wl-LCd">
-                                <rect key="frame" x="149" y="28" width="270" height="55"/>
-                                <color key="backgroundColor" red="0.59607843137254901" green="1" blue="0.49411764705882355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="270" id="fEr-pC-Bvo"/>
-                                    <constraint firstAttribute="height" constant="55" id="j1e-ln-NIa"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="uwx-wl-LCd" firstAttribute="centerX" secondItem="COV-P5-5N1" secondAttribute="centerX" id="7is-nP-VWS"/>
-                            <constraint firstItem="uwx-wl-LCd" firstAttribute="top" secondItem="OYz-CS-oPb" secondAttribute="bottom" constant="8" symbolic="YES" id="DjK-18-gF1"/>
-                            <constraint firstItem="uwx-wl-LCd" firstAttribute="centerX" secondItem="iaB-Gv-5kg" secondAttribute="centerX" id="ERi-5C-s6w"/>
-                            <constraint firstItem="f0l-UF-Cle" firstAttribute="trailing" secondItem="iaB-Gv-5kg" secondAttribute="trailing" id="Kg3-a8-wZ4"/>
-                            <constraint firstItem="f0l-UF-Cle" firstAttribute="top" secondItem="iaB-Gv-5kg" secondAttribute="bottom" constant="8" symbolic="YES" id="W73-ra-xPY"/>
-                            <constraint firstItem="f0l-UF-Cle" firstAttribute="trailing" secondItem="COV-P5-5N1" secondAttribute="trailingMargin" id="x4M-cy-vy6"/>
-                            <constraint firstAttribute="bottom" secondItem="f0l-UF-Cle" secondAttribute="bottom" constant="20" symbolic="YES" id="xeh-9a-nap"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="doneButton" destination="f0l-UF-Cle" id="MFF-cv-M22"/>
-                        <outlet property="picker" destination="iaB-Gv-5kg" id="Hjl-eF-k2S"/>
-                        <outlet property="timeSignatureLabel" destination="uwx-wl-LCd" id="XMv-wx-SYv"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="T58-wg-6o9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="fo3-Yf-itR" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="598.5" y="1086.5"/>
-        </scene>
-        <!--Time Signature View Controller-->
         <scene sceneID="gdb-n6-CMJ">
             <objects>
                 <viewController id="jLh-Xe-0gV" customClass="TimeSignatureViewController" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
@@ -556,7 +491,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ENTER TIME SIGNATURE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuJ-0h-ecb">
-                                <rect key="frame" x="149" y="20" width="270" height="55"/>
+                                <rect key="frame" x="149" y="30" width="270" height="55"/>
                                 <color key="backgroundColor" red="0.59607843140000005" green="1" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="1eH-jA-mPI"/>
@@ -567,7 +502,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1WD-iX-eki" userLabel="Picker">
-                                <rect key="frame" x="20" y="83" width="528" height="178"/>
+                                <rect key="frame" x="20" y="93" width="528" height="168"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </pickerView>
                         </subviews>
@@ -576,7 +511,7 @@
                             <constraint firstItem="1WD-iX-eki" firstAttribute="leading" secondItem="I78-xD-cWZ" secondAttribute="leadingMargin" id="4RD-s5-Afi"/>
                             <constraint firstItem="mkB-Yf-0VI" firstAttribute="top" secondItem="qmx-YB-eMm" secondAttribute="bottom" constant="8" symbolic="YES" id="4rp-1I-RwD"/>
                             <constraint firstItem="1WD-iX-eki" firstAttribute="top" secondItem="VuJ-0h-ecb" secondAttribute="bottom" constant="8" symbolic="YES" id="Lve-xq-BMv"/>
-                            <constraint firstItem="VuJ-0h-ecb" firstAttribute="top" secondItem="b6z-tU-e0t" secondAttribute="bottom" id="YCd-aF-WIL"/>
+                            <constraint firstItem="VuJ-0h-ecb" firstAttribute="top" secondItem="b6z-tU-e0t" secondAttribute="bottom" constant="10" id="YCd-aF-WIL"/>
                             <constraint firstItem="VuJ-0h-ecb" firstAttribute="centerX" secondItem="1WD-iX-eki" secondAttribute="centerX" id="c13-dk-2Lp"/>
                             <constraint firstItem="qmx-YB-eMm" firstAttribute="top" secondItem="1WD-iX-eki" secondAttribute="bottom" constant="8" symbolic="YES" id="dyv-yg-DgX"/>
                             <constraint firstItem="1WD-iX-eki" firstAttribute="trailing" secondItem="I78-xD-cWZ" secondAttribute="trailingMargin" id="ePy-5k-vIe"/>
@@ -882,6 +817,6 @@
         <image name="whole note small" width="30" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oNV-wG-jxd"/>
+        <segue reference="tgz-CV-Xg5"/>
     </inferredMetricsTieBreakers>
 </document>
