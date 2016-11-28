@@ -57,6 +57,9 @@ class ComposeViewController: UIViewController {
       if let rightVC = self.revealViewController().rightViewController as? MenuViewController {
         self.menuViewController = rightVC
       }
+      
+      self.revealViewController().rightViewRevealWidth = RIGHT_MENU_WIDTH
+      
     }
 
   }

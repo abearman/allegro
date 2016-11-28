@@ -183,10 +183,10 @@
             </objects>
             <point key="canvasLocation" x="958" y="-924"/>
         </scene>
-        <!--New Composition-->
+        <!-- Composition-->
         <scene sceneID="RXO-Xn-zva">
             <objects>
-                <viewController title="New Composition" id="QDs-4S-QIt" customClass="ComposeViewController" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="New Composition" id="QDs-4S-QIt" userLabel=" Composition" customClass="ComposeViewController" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bAF-aN-I1O"/>
                         <viewControllerLayoutGuide type="bottom" id="uov-yA-1Pu"/>
@@ -199,39 +199,6 @@
                                 <rect key="frame" x="48" y="0.0" width="500" height="320"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ncb-oK-gLJ" userLabel="Home Button">
-                                <rect key="frame" x="386" y="-2405" width="30" height="2400"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="XpE-Yo-Oi0"/>
-                                </constraints>
-                                <state key="normal" image="home">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="a2T-o5-6zh" kind="unwind" unwindAction="prepareForUnwindToHome:" id="5QY-uX-khx"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7Z-kz-CbN" userLabel="Arrange Button">
-                                <rect key="frame" x="424" y="-2405" width="30" height="2400"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="7b7-ak-jKv"/>
-                                </constraints>
-                                <state key="normal" image="arrange">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8DU-Nd-5Uw" userLabel="Transcribe Button">
-                                <rect key="frame" x="462" y="-2405" width="30" height="2400"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="5rU-qS-Fb4"/>
-                                </constraints>
-                                <state key="normal" image="transcribe">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KhA-BS-Hup" userLabel="Duration Stack View">
                                 <rect key="frame" x="0.0" y="0.0" width="46" height="321"/>
                                 <subviews>
@@ -291,19 +258,10 @@
                         <constraints>
                             <constraint firstItem="MUz-WX-9dc" firstAttribute="trailing" secondItem="aLi-Wv-ic5" secondAttribute="trailingMargin" id="IPN-6l-6kS"/>
                             <constraint firstItem="KhA-BS-Hup" firstAttribute="top" secondItem="aLi-Wv-ic5" secondAttribute="top" id="LUc-qb-ZE6"/>
-                            <constraint firstItem="ncb-oK-gLJ" firstAttribute="bottom" secondItem="l7Z-kz-CbN" secondAttribute="bottom" id="TIt-Xy-rFV"/>
-                            <constraint firstItem="l7Z-kz-CbN" firstAttribute="leading" secondItem="ncb-oK-gLJ" secondAttribute="trailing" constant="8" symbolic="YES" id="Vka-FY-4kM"/>
                             <constraint firstItem="MUz-WX-9dc" firstAttribute="leading" secondItem="KhA-BS-Hup" secondAttribute="trailing" constant="2" id="XHW-Dg-bAl"/>
-                            <constraint firstItem="ncb-oK-gLJ" firstAttribute="top" secondItem="bAF-aN-I1O" secondAttribute="bottom" id="Yhr-xd-RPd"/>
                             <constraint firstItem="MUz-WX-9dc" firstAttribute="top" secondItem="KhA-BS-Hup" secondAttribute="top" id="gK5-sR-91G"/>
                             <constraint firstItem="KhA-BS-Hup" firstAttribute="leading" secondItem="aLi-Wv-ic5" secondAttribute="leading" id="gv3-t1-grt"/>
-                            <constraint firstItem="ncb-oK-gLJ" firstAttribute="top" secondItem="l7Z-kz-CbN" secondAttribute="top" id="i6r-7K-UXz"/>
-                            <constraint firstItem="8DU-Nd-5Uw" firstAttribute="leading" secondItem="l7Z-kz-CbN" secondAttribute="trailing" constant="8" symbolic="YES" id="klS-uZ-WT3"/>
-                            <constraint firstItem="l7Z-kz-CbN" firstAttribute="bottom" secondItem="8DU-Nd-5Uw" secondAttribute="bottom" id="lRa-1Y-B7s"/>
                             <constraint firstItem="MUz-WX-9dc" firstAttribute="centerY" secondItem="aLi-Wv-ic5" secondAttribute="centerY" id="n2B-7g-EEJ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="8DU-Nd-5Uw" secondAttribute="trailing" constant="56" id="o9T-LO-vd4"/>
-                            <constraint firstItem="uov-yA-1Pu" firstAttribute="top" secondItem="ncb-oK-gLJ" secondAttribute="bottom" constant="325" id="rqG-J4-mVv"/>
-                            <constraint firstItem="l7Z-kz-CbN" firstAttribute="top" secondItem="8DU-Nd-5Uw" secondAttribute="top" id="xgf-y3-ejD"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="STL-aI-Smk"/>
@@ -334,46 +292,162 @@
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfk-0F-gnG" userLabel="Time Signature Top">
-                                <rect key="frame" x="274" y="129" width="30" height="38"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Navigation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mWD-fh-I7d">
+                                <rect key="frame" x="409" y="21" width="73" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="38" id="C7r-br-v5h"/>
-                                    <constraint firstAttribute="width" constant="30" id="Vbv-Ct-zXR"/>
+                                    <constraint firstAttribute="height" constant="21" id="aH9-3E-Bm5"/>
                                 </constraints>
-                                <state key="normal" image="4"/>
-                                <connections>
-                                    <segue destination="KR1-fJ-sQL" kind="showDetail" action="showViewController:sender:" id="oNV-wG-jxd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tto-Xg-d3e" userLabel="Time Signature Bottom">
-                                <rect key="frame" x="274" y="175" width="30" height="143"/>
-                                <state key="normal" image="4"/>
-                                <connections>
-                                    <segue destination="KR1-fJ-sQL" kind="showDetail" action="showViewController:sender:" id="m3h-H3-HX5"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRT-bw-xgO" userLabel="Key Signature">
-                                <rect key="frame" x="501" y="63" width="47" height="41"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ava-Gl-6yP" userLabel="Navigation Stack View">
+                                <rect key="frame" x="408" y="50" width="140" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ncb-oK-gLJ" userLabel="Home Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="0g4-nc-qVp"/>
+                                            <constraint firstAttribute="width" constant="40" id="3ew-KR-uXL"/>
+                                        </constraints>
+                                        <state key="normal" image="home">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="a2T-o5-6zh" kind="unwind" unwindAction="prepareForUnwindToHome:" id="5QY-uX-khx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7Z-kz-CbN" userLabel="Arrange Button">
+                                        <rect key="frame" x="50" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="1r9-q1-bZu"/>
+                                            <constraint firstAttribute="height" constant="40" id="JuS-Wl-6ml"/>
+                                        </constraints>
+                                        <state key="normal" image="arrange">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8DU-Nd-5Uw" userLabel="Transcribe Button">
+                                        <rect key="frame" x="100" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="3RK-Wo-zka"/>
+                                            <constraint firstAttribute="width" constant="40" id="UDG-g7-aV6"/>
+                                        </constraints>
+                                        <state key="normal" image="transcribe">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2V-4n-LSK">
+                                <rect key="frame" x="408" y="104" width="51" height="28"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="47" id="sYM-9J-jTH"/>
+                                    <constraint firstAttribute="width" constant="51" id="ney-rY-rUk"/>
                                 </constraints>
-                                <state key="normal" image="C major"/>
-                                <connections>
-                                    <segue destination="DWk-hT-Of1" kind="show" id="VBB-UO-0KQ"/>
-                                </connections>
-                            </button>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GIU-A0-m4N" userLabel="Modes Stack View">
+                                <rect key="frame" x="409" y="140" width="140" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n6p-Xq-JYH" userLabel="Note Mode Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="WLd-MN-4ob"/>
+                                            <constraint firstAttribute="width" constant="40" id="czE-xL-Jjq"/>
+                                        </constraints>
+                                        <state key="normal" image="note mode">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="34B-oO-H17" userLabel="Erase Mode Button">
+                                        <rect key="frame" x="50" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="QBv-TA-7OY"/>
+                                            <constraint firstAttribute="width" constant="40" id="Qsm-aD-F8Q"/>
+                                        </constraints>
+                                        <state key="normal" image="eraser">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yp7-mY-PrL" userLabel="Dynamics Mode Button">
+                                        <rect key="frame" x="100" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="kHu-3i-PDR"/>
+                                            <constraint firstAttribute="width" constant="40" id="oI9-zE-3kT"/>
+                                        </constraints>
+                                        <state key="normal" image="fermata">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signatures" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDU-35-8Np">
+                                <rect key="frame" x="408" y="195" width="160" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="OHT-7b-bZI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9F2-hV-mux" userLabel="Signatures Stack View">
+                                <rect key="frame" x="408" y="224" width="140" height="76"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRT-bw-xgO" userLabel="Key Signature">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="76"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="3Y2-nM-z1U"/>
+                                        </constraints>
+                                        <state key="normal" image="C major"/>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Rzf-Vw-FDj" userLabel="Time Signature Stack View">
+                                        <rect key="frame" x="110" y="0.0" width="30" height="76"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfk-0F-gnG" userLabel="Time Signature Top">
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="38"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="38" id="TyK-fW-JB7"/>
+                                                    <constraint firstAttribute="width" constant="30" id="otl-nJ-N0I"/>
+                                                </constraints>
+                                                <state key="normal" image="4"/>
+                                                <connections>
+                                                    <segue destination="KR1-fJ-sQL" kind="showDetail" action="showViewController:sender:" id="oNV-wG-jxd"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tto-Xg-d3e" userLabel="Time Signature Bottom">
+                                                <rect key="frame" x="0.0" y="38" width="30" height="38"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="h2I-sB-zOQ"/>
+                                                    <constraint firstAttribute="height" constant="38" id="rum-1I-FCp"/>
+                                                </constraints>
+                                                <state key="normal" image="4"/>
+                                                <connections>
+                                                    <segue destination="KR1-fJ-sQL" kind="showDetail" action="showViewController:sender:" id="m3h-H3-HX5"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.73333333329999995" green="0.6705882353" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="rfk-0F-gnG" firstAttribute="top" secondItem="yRT-bw-xgO" secondAttribute="bottom" constant="25" id="05b-x7-g2S"/>
-                            <constraint firstItem="8DJ-4c-0xj" firstAttribute="top" secondItem="Tto-Xg-d3e" secondAttribute="bottom" constant="162" id="4yp-cg-DUP"/>
-                            <constraint firstItem="rfk-0F-gnG" firstAttribute="trailing" secondItem="s6x-dY-ntL" secondAttribute="trailingMargin" id="MOT-C9-F14"/>
-                            <constraint firstItem="Tto-Xg-d3e" firstAttribute="trailing" secondItem="rfk-0F-gnG" secondAttribute="trailing" id="Mxv-kN-StL"/>
-                            <constraint firstItem="yRT-bw-xgO" firstAttribute="top" secondItem="I6A-1S-Ebw" secondAttribute="bottom" constant="43" id="TKe-3Q-T15"/>
-                            <constraint firstItem="yRT-bw-xgO" firstAttribute="trailing" secondItem="rfk-0F-gnG" secondAttribute="trailing" id="Tc2-Sm-QcX"/>
-                            <constraint firstItem="Tto-Xg-d3e" firstAttribute="top" secondItem="rfk-0F-gnG" secondAttribute="bottom" constant="8" symbolic="YES" id="Vo5-9V-Pug"/>
-                            <constraint firstItem="rfk-0F-gnG" firstAttribute="top" secondItem="I6A-1S-Ebw" secondAttribute="bottom" constant="109" id="iFC-Bi-DAw"/>
-                            <constraint firstItem="Tto-Xg-d3e" firstAttribute="leading" secondItem="rfk-0F-gnG" secondAttribute="leading" id="rOt-qt-ANL"/>
+                            <constraint firstAttribute="bottom" secondItem="YDU-35-8Np" secondAttribute="bottom" constant="104" id="6VE-M9-Lwp"/>
+                            <constraint firstItem="9F2-hV-mux" firstAttribute="leading" secondItem="YDU-35-8Np" secondAttribute="leading" id="Atw-2h-wPK"/>
+                            <constraint firstItem="mWD-fh-I7d" firstAttribute="top" secondItem="I6A-1S-Ebw" secondAttribute="bottom" constant="1" id="SMY-li-siw"/>
+                            <constraint firstItem="c2V-4n-LSK" firstAttribute="leading" secondItem="Ava-Gl-6yP" secondAttribute="leading" id="TK2-fY-eC4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GIU-A0-m4N" secondAttribute="trailing" constant="-1" id="TcX-UM-QKi"/>
+                            <constraint firstItem="GIU-A0-m4N" firstAttribute="top" secondItem="c2V-4n-LSK" secondAttribute="bottom" constant="8" symbolic="YES" id="Vmx-TX-5IM"/>
+                            <constraint firstItem="GIU-A0-m4N" firstAttribute="leading" secondItem="mWD-fh-I7d" secondAttribute="leading" id="ZXR-pE-cpj"/>
+                            <constraint firstItem="GIU-A0-m4N" firstAttribute="centerY" secondItem="s6x-dY-ntL" secondAttribute="centerY" id="exx-on-TVI"/>
+                            <constraint firstItem="9F2-hV-mux" firstAttribute="top" secondItem="YDU-35-8Np" secondAttribute="bottom" constant="8" symbolic="YES" id="gg5-Pu-lo4"/>
+                            <constraint firstItem="c2V-4n-LSK" firstAttribute="top" secondItem="Ava-Gl-6yP" secondAttribute="bottom" constant="14" id="kfF-2R-saG"/>
+                            <constraint firstItem="Ava-Gl-6yP" firstAttribute="top" secondItem="mWD-fh-I7d" secondAttribute="bottom" constant="8" symbolic="YES" id="mM3-1B-hmC"/>
+                            <constraint firstAttribute="trailing" secondItem="YDU-35-8Np" secondAttribute="trailing" id="o5t-br-RF2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="c2V-4n-LSK" secondAttribute="trailing" constant="89" id="rxj-ke-LgR"/>
+                            <constraint firstItem="Ava-Gl-6yP" firstAttribute="leading" secondItem="YDU-35-8Np" secondAttribute="leading" id="sVB-G2-Uwa"/>
                         </constraints>
                     </view>
                     <connections>
@@ -383,7 +457,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g71-0V-NoR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1761" y="-15"/>
+            <point key="canvasLocation" x="1616.1971830985915" y="52.5"/>
         </scene>
         <!--Time Signature View Controller-->
         <scene sceneID="0Ok-KK-NIA">
@@ -685,13 +759,16 @@
     <resources>
         <image name="32nd note small" width="30" height="56"/>
         <image name="4" width="116" height="139"/>
-        <image name="C major" width="840" height="720"/>
+        <image name="C major" width="1200" height="850"/>
         <image name="arrange" width="512" height="512"/>
         <image name="eighth note small" width="30" height="46"/>
+        <image name="eraser" width="128" height="128"/>
+        <image name="fermata" width="40" height="40"/>
         <image name="flat" width="2000" height="4333"/>
         <image name="half note small" width="25" height="48"/>
         <image name="home" width="128" height="128"/>
         <image name="logo" width="532" height="253"/>
+        <image name="note mode" width="128" height="128"/>
         <image name="quarter note small" width="25" height="50"/>
         <image name="sharp" width="461" height="1462"/>
         <image name="sixteenth note small" width="30" height="45"/>
@@ -699,6 +776,6 @@
         <image name="whole note small" width="30" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="m3h-H3-HX5"/>
+        <segue reference="oNV-wG-jxd"/>
     </inferredMetricsTieBreakers>
 </document>
