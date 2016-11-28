@@ -10,7 +10,20 @@ import UIKit
 
 class StaffView: UIView {
   
-  var composeMode: ComposeMode = ComposeMode.Note
+  var noteGestureRecognizer: NoteGestureRecognizer!
+  
+  var composeMode: ComposeMode = ComposeMode.Note {
+    didSet {
+      if composeMode == .Note {
+        self.noteGestureRecognizer = NoteGestureRecognizer(target: self, action: #selector(handleNoteGesture(_:)))
+        self.addGestureRecognizer(noteGestureRecognizer)
+        print("adding gesture rec")
+      } else {
+        self.removeGestureRecognizer(noteGestureRecognizer)
+        print("removing gesture rec")
+      }
+    }
+  }
   
   var topTimeSig: Int = 4 {
     didSet {

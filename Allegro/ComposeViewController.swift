@@ -32,32 +32,27 @@ class ComposeViewController: UIViewController {
   /* Note duration panel */
   @IBOutlet var noteButtons: [UIButton]!
   
-  @IBOutlet weak var staffView: StaffView! {
-    /* Add gesture recognizers */
-    didSet {
-      /*staffView.addGestureRecognizer(UIPanGestureRecognizer(
-        target: staffView, action: #selector(StaffView.handlePan(_:))
-      ))*/
-      
-      /*staffView.addGestureRecognizer(UITapGestureRecognizer(
-        target: staffView, action: #selector(StaffView.tappedView(_:))
-      ))*/
-      
-      staffView.addGestureRecognizer(NoteGestureRecognizer(target: staffView, action: #selector(StaffView.handleNoteGesture(_:))
-      ))
-      
-    }
-  }
-  
+  @IBOutlet weak var staffView: StaffView!
+
+
   override func viewDidLoad() {
       super.viewDidLoad()
     
     /* Auto-select middle note */
     selectNoteButton(noteButtons[noteButtons.count/2])
    
-    if self.revealViewController() != nil {
-      /*slideButton.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)*/
+    /* Set up right sliding menu VC */
+    setUpMenuVC()
+    
+    /* Add observer to notification for compose mode change */
+    NotificationCenter.default.addObserver(self, selector: #selector(detectComposeModeChange), name: Notification.Name(rawValue: COMPOSE_MODE_NOTIFICATION), object: nil)
+    /* Trigger change in StaffView for initial "Note" compose mode */
+    self.composeMode = .Note
+  }
 
+  
+  func setUpMenuVC() {
+    if self.revealViewController() != nil {
       self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
       
       if let rightVC = self.revealViewController().rightViewController as? MenuViewController {
@@ -65,10 +60,9 @@ class ComposeViewController: UIViewController {
       }
       
       self.revealViewController().rightViewRevealWidth = RIGHT_MENU_WIDTH
-      
-      NotificationCenter.default.addObserver(self, selector: #selector(detectComposeModeChange), name: Notification.Name(rawValue: COMPOSE_MODE_NOTIFICATION), object: nil)
     }
   }
+  
   
   /* Propagate change in composition mode from MenuVC to ComposeVC and StaffView */
   func detectComposeModeChange() {
