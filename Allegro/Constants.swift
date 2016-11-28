@@ -21,6 +21,8 @@ let FLAT_KEYS = ["C Major", "F Major", "B♭ Major",
                  "E♭ Major", "A♭ Major", "D♭ Major",
                  "G♭ Major", "C♭ Major"]
 
+let COMPOSE_MODE_NOTIFICATION = "Compose Mode Changed"
+
 func setViewBorder(_ view: UIView, color: UIColor, width: Int) {
   view.layer.borderColor = color.cgColor
   view.layer.borderWidth = CGFloat(width)

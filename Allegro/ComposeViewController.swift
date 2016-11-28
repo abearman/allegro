@@ -13,6 +13,12 @@ class ComposeViewController: UIViewController {
   /* Reference to right pull-out menu */
   var menuViewController: MenuViewController!
   
+  var composeMode: ComposeMode = ComposeMode.Note {
+    didSet {
+      staffView.composeMode = self.composeMode
+    }
+  }
+  
   /* Time signature */
   var topTimeSig: Int = 4 {
     didSet {
@@ -60,8 +66,13 @@ class ComposeViewController: UIViewController {
       
       self.revealViewController().rightViewRevealWidth = RIGHT_MENU_WIDTH
       
+      NotificationCenter.default.addObserver(self, selector: #selector(detectComposeModeChange), name: Notification.Name(rawValue: COMPOSE_MODE_NOTIFICATION), object: nil)
     }
-
+  }
+  
+  /* Propagate change in composition mode from MenuVC to ComposeVC and StaffView */
+  func detectComposeModeChange() {
+    self.composeMode = ComposeMode(rawValue: menuViewController.modeSegmentedControl.selectedSegmentIndex)!
   }
   
   

@@ -8,8 +8,17 @@
 
 import UIKit
 
+enum ComposeMode: Int {
+  case Note = 0
+  case Erase = 1
+  case Dynamics = 2
+}
+
 class MenuViewController: UIViewController {
 
+  var composeMode = ComposeMode.Note
+  @IBOutlet weak var modeSegmentedControl: UISegmentedControl!
+  
   @IBOutlet weak var topTimeSigButton: UIButton!
   @IBOutlet weak var bottomTimeSigButton: UIButton!
   
@@ -17,8 +26,10 @@ class MenuViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    // Do any additional setup after loading the view.
   }
 
+  @IBAction func modeChanged(_ sender: Any) {
+    composeMode = ComposeMode(rawValue: modeSegmentedControl.selectedSegmentIndex)!
+    NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: COMPOSE_MODE_NOTIFICATION)))
+  }
 }

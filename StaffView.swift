@@ -10,6 +10,8 @@ import UIKit
 
 class StaffView: UIView {
   
+  var composeMode: ComposeMode = ComposeMode.Note
+  
   var topTimeSig: Int = 4 {
     didSet {
       setXPositions()

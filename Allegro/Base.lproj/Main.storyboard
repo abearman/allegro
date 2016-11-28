@@ -320,6 +320,9 @@
                                     <segment title="" image="fermata"/>
                                 </segments>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <connections>
+                                    <action selector="modeChanged:" destination="mvx-GZ-moT" eventType="valueChanged" id="l1d-jf-bFJ"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signatures" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDU-35-8Np">
                                 <rect key="frame" x="402" y="198" width="166" height="18"/>
@@ -430,6 +433,7 @@
                     <connections>
                         <outlet property="bottomTimeSigButton" destination="Tto-Xg-d3e" id="wzI-w3-id6"/>
                         <outlet property="keySigButton" destination="yRT-bw-xgO" id="wjM-2z-cEm"/>
+                        <outlet property="modeSegmentedControl" destination="Jp5-Ek-4eX" id="VKW-PP-fKi"/>
                         <outlet property="topTimeSigButton" destination="rfk-0F-gnG" id="h5O-vp-ZOu"/>
                     </connections>
                 </viewController>
