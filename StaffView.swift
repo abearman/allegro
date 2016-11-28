@@ -117,6 +117,16 @@ class StaffView: UIView {
       }
       path.stroke()
     }
+    
+    /* Draw measure line */
+    let measurePath = UIBezierPath()
+    measurePath.move(to: CGPoint(x: self.frame.width,
+                                 y: 0.0))
+    measurePath.addLine(to: CGPoint(x: self.frame.width,
+                                    y: self.frame.height))
+    UIColor.black.set()
+    measurePath.lineWidth = MEASURE_LINE_WIDTH
+    measurePath.stroke()
   }
   
   

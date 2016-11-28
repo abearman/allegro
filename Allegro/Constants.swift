@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 let NUM_STAFF_LINES: Int = 7
+let MEASURE_LINE_WIDTH = CGFloat(3.0)
 let BLUE_COLOR = UIColor(red:0.68, green:0.92, blue:1.0, alpha:1.0)
 let RIGHT_MENU_WIDTH = CGFloat(180.0)
 
