@@ -93,6 +93,7 @@ class ComposeViewController: UIViewController {
   
   
   @IBAction func prepareForUnwindToCompose(_ sender: UIStoryboardSegue) {
+    /* Transitioning back from time signature screen */
     if let timeSigVC = sender.source as? TimeSignatureViewController {
       
       menuViewController.topTimeSigButton.setImage(UIImage(named: String(timeSigVC.topTimeSig)), for: UIControlState())
@@ -102,8 +103,16 @@ class ComposeViewController: UIViewController {
       bottomTimeSig = timeSigVC.bottomTimeSig
     }
     
+    /* Transitioning back from key signature screen */
     if let keySigVC = sender.source as? KeySignatureViewController {
-      print("got here")
+      var keySigImageName: String = SHARP_KEYS[0]
+      if (keySigVC.numSharps > 0) {
+        keySigImageName = SHARP_KEYS[keySigVC.numSharps]
+      } else {
+        keySigImageName = FLAT_KEYS[keySigVC.numFlats]
+      }
+      menuViewController.keySigButton.setImage(UIImage(named: keySigImageName), for: UIControlState())
+
     }
   }
 

@@ -400,7 +400,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="3Y2-nM-z1U"/>
                                         </constraints>
-                                        <state key="normal" image="C major"/>
+                                        <state key="normal" image="C Major"/>
                                         <connections>
                                             <segue destination="DWk-hT-Of1" kind="show" id="KbJ-vl-jVn"/>
                                         </connections>
@@ -455,6 +455,7 @@
                     </view>
                     <connections>
                         <outlet property="bottomTimeSigButton" destination="Tto-Xg-d3e" id="wzI-w3-id6"/>
+                        <outlet property="keySigButton" destination="yRT-bw-xgO" id="wjM-2z-cEm"/>
                         <outlet property="topTimeSigButton" destination="rfk-0F-gnG" id="h5O-vp-ZOu"/>
                     </connections>
                 </viewController>
@@ -864,7 +865,7 @@
     <resources>
         <image name="32nd note small" width="30" height="56"/>
         <image name="4" width="116" height="139"/>
-        <image name="C major" width="1200" height="850"/>
+        <image name="C Major" width="1200" height="850"/>
         <image name="arrange" width="512" height="512"/>
         <image name="eighth note small" width="30" height="46"/>
         <image name="eraser" width="128" height="128"/>

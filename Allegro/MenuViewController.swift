@@ -13,6 +13,7 @@ class MenuViewController: UIViewController {
   @IBOutlet weak var topTimeSigButton: UIButton!
   @IBOutlet weak var bottomTimeSigButton: UIButton!
   
+  @IBOutlet weak var keySigButton: UIButton!
   
   override func viewDidLoad() {
     super.viewDidLoad()
