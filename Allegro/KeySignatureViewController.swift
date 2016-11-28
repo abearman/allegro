@@ -35,7 +35,7 @@ class KeySignatureViewController: UIViewController {
   
   @IBOutlet weak var sharpKeySigLabel: UILabel!
   @IBOutlet weak var flatKeySigLabel: UILabel!
-  
+
   
   override func viewDidLoad() {
     super.viewDidLoad()
