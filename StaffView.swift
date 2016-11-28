@@ -10,18 +10,32 @@ import UIKit
 
 class StaffView: UIView {
   
-  var noteGestureRecognizer: NoteGestureRecognizer!
+  var noteGR: NoteGestureRecognizer!
+  var eraseGR: UIPanGestureRecognizer!
   
   var composeMode: ComposeMode = ComposeMode.Note {
     didSet {
-      if composeMode == .Note {
-        self.noteGestureRecognizer = NoteGestureRecognizer(target: self, action: #selector(handleNoteGesture(_:)))
-        self.addGestureRecognizer(noteGestureRecognizer)
-        print("adding gesture rec")
-      } else {
-        self.removeGestureRecognizer(noteGestureRecognizer)
-        print("removing gesture rec")
+      switch composeMode {
+      case .Note:
+        if eraseGR != nil {
+          self.removeGestureRecognizer(eraseGR)
+        }
+        
+        self.noteGR = NoteGestureRecognizer(target: self, action: #selector(handleNoteGesture(_:)))
+        self.addGestureRecognizer(noteGR)
+        
+      case .Erase:
+        if noteGR != nil {
+          self.removeGestureRecognizer(noteGR)
+        }
+        
+        self.eraseGR = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+        self.addGestureRecognizer(eraseGR)
+          
+      default:
+        break
       }
+      
     }
   }
   
@@ -142,7 +156,22 @@ class StaffView: UIView {
     let location = gesture.location(in: self)
     
     switch gesture.state {
-    case .changed:
+    case .changed, .ended:
+      for note in existingNotes {
+        if (note.shapeLayer.path?.contains(location))! {
+          eraseNote(note: note)
+        }
+      }
+    default:
+      break
+    }
+  }
+  
+  /*func handlePan(_ gesture: UIPanGestureRecognizer) {
+    let location = gesture.location(in: self)
+    
+    switch gesture.state {
+    case .changed, .ended:
       for note in existingNotes {
         if (note.shapeLayer.path?.contains(location))! {
           selectNote(note)
@@ -159,7 +188,7 @@ class StaffView: UIView {
     default:
       break
     }
-  }
+  }*/
   
   
   func handleNoteGesture(_ gesture: NoteGestureRecognizer) {
@@ -340,6 +369,15 @@ class StaffView: UIView {
       }
       notePath.addLine(to: CGPoint(x: xEndPoint,
                                    y: yEndPoint))
+    }
+  }
+  
+  
+  func eraseNote(note: Note) {
+    note.shapeLayer.removeFromSuperlayer()
+    if let index = existingNotes.index(where: {$0 === note}) {
+      existingNotes.remove(at: index)
+      print("erasing note")
     }
   }
   
