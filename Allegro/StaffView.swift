@@ -10,16 +10,6 @@ import UIKit
 
 class StaffView: UIView {
   
-  /*var noteGR: NoteGestureRecognizer!
-  var eraseGR: UIPanGestureRecognizer!
-  var measureGR: UISwipeGestureRecognizer!
-  
-  var composeMode: ComposeMode = ComposeMode.Note {
-    didSet {
-      updateGestureRecognizers()
-    }
-  }*/
-  
   var topTimeSig: Int = 4 {
     didSet {
       setXPositions()
@@ -247,7 +237,8 @@ class StaffView: UIView {
   }
   
   
-  func gestureLeftSwipe() {
+  /* Returns true if gesture was to add a natural */
+  func gestureLeftSwipe() -> Bool {
     let existingNote = didTapExistingNote(location: startGesture)
     
     /* Add a natural accidental */
@@ -267,11 +258,11 @@ class StaffView: UIView {
       
       note.accidentalImageView = naturalImageView
       self.addSubview(naturalImageView)
+      return true
       
-      /* Change measure to the left */
-    } else {
-      print("Measure swipe left")
     }
+    print("Measure swipe left")
+    return false
   }
   
   

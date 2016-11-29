@@ -13,6 +13,7 @@
 		BD0D738E1DEE0FF9006E5E56 /* StaffView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D738D1DEE0FF9006E5E56 /* StaffView.swift */; };
 		BD0D73901DEE103F006E5E56 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D738F1DEE103F006E5E56 /* HomeViewController.swift */; };
 		BD0D73921DEE107A006E5E56 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D73911DEE107A006E5E56 /* Note.swift */; };
+		BD0D73941DEE221B006E5E56 /* StaffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D73931DEE221B006E5E56 /* StaffViewController.swift */; };
 		BD1DF04C1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1DF04B1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift */; };
 		BD5C32531DDF974B007F7A92 /* KeySignatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C32521DDF974B007F7A92 /* KeySignatureViewController.swift */; };
 		BD5C32551DDFD4ED007F7A92 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C32541DDFD4ED007F7A92 /* Constants.swift */; };
@@ -35,6 +36,7 @@
 		BD0D738D1DEE0FF9006E5E56 /* StaffView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffView.swift; sourceTree = "<group>"; };
 		BD0D738F1DEE103F006E5E56 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		BD0D73911DEE107A006E5E56 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		BD0D73931DEE221B006E5E56 /* StaffViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffViewController.swift; sourceTree = "<group>"; };
 		BD1DF04B1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSignatureViewController.swift; sourceTree = "<group>"; };
 		BD5C32521DDF974B007F7A92 /* KeySignatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeySignatureViewController.swift; sourceTree = "<group>"; };
 		BD5C32541DDFD4ED007F7A92 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				BD0D738B1DEB8606006E5E56 /* MenuViewController.swift */,
 				BD1DF04B1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift */,
 				BD5C32521DDF974B007F7A92 /* KeySignatureViewController.swift */,
+				BD0D73931DEE221B006E5E56 /* StaffViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				BD0D738E1DEE0FF9006E5E56 /* StaffView.swift in Sources */,
 				BD1DF04C1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift in Sources */,
 				BDA672171DDA6F740003938F /* AppDelegate.swift in Sources */,
+				BD0D73941DEE221B006E5E56 /* StaffViewController.swift in Sources */,
 				BD5C32531DDF974B007F7A92 /* KeySignatureViewController.swift in Sources */,
 				BD8F24711DDB9BE800BE94E9 /* InstructionsViewController.swift in Sources */,
 				BD0D736C1DEB6AB1006E5E56 /* UIViewExtensions.swift in Sources */,

@@ -15,15 +15,27 @@ class ComposeViewController: UIViewController {
   
   var composeMode: ComposeMode = ComposeMode.Note {
     didSet {
-      //staffView.composeMode = self.composeMode
-      updateGestureRecognizers()
+      if let staffVC = self.staffVC {
+        staffVC.composeMode = self.composeMode
+      }
     }
+  }
+  
+  var staffVC: StaffViewController!
+  
+  func getStaffView() -> StaffView? {
+    if let staffVC = self.staffVC {
+      if let staffView = staffVC.view as? StaffView {
+        return staffView
+      }
+    }
+    return nil
   }
   
   /* Time signature */
   var topTimeSig: Int = 4 {
     didSet {
-      if let _ = staffView {
+      if let staffView = getStaffView() {
         staffView.topTimeSig = topTimeSig
       }
     }
@@ -32,12 +44,16 @@ class ComposeViewController: UIViewController {
 
   /* Note duration panel */
   @IBOutlet var noteButtons: [UIButton]!
-  
-  @IBOutlet weak var staffView: StaffView!
-
 
   override func viewDidLoad() {
-      super.viewDidLoad()
+    super.viewDidLoad()
+    
+    /* Set up reference to container Staff View Controller */
+    for childVC in self.childViewControllers {
+      if let staffVC = childVC as? StaffViewController {
+        self.staffVC = staffVC
+      }
+    }
     
     /* Auto-select middle note */
     selectNoteButton(noteButtons[noteButtons.count/2])
@@ -47,75 +63,9 @@ class ComposeViewController: UIViewController {
     
     /* Add observer to notification for compose mode change */
     NotificationCenter.default.addObserver(self, selector: #selector(detectComposeModeChange), name: Notification.Name(rawValue: COMPOSE_MODE_NOTIFICATION), object: nil)
-    /* Trigger change in StaffView for initial "Note" compose mode */
+    /* Trigger change in StaffVC for initial "Note" compose mode */
     self.composeMode = .Note
     
-    /* Set up gestures */
-    updateGestureRecognizers()
-  }
-  
-
-  // pragma MARK - Gestures
-  
-  var noteGR: NoteGestureRecognizer!
-  var eraseGR: UIPanGestureRecognizer!
-  var measureGR: UISwipeGestureRecognizer!
-  
-  func updateGestureRecognizers() {
-    switch composeMode {
-    case .Note:
-      if eraseGR != nil {
-        staffView.removeGestureRecognizer(eraseGR)
-      }
-      
-      self.noteGR = NoteGestureRecognizer(target: self, action: #selector(handleNoteGesture(_:)))
-      staffView.addGestureRecognizer(noteGR)
-      
-    case .Erase:
-      if noteGR != nil {
-        staffView.removeGestureRecognizer(noteGR)
-      }
-      
-      self.eraseGR = UIPanGestureRecognizer(target: self, action: #selector(StaffView.handleErasePan(_:)))
-      staffView.addGestureRecognizer(eraseGR)
-      
-    default:
-      break
-    }
-  }
-  
-  
-  func handleNoteGesture(_ gesture: NoteGestureRecognizer) {
-    let location = gesture.location(in: staffView)
-    
-    if (gesture.state == .began) {
-      staffView.startGesture = location
-    
-    } else if (gesture.state == .ended) {
-      
-      switch gesture.noteState {
-      /* Add (or select/de-select) a note */
-      case StaffGestureState.newNote:
-        staffView.gestureAddOrSelectNote(location: location)
-
-      /* Add a flat accidental */
-      case StaffGestureState.flat:
-        staffView.gestureAddFlat()
-        
-      /* Add a sharp accidental */
-      case StaffGestureState.sharp:
-        staffView.gestureAddSharp()
-        
-      case StaffGestureState.leftSwipe:
-        staffView.gestureLeftSwipe()
-        
-      case StaffGestureState.rightSwipe:
-        staffView.gestureRightSwipe()
-        
-      default:
-        break
-      }
-    }
   }
   
   
@@ -134,7 +84,7 @@ class ComposeViewController: UIViewController {
   }
   
   
-  /* Propagate change in composition mode from MenuVC to ComposeVC and StaffView */
+  /* Propagate change in composition mode from MenuVC to ComposeVC and to StaffVC */
   func detectComposeModeChange() {
     self.composeMode = ComposeMode(rawValue: menuViewController.modeSegmentedControl.selectedSegmentIndex)!
   }
@@ -154,8 +104,8 @@ class ComposeViewController: UIViewController {
     noteButton.backgroundColor = BLUE_COLOR
     setViewBorder(noteButton, color: UIColor.black, width: 1)
     
-    // Update the selected duration in the StaffView
-    staffView.noteDuration = noteButton.tag
+    // Update the selected duration in the StaffVC
+    staffVC.noteDuration = noteButton.tag
   }
   
   

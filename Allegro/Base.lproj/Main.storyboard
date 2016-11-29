@@ -181,7 +181,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o1i-4D-lHS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="958" y="-924"/>
+            <point key="canvasLocation" x="566" y="-788"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="O4P-C2-G6U">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="N2D-gb-KeY" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eLj-8e-ml5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1831" y="-748"/>
         </scene>
         <!-- Composition-->
         <scene sceneID="RXO-Xn-zva">
@@ -195,10 +203,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MUz-WX-9dc" userLabel="Staff View" customClass="StaffView" customModule="Allegro" customModuleProvider="target">
-                                <rect key="frame" x="48" y="0.0" width="500" height="320"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KhA-BS-Hup" userLabel="Duration Stack View">
                                 <rect key="frame" x="0.0" y="0.0" width="46" height="321"/>
                                 <subviews>
@@ -253,20 +257,25 @@
                                 </subviews>
                                 <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                             </stackView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qhy-Jv-X8I">
+                                <rect key="frame" x="54" y="0.0" width="494" height="321"/>
+                                <connections>
+                                    <segue destination="q7g-e2-y6R" kind="embed" id="lyz-14-0mO"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="MUz-WX-9dc" firstAttribute="trailing" secondItem="aLi-Wv-ic5" secondAttribute="trailingMargin" id="IPN-6l-6kS"/>
+                            <constraint firstItem="Qhy-Jv-X8I" firstAttribute="top" secondItem="KhA-BS-Hup" secondAttribute="top" id="5Ui-az-0Z5"/>
                             <constraint firstItem="KhA-BS-Hup" firstAttribute="top" secondItem="aLi-Wv-ic5" secondAttribute="top" id="LUc-qb-ZE6"/>
-                            <constraint firstItem="MUz-WX-9dc" firstAttribute="leading" secondItem="KhA-BS-Hup" secondAttribute="trailing" constant="2" id="XHW-Dg-bAl"/>
-                            <constraint firstItem="MUz-WX-9dc" firstAttribute="top" secondItem="KhA-BS-Hup" secondAttribute="top" id="gK5-sR-91G"/>
+                            <constraint firstItem="Qhy-Jv-X8I" firstAttribute="bottom" secondItem="KhA-BS-Hup" secondAttribute="bottom" id="c7U-99-iiF"/>
                             <constraint firstItem="KhA-BS-Hup" firstAttribute="leading" secondItem="aLi-Wv-ic5" secondAttribute="leading" id="gv3-t1-grt"/>
-                            <constraint firstItem="MUz-WX-9dc" firstAttribute="centerY" secondItem="aLi-Wv-ic5" secondAttribute="centerY" id="n2B-7g-EEJ"/>
+                            <constraint firstItem="Qhy-Jv-X8I" firstAttribute="leading" secondItem="KhA-BS-Hup" secondAttribute="trailing" constant="8" symbolic="YES" id="on0-hg-kWg"/>
+                            <constraint firstItem="Qhy-Jv-X8I" firstAttribute="trailing" secondItem="aLi-Wv-ic5" secondAttribute="trailingMargin" id="qhA-jo-PsA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="STL-aI-Smk"/>
                     <connections>
-                        <outlet property="staffView" destination="MUz-WX-9dc" id="HeR-YZ-xMr"/>
                         <outletCollection property="noteButtons" destination="BMV-oR-FFb" collectionClass="NSMutableArray" id="FTW-Ie-MDu"/>
                         <outletCollection property="noteButtons" destination="eLu-sq-tGU" collectionClass="NSMutableArray" id="VPe-0N-4yh"/>
                         <outletCollection property="noteButtons" destination="hU9-0o-I4J" collectionClass="NSMutableArray" id="TAz-NP-NZD"/>
@@ -278,7 +287,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ubn-9q-uas" sceneMemberID="firstResponder"/>
                 <exit id="a2T-o5-6zh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="958.4707646176912" y="221.59999999999999"/>
+            <point key="canvasLocation" x="958.09859154929575" y="221.25"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="xqM-40-Dzy">
@@ -439,7 +448,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g71-0V-NoR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1616.1971830985915" y="52.5"/>
+            <point key="canvasLocation" x="1654" y="221"/>
         </scene>
         <!--Time Signature View Controller-->
         <scene sceneID="gdb-n6-CMJ">
@@ -782,6 +791,20 @@
                 <exit id="gxq-Wi-Aqk" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1340.4929577464789" y="1085.625"/>
+        </scene>
+        <!--Staff View Controller-->
+        <scene sceneID="5dQ-cC-qid">
+            <objects>
+                <viewController id="q7g-e2-y6R" userLabel="Staff View Controller" customClass="StaffViewController" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dnP-34-An3" customClass="StaffView" customModule="Allegro" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="494" height="321"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uGk-Z3-Jp5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1234" y="-1268"/>
         </scene>
     </scenes>
     <resources>
