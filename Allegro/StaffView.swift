@@ -131,11 +131,11 @@ class StaffView: UIView {
       lastXVal = xVal
       
       /*let aPath = UIBezierPath()
-      aPath.moveToPoint(CGPoint(x:xVal, y:0))
-      aPath.addLineToPoint(CGPoint(x:xVal, y:self.frame.height))
-      aPath.closePath()
-      UIColor.blackColor().set()
-      aPath.stroke()*/
+       aPath.moveToPoint(CGPoint(x:xVal, y:0))
+       aPath.addLineToPoint(CGPoint(x:xVal, y:self.frame.height))
+       aPath.closePath()
+       UIColor.blackColor().set()
+       aPath.stroke()*/
     }
     setNeedsDisplay()
   }
@@ -145,13 +145,13 @@ class StaffView: UIView {
   
   func updateGestureRecognizers() {
     /*if noteGR != nil {
-      self.removeGestureRecognizer(noteGR)
-    }
-    
-    self.measureGR = UISwipeGestureRecognizer(target: self, action: #selector(handleMeasureSwipe(_:)))
-    measureGR.direction = UISwipeGestureRecognizerDirection.right
-    measureGR.numberOfTouchesRequired = 1
-    self.addGestureRecognizer(measureGR)*/
+     self.removeGestureRecognizer(noteGR)
+     }
+     
+     self.measureGR = UISwipeGestureRecognizer(target: self, action: #selector(handleMeasureSwipe(_:)))
+     measureGR.direction = UISwipeGestureRecognizerDirection.right
+     measureGR.numberOfTouchesRequired = 1
+     self.addGestureRecognizer(measureGR)*/
     
     switch composeMode {
     case .Note:
@@ -176,11 +176,6 @@ class StaffView: UIView {
   }
   
   
-  func handleMeasureSwipe(_ gesture: UISwipeGestureRecognizer) {
-    print("Got measure swipe")
-  }
-  
-  
   func handleErasePan(_ gesture: UIPanGestureRecognizer) {
     let location = gesture.location(in: self)
     
@@ -197,27 +192,27 @@ class StaffView: UIView {
   }
   
   /*func handlePan(_ gesture: UIPanGestureRecognizer) {
-    let location = gesture.location(in: self)
-    
-    switch gesture.state {
-    case .changed, .ended:
-      for note in existingNotes {
-        if (note.shapeLayer.path?.contains(location))! {
-          selectNote(note)
-          moveNote(note: note, panLocation: location, snap: false)
-        }
-      }
-    case .ended:
-      for note in existingNotes {
-        if (note.shapeLayer.path?.contains(location))! {
-          selectNote(note)
-          moveNote(note: note, panLocation: location, snap: true)
-        }
-      }
-    default:
-      break
-    }
-  }*/
+   let location = gesture.location(in: self)
+   
+   switch gesture.state {
+   case .changed, .ended:
+   for note in existingNotes {
+   if (note.shapeLayer.path?.contains(location))! {
+   selectNote(note)
+   moveNote(note: note, panLocation: location, snap: false)
+   }
+   }
+   case .ended:
+   for note in existingNotes {
+   if (note.shapeLayer.path?.contains(location))! {
+   selectNote(note)
+   moveNote(note: note, panLocation: location, snap: true)
+   }
+   }
+   default:
+   break
+   }
+   }*/
   
   
   func handleNoteGesture(_ gesture: NoteGestureRecognizer) {
@@ -225,9 +220,9 @@ class StaffView: UIView {
     
     if(gesture.state == .began) {
       startGesture = location
-    
+      
     } else if (gesture.state == .ended) {
-    
+      
       /* Add (or select/de-select) a note */
       if ((gesture.noteState == NoteGestureRecognizer.NoteGestureRecognizerState.newNote)) {
         
@@ -241,13 +236,13 @@ class StaffView: UIView {
             selectNote(note)
           }
           
-        /* Otherwise, add a new Note. */
+          /* Otherwise, add a new Note. */
         } else {
           print("Adding new note")
           addNote(location, isFilled: shouldFillInNote())
         }
         
-      /* Add a flat accidental */
+        /* Add a flat accidental */
       } else if (gesture.noteState == NoteGestureRecognizer.NoteGestureRecognizerState.flat) {
         let existingNote = didTapExistingNote(location: startGesture)
         if let note = existingNote {
@@ -267,8 +262,8 @@ class StaffView: UIView {
           note.accidentalImageView = flatImageView
           self.addSubview(flatImageView)
         }
-      
-      /* Add a sharp accidental */
+        
+        /* Add a sharp accidental */
       } else if (gesture.noteState == NoteGestureRecognizer.NoteGestureRecognizerState.sharp) {
         let existingNote = didTapExistingNote(location: startGesture)
         if let note = existingNote {
@@ -288,11 +283,13 @@ class StaffView: UIView {
           note.accidentalImageView = sharpImageView
           self.addSubview(sharpImageView)
         }
-      
-      /* Add a natural accidental */
+        
+        /* Got left horizontal swipe */
       } else if (gesture.noteState == NoteGestureRecognizer.NoteGestureRecognizerState.natural) {
         print("Natural gesture")
         let existingNote = didTapExistingNote(location: startGesture)
+        
+        /* Add a natural accidental */
         if let note = existingNote {
           let naturalImage = UIImage(named: "natural")
           let ratio = naturalSize.width / (naturalImage?.size.width)!
@@ -309,14 +306,22 @@ class StaffView: UIView {
           
           note.accidentalImageView = naturalImageView
           self.addSubview(naturalImageView)
+          
+          /* Change measure to the left */
+        } else {
+          print("Measure swipe left")
         }
         
+        /* Got right horizontal swipe:
+         Change measure to the right */
+      } else if (gesture.noteState == NoteGestureRecognizer.NoteGestureRecognizerState.measureRight) {
+        print("Measure swipe right")
       }
     }
-  
+    
   }
-
-
+  
+  
   func didTapExistingNote(location: CGPoint) -> Note? {
     for note in existingNotes {
       if (note.shapeLayer.path?.contains(location))! {
@@ -468,5 +473,5 @@ class StaffView: UIView {
     return noteDuration > 1
   }
   
-
+  
 }

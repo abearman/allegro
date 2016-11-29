@@ -17,6 +17,7 @@ class NoteGestureRecognizer: UIGestureRecognizer {
     case sharp
     case flat
     case natural
+    case measureRight
   }
   
   var noteState: NoteGestureRecognizerState = .newNote
@@ -62,9 +63,10 @@ class NoteGestureRecognizer: UIGestureRecognizer {
       state = .ended
 
     } else {
-      /*if isMeasureSwipe() {
-        print("Is measure swipe")
-      } else*/ if isNatural() {
+      if isMeasureSwipeRight() {
+        noteState = .measureRight
+        state = .ended
+      } else if isNatural() {
         noteState = .natural
         state = .ended
       } else if isFlat() {
@@ -119,7 +121,7 @@ class NoteGestureRecognizer: UIGestureRecognizer {
   }
   
 
-  func isMeasureSwipe() -> Bool {
+  func isMeasureSwipeRight() -> Bool {
     if (touchedPoints.count > 1) {
       let firstPoint = touchedPoints[0]
       let lastPoint = touchedPoints[touchedPoints.count-1]
