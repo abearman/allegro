@@ -12,10 +12,10 @@
 		BD0D738C1DEB8606006E5E56 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D738B1DEB8606006E5E56 /* MenuViewController.swift */; };
 		BD0D738E1DEE0FF9006E5E56 /* StaffView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D738D1DEE0FF9006E5E56 /* StaffView.swift */; };
 		BD0D73901DEE103F006E5E56 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D738F1DEE103F006E5E56 /* HomeViewController.swift */; };
+		BD0D73921DEE107A006E5E56 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D73911DEE107A006E5E56 /* Note.swift */; };
 		BD1DF04C1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1DF04B1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift */; };
 		BD5C32531DDF974B007F7A92 /* KeySignatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C32521DDF974B007F7A92 /* KeySignatureViewController.swift */; };
 		BD5C32551DDFD4ED007F7A92 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C32541DDFD4ED007F7A92 /* Constants.swift */; };
-		BD5C325B1DE23BC0007F7A92 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C325A1DE23BC0007F7A92 /* Note.swift */; };
 		BD81262C1DE4DBB000BDE1CC /* NoteGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81262B1DE4DBB000BDE1CC /* NoteGestureRecognizer.swift */; };
 		BD8F24711DDB9BE800BE94E9 /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8F24701DDB9BE800BE94E9 /* InstructionsViewController.swift */; };
 		BD8F24741DDBA06600BE94E9 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8F24731DDBA06600BE94E9 /* ComposeViewController.swift */; };
@@ -34,10 +34,10 @@
 		BD0D738B1DEB8606006E5E56 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		BD0D738D1DEE0FF9006E5E56 /* StaffView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffView.swift; sourceTree = "<group>"; };
 		BD0D738F1DEE103F006E5E56 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		BD0D73911DEE107A006E5E56 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		BD1DF04B1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSignatureViewController.swift; sourceTree = "<group>"; };
 		BD5C32521DDF974B007F7A92 /* KeySignatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeySignatureViewController.swift; sourceTree = "<group>"; };
 		BD5C32541DDFD4ED007F7A92 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		BD5C325A1DE23BC0007F7A92 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Note.swift; path = ../Note.swift; sourceTree = "<group>"; };
 		BD81262B1DE4DBB000BDE1CC /* NoteGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteGestureRecognizer.swift; sourceTree = "<group>"; };
 		BD8F24701DDB9BE800BE94E9 /* InstructionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
 		BD8F24731DDBA06600BE94E9 /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 		BD81262F1DE4DBC800BDE1CC /* Swift Classes */ = {
 			isa = PBXGroup;
 			children = (
-				BD5C325A1DE23BC0007F7A92 /* Note.swift */,
+				BD0D73911DEE107A006E5E56 /* Note.swift */,
 				BD5C32541DDFD4ED007F7A92 /* Constants.swift */,
 			);
 			name = "Swift Classes";
@@ -230,11 +230,11 @@
 				BD0D738C1DEB8606006E5E56 /* MenuViewController.swift in Sources */,
 				BDA6721F1DDA6F740003938F /* Allegro.xcdatamodeld in Sources */,
 				BD81262C1DE4DBB000BDE1CC /* NoteGestureRecognizer.swift in Sources */,
+				BD0D73921DEE107A006E5E56 /* Note.swift in Sources */,
 				BD0D73901DEE103F006E5E56 /* HomeViewController.swift in Sources */,
 				BD0D738E1DEE0FF9006E5E56 /* StaffView.swift in Sources */,
 				BD1DF04C1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift in Sources */,
 				BDA672171DDA6F740003938F /* AppDelegate.swift in Sources */,
-				BD5C325B1DE23BC0007F7A92 /* Note.swift in Sources */,
 				BD5C32531DDF974B007F7A92 /* KeySignatureViewController.swift in Sources */,
 				BD8F24711DDB9BE800BE94E9 /* InstructionsViewController.swift in Sources */,
 				BD0D736C1DEB6AB1006E5E56 /* UIViewExtensions.swift in Sources */,

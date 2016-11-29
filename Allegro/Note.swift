@@ -9,7 +9,7 @@
 import UIKit
 
 class Note {
-
+  
   var shapeLayer: CAShapeLayer = CAShapeLayer()
   var accidentalImageView: UIImageView? = nil
   
