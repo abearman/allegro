@@ -33,16 +33,13 @@ class HomeViewController: UIViewController {
   
   @IBAction func prepareForUnwindToHome(_ sender: UIStoryboardSegue) {
     // No code needed here
+    print("Unwinding to home")
+    /*if let composeVC = sender.source as? ComposeViewController {
+      if let menuVC = composeVC.revealViewController() {
+        menuVC.revealToggle(animated: true)
+      }
+    }*/
   }
   
-  /*
-   // MARK: - Navigation
-   
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-   // Get the new view controller using segue.destinationViewController.
-   // Pass the selected object to the new view controller.
-   }
-   */
   
 }
