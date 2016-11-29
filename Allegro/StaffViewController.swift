@@ -10,7 +10,11 @@ import UIKit
 
 class StaffViewController: UIViewController {
 
-  var composeMode: ComposeMode = ComposeMode.Note
+  var composeMode: ComposeMode = ComposeMode.Note {
+    didSet {
+      updateGestureRecognizers()
+    }
+  }
   
   var noteDuration: Int = 0 {
     didSet {
@@ -24,7 +28,7 @@ class StaffViewController: UIViewController {
     super.viewDidLoad()
     
     /* Set up gestures */
-    updateGestureRecognizers()
+    //updateGestureRecognizers()
   }
   
   
@@ -56,14 +60,22 @@ class StaffViewController: UIViewController {
       case .Erase:
         if noteGR != nil {
           staffView.removeGestureRecognizer(noteGR)
+          noteGR = nil
         }
         
-        self.eraseGR = UIPanGestureRecognizer(target: self, action: #selector(StaffView.handleErasePan(_:)))
+        self.eraseGR = UIPanGestureRecognizer(target: self, action: #selector(handleErase(_:)))
         staffView.addGestureRecognizer(eraseGR)
         
       default:
         break
       }
+    }
+  }
+  
+  
+  func handleErase(_ gesture: UIPanGestureRecognizer) {
+    if let staffView = getStaffView() {
+      staffView.handleErasePan(gesture)
     }
   }
   

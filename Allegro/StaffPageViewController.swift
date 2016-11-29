@@ -14,6 +14,8 @@ class StaffPageViewController: UIPageViewController, UIPageViewControllerDelegat
     return [self.newStaffVC()]
   }()
   
+  var currentIndex: Int = 0
+  
   private func newStaffVC() -> StaffViewController {
     return UIStoryboard(name: "Main", bundle: nil) .instantiateViewController(withIdentifier: "StaffVC") as! StaffViewController
   }
