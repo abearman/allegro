@@ -10,7 +10,7 @@ import UIKit
 
 class StaffView: UIView {
   
-  var noteGR: NoteGestureRecognizer!
+  /*var noteGR: NoteGestureRecognizer!
   var eraseGR: UIPanGestureRecognizer!
   var measureGR: UISwipeGestureRecognizer!
   
@@ -18,7 +18,7 @@ class StaffView: UIView {
     didSet {
       updateGestureRecognizers()
     }
-  }
+  }*/
   
   var topTimeSig: Int = 4 {
     didSet {
@@ -142,38 +142,30 @@ class StaffView: UIView {
   
   
   // MARK - Gesture Recognizers
+
   
-  func updateGestureRecognizers() {
-    /*if noteGR != nil {
-     self.removeGestureRecognizer(noteGR)
-     }
+  /*func handlePan(_ gesture: UIPanGestureRecognizer) {
+     let location = gesture.location(in: self)
      
-     self.measureGR = UISwipeGestureRecognizer(target: self, action: #selector(handleMeasureSwipe(_:)))
-     measureGR.direction = UISwipeGestureRecognizerDirection.right
-     measureGR.numberOfTouchesRequired = 1
-     self.addGestureRecognizer(measureGR)*/
-    
-    switch composeMode {
-    case .Note:
-      if eraseGR != nil {
-        self.removeGestureRecognizer(eraseGR)
+     switch gesture.state {
+     case .changed, .ended:
+       for note in existingNotes {
+        if (note.shapeLayer.path?.contains(location))! {
+          selectNote(note)
+          moveNote(note: note, panLocation: location, snap: false)
+        }
+       }
+     case .ended:
+      for note in existingNotes {
+        if (note.shapeLayer.path?.contains(location))! {
+          selectNote(note)
+          moveNote(note: note, panLocation: location, snap: true)
+        }
       }
-      
-      self.noteGR = NoteGestureRecognizer(target: self, action: #selector(handleNoteGesture(_:)))
-      self.addGestureRecognizer(noteGR)
-      
-    case .Erase:
-      if noteGR != nil {
-        self.removeGestureRecognizer(noteGR)
-      }
-      
-      self.eraseGR = UIPanGestureRecognizer(target: self, action: #selector(handleErasePan(_:)))
-      self.addGestureRecognizer(eraseGR)
-      
-    default:
+     default:
       break
-    }
-  }
+     }
+   }*/
   
   
   func handleErasePan(_ gesture: UIPanGestureRecognizer) {
@@ -191,134 +183,100 @@ class StaffView: UIView {
     }
   }
   
-  /*func handlePan(_ gesture: UIPanGestureRecognizer) {
-   let location = gesture.location(in: self)
-   
-   switch gesture.state {
-   case .changed, .ended:
-   for note in existingNotes {
-   if (note.shapeLayer.path?.contains(location))! {
-   selectNote(note)
-   moveNote(note: note, panLocation: location, snap: false)
-   }
-   }
-   case .ended:
-   for note in existingNotes {
-   if (note.shapeLayer.path?.contains(location))! {
-   selectNote(note)
-   moveNote(note: note, panLocation: location, snap: true)
-   }
-   }
-   default:
-   break
-   }
-   }*/
   
-  
-  func handleNoteGesture(_ gesture: NoteGestureRecognizer) {
-    let location = gesture.location(in: self)
-    
-    if(gesture.state == .began) {
-      startGesture = location
-      
-    } else if (gesture.state == .ended) {
-      
-      /* Add (or select/de-select) a note */
-      if ((gesture.noteState == NoteGestureRecognizer.NoteGestureRecognizerState.newNote)) {
-        
-        /* Check to see if we tapped an existing Note.
-         * If so, select/de-select it. */
-        let existingNote = didTapExistingNote(location: location)
-        if let note = existingNote {
-          if note.isSelected {
-            deselectNote(note)
-          } else {
-            selectNote(note)
-          }
-          
-          /* Otherwise, add a new Note. */
-        } else {
-          print("Adding new note")
-          addNote(location, isFilled: shouldFillInNote())
-        }
-        
-        /* Add a flat accidental */
-      } else if (gesture.noteState == NoteGestureRecognizer.NoteGestureRecognizerState.flat) {
-        let existingNote = didTapExistingNote(location: startGesture)
-        if let note = existingNote {
-          let flatImage = UIImage(named: "flat")
-          let ratio = flatSize.width / (flatImage?.size.width)!
-          flatSize.height = ratio * (flatImage?.size.height)!
-          
-          let flatImageView = UIImageView(image: flatImage)
-          flatImageView.frame = CGRect(x: note.location.x - flatSize.width,
-                                       y: note.location.y - flatYOffset,
-                                       width: flatSize.width,
-                                       height: flatSize.height)
-          if (note.accidentalImageView != nil) {
-            note.accidentalImageView?.removeFromSuperview()
-          }
-          
-          note.accidentalImageView = flatImageView
-          self.addSubview(flatImageView)
-        }
-        
-        /* Add a sharp accidental */
-      } else if (gesture.noteState == NoteGestureRecognizer.NoteGestureRecognizerState.sharp) {
-        let existingNote = didTapExistingNote(location: startGesture)
-        if let note = existingNote {
-          let sharpImage = UIImage(named: "sharp")
-          let ratio = sharpSize.width / (sharpImage?.size.width)!
-          sharpSize.height = ratio * (sharpImage?.size.height)!
-          
-          let sharpImageView = UIImageView(image: sharpImage)
-          sharpImageView.frame = CGRect(x: note.location.x - sharpSize.width,
-                                        y: note.location.y - sharpYOffset,
-                                        width: sharpSize.width,
-                                        height: sharpSize.height)
-          if (note.accidentalImageView != nil) {
-            note.accidentalImageView?.removeFromSuperview()
-          }
-          
-          note.accidentalImageView = sharpImageView
-          self.addSubview(sharpImageView)
-        }
-        
-        /* Got left horizontal swipe */
-      } else if (gesture.noteState == NoteGestureRecognizer.NoteGestureRecognizerState.natural) {
-        print("Natural gesture")
-        let existingNote = didTapExistingNote(location: startGesture)
-        
-        /* Add a natural accidental */
-        if let note = existingNote {
-          let naturalImage = UIImage(named: "natural")
-          let ratio = naturalSize.width / (naturalImage?.size.width)!
-          naturalSize.height = ratio * (naturalImage?.size.height)!
-          
-          let naturalImageView = UIImageView(image: naturalImage)
-          naturalImageView.frame = CGRect(x: note.location.x - naturalSize.width,
-                                          y: note.location.y - naturalYOffset,
-                                          width: naturalSize.width,
-                                          height: naturalSize.height)
-          if (note.accidentalImageView != nil) {
-            note.accidentalImageView?.removeFromSuperview()
-          }
-          
-          note.accidentalImageView = naturalImageView
-          self.addSubview(naturalImageView)
-          
-          /* Change measure to the left */
-        } else {
-          print("Measure swipe left")
-        }
-        
-        /* Got right horizontal swipe:
-         Change measure to the right */
-      } else if (gesture.noteState == NoteGestureRecognizer.NoteGestureRecognizerState.measureRight) {
-        print("Measure swipe right")
+  func gestureAddOrSelectNote(location: CGPoint) {
+    /* Check to see if we tapped an existing Note.
+     * If so, select/de-select it. */
+    let existingNote = didTapExistingNote(location: location)
+    if let note = existingNote {
+      if note.isSelected {
+        deselectNote(note)
+      } else {
+        selectNote(note)
       }
+      
+      /* Otherwise, add a new Note. */
+    } else {
+      print("Adding new note")
+      addNote(location, isFilled: shouldFillInNote())
     }
+  }
+  
+  
+  func gestureAddFlat() {
+    let existingNote = didTapExistingNote(location: startGesture)
+    if let note = existingNote {
+      let flatImage = UIImage(named: "flat")
+      let ratio = flatSize.width / (flatImage?.size.width)!
+      flatSize.height = ratio * (flatImage?.size.height)!
+      
+      let flatImageView = UIImageView(image: flatImage)
+      flatImageView.frame = CGRect(x: note.location.x - flatSize.width,
+                                   y: note.location.y - flatYOffset,
+                                   width: flatSize.width,
+                                   height: flatSize.height)
+      if (note.accidentalImageView != nil) {
+        note.accidentalImageView?.removeFromSuperview()
+      }
+      
+      note.accidentalImageView = flatImageView
+      self.addSubview(flatImageView)
+    }
+  }
+  
+  
+  func gestureAddSharp() {
+    let existingNote = didTapExistingNote(location: startGesture)
+    if let note = existingNote {
+      let sharpImage = UIImage(named: "sharp")
+      let ratio = sharpSize.width / (sharpImage?.size.width)!
+      sharpSize.height = ratio * (sharpImage?.size.height)!
+      
+      let sharpImageView = UIImageView(image: sharpImage)
+      sharpImageView.frame = CGRect(x: note.location.x - sharpSize.width,
+                                    y: note.location.y - sharpYOffset,
+                                    width: sharpSize.width,
+                                    height: sharpSize.height)
+      if (note.accidentalImageView != nil) {
+        note.accidentalImageView?.removeFromSuperview()
+      }
+      
+      note.accidentalImageView = sharpImageView
+      self.addSubview(sharpImageView)
+    }
+  }
+  
+  
+  func gestureLeftSwipe() {
+    let existingNote = didTapExistingNote(location: startGesture)
     
+    /* Add a natural accidental */
+    if let note = existingNote {
+      let naturalImage = UIImage(named: "natural")
+      let ratio = naturalSize.width / (naturalImage?.size.width)!
+      naturalSize.height = ratio * (naturalImage?.size.height)!
+      
+      let naturalImageView = UIImageView(image: naturalImage)
+      naturalImageView.frame = CGRect(x: note.location.x - naturalSize.width,
+                                      y: note.location.y - naturalYOffset,
+                                      width: naturalSize.width,
+                                      height: naturalSize.height)
+      if (note.accidentalImageView != nil) {
+        note.accidentalImageView?.removeFromSuperview()
+      }
+      
+      note.accidentalImageView = naturalImageView
+      self.addSubview(naturalImageView)
+      
+      /* Change measure to the left */
+    } else {
+      print("Measure swipe left")
+    }
+  }
+  
+  
+  func gestureRightSwipe() {
+    print("Measure swipe right")
   }
   
   

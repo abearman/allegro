@@ -8,19 +8,19 @@
 
 import UIKit.UIGestureRecognizerSubclass
 
+enum StaffGestureState {
+  case newNote
+  case sharp
+  case flat
+  case leftSwipe
+  case rightSwipe
+}
+
 class NoteGestureRecognizer: UIGestureRecognizer {
   
   let NATURAL_ERROR = CGFloat(30)
-
-  enum NoteGestureRecognizerState {
-    case newNote
-    case sharp
-    case flat
-    case natural
-    case measureRight
-  }
   
-  var noteState: NoteGestureRecognizerState = .newNote
+  var noteState: StaffGestureState = .newNote
   
   private var touchedPoints = [CGPoint]() // point history
   
@@ -63,11 +63,11 @@ class NoteGestureRecognizer: UIGestureRecognizer {
       state = .ended
 
     } else {
-      if isMeasureSwipeRight() {
-        noteState = .measureRight
+      if isRightSwipe() {
+        noteState = .rightSwipe
         state = .ended
-      } else if isNatural() {
-        noteState = .natural
+      } else if isLeftSwipe() {
+        noteState = .leftSwipe
         state = .ended
       } else if isFlat() {
         noteState = .flat
@@ -106,12 +106,10 @@ class NoteGestureRecognizer: UIGestureRecognizer {
     return false
   }
   
-  func isNatural() -> Bool {
+  func isLeftSwipe() -> Bool {
     if (touchedPoints.count > 1) {
       let firstPoint = touchedPoints[0]
       let lastPoint = touchedPoints[touchedPoints.count-1]
-      print("Natural error: ", abs(firstPoint.y - lastPoint.y))
-      
       if ((firstPoint.x < lastPoint.x) &&
             abs(firstPoint.y - lastPoint.y) < NATURAL_ERROR) {
         return true
@@ -121,11 +119,11 @@ class NoteGestureRecognizer: UIGestureRecognizer {
   }
   
 
-  func isMeasureSwipeRight() -> Bool {
+  func isRightSwipe() -> Bool {
     if (touchedPoints.count > 1) {
       let firstPoint = touchedPoints[0]
       let lastPoint = touchedPoints[touchedPoints.count-1]
-      if ((firstPoint.x > lastPoint.x)) {
+      if ((firstPoint.x > lastPoint.x) && abs(firstPoint.y - lastPoint.y) < NATURAL_ERROR) {
         return true
       }
     }
