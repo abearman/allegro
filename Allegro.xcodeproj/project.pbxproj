@@ -11,6 +11,7 @@
 		BD0D73861DEB7E2F006E5E56 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0D73851DEB7E2F006E5E56 /* SWRevealViewController.m */; };
 		BD0D738C1DEB8606006E5E56 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D738B1DEB8606006E5E56 /* MenuViewController.swift */; };
 		BD0D738E1DEE0FF9006E5E56 /* StaffView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D738D1DEE0FF9006E5E56 /* StaffView.swift */; };
+		BD0D73901DEE103F006E5E56 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D738F1DEE103F006E5E56 /* HomeViewController.swift */; };
 		BD1DF04C1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1DF04B1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift */; };
 		BD5C32531DDF974B007F7A92 /* KeySignatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C32521DDF974B007F7A92 /* KeySignatureViewController.swift */; };
 		BD5C32551DDFD4ED007F7A92 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C32541DDFD4ED007F7A92 /* Constants.swift */; };
@@ -23,7 +24,6 @@
 		BDA6721F1DDA6F740003938F /* Allegro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BDA6721D1DDA6F740003938F /* Allegro.xcdatamodeld */; };
 		BDA672211DDA6F740003938F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDA672201DDA6F740003938F /* Assets.xcassets */; };
 		BDA672241DDA6F740003938F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDA672221DDA6F740003938F /* LaunchScreen.storyboard */; };
-		BDA672321DDA7CBA0003938F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA672311DDA7CBA0003938F /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +33,7 @@
 		BD0D73851DEB7E2F006E5E56 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		BD0D738B1DEB8606006E5E56 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		BD0D738D1DEE0FF9006E5E56 /* StaffView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffView.swift; sourceTree = "<group>"; };
+		BD0D738F1DEE103F006E5E56 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		BD1DF04B1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSignatureViewController.swift; sourceTree = "<group>"; };
 		BD5C32521DDF974B007F7A92 /* KeySignatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeySignatureViewController.swift; sourceTree = "<group>"; };
 		BD5C32541DDFD4ED007F7A92 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -47,7 +48,6 @@
 		BDA672201DDA6F740003938F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDA672231DDA6F740003938F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BDA672251DDA6F740003938F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BDA672311DDA7CBA0003938F /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +82,7 @@
 		BD81262E1DE4DBBE00BDE1CC /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BDA672311DDA7CBA0003938F /* HomeViewController.swift */,
+				BD0D738F1DEE103F006E5E56 /* HomeViewController.swift */,
 				BD8F24701DDB9BE800BE94E9 /* InstructionsViewController.swift */,
 				BD8F24731DDBA06600BE94E9 /* ComposeViewController.swift */,
 				BD0D738B1DEB8606006E5E56 /* MenuViewController.swift */,
@@ -230,11 +230,11 @@
 				BD0D738C1DEB8606006E5E56 /* MenuViewController.swift in Sources */,
 				BDA6721F1DDA6F740003938F /* Allegro.xcdatamodeld in Sources */,
 				BD81262C1DE4DBB000BDE1CC /* NoteGestureRecognizer.swift in Sources */,
+				BD0D73901DEE103F006E5E56 /* HomeViewController.swift in Sources */,
 				BD0D738E1DEE0FF9006E5E56 /* StaffView.swift in Sources */,
 				BD1DF04C1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift in Sources */,
 				BDA672171DDA6F740003938F /* AppDelegate.swift in Sources */,
 				BD5C325B1DE23BC0007F7A92 /* Note.swift in Sources */,
-				BDA672321DDA7CBA0003938F /* HomeViewController.swift in Sources */,
 				BD5C32531DDF974B007F7A92 /* KeySignatureViewController.swift in Sources */,
 				BD8F24711DDB9BE800BE94E9 /* InstructionsViewController.swift in Sources */,
 				BD0D736C1DEB6AB1006E5E56 /* UIViewExtensions.swift in Sources */,

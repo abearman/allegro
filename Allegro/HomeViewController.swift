@@ -9,7 +9,7 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+  
   @IBOutlet weak var newCompButton: UIButton!
   @IBOutlet weak var instructionsButton: UIButton!
   
@@ -17,14 +17,14 @@ class HomeViewController: UIViewController {
     super.viewDidLoad()
     
     self.navigationController?.isNavigationBarHidden = true
-
+    
     newCompButton.layer.borderWidth = 2
     newCompButton.layer.borderColor = UIColor.black.cgColor
-  
+    
     instructionsButton.layer.borderWidth = 2
     instructionsButton.layer.borderColor = UIColor.black.cgColor
   }
-
+  
   
   override func viewWillDisappear(_ animated: Bool) {
     //self.navigationController?.navigationBarHidden = false
@@ -34,15 +34,15 @@ class HomeViewController: UIViewController {
   @IBAction func prepareForUnwindToHome(_ sender: UIStoryboardSegue) {
     // No code needed here
   }
-
+  
   /*
-  // MARK: - Navigation
-
-  // In a storyboard-based application, you will often want to do a little preparation before navigation
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-      // Get the new view controller using segue.destinationViewController.
-      // Pass the selected object to the new view controller.
-  }
-  */
-
+   // MARK: - Navigation
+   
+   // In a storyboard-based application, you will often want to do a little preparation before navigation
+   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+   // Get the new view controller using segue.destinationViewController.
+   // Pass the selected object to the new view controller.
+   }
+   */
+  
 }
