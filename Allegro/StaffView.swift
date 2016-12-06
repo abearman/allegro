@@ -54,8 +54,6 @@ class StaffView: UIView {
     }
   }
   
-  var existingNotes: [Note] = []
-  
   var startGesture: CGPoint = CGPoint(x: 0, y: 0)
   
   
@@ -171,9 +169,10 @@ class StaffView: UIView {
     
     switch gesture.state {
     case .changed, .ended:
-      for note in existingNotes {
-        if (note.shapeLayer.path?.contains(location))! {
-          eraseNote(note: note)
+      for note in measure.notes {
+        let noteLayer = note.noteLayer
+        if (noteLayer.shapeLayer.path?.contains(location))! {
+          eraseNote(note)
         }
       }
     default:
@@ -185,14 +184,14 @@ class StaffView: UIView {
   func gestureAddOrSelectNote(location: CGPoint) {
     /* Check to see if we tapped an existing Note.
      * If so, select/de-select it. */
-    let existingNote = didTapExistingNote(location: location)
-    if let note = existingNote {
-      if note.isSelected {
+    if let existingNote = didTapExistingNote(location) {
+      let noteLayer = existingNote.noteLayer
+      if noteLayer.isSelected {
         print("Deselecting note")
-        deselectNote(note)
+        deselectNote(noteLayer)
       } else {
         print("Selecting note")
-        selectNote(note)
+        selectNote(noteLayer)
       }
       
       /* Otherwise, add a new Note. */
@@ -205,72 +204,89 @@ class StaffView: UIView {
   
   func gestureAddFlat() {
     print("Adding flat")
-    let existingNote = didTapExistingNote(location: startGesture)
-    if let note = existingNote {
+    if let existingNote = didTapExistingNote(startGesture) {
+      /* Update UI */
+      let noteLayer = existingNote.noteLayer
       let flatImage = UIImage(named: "flat")
       let ratio = flatSize.width / (flatImage?.size.width)!
       flatSize.height = ratio * (flatImage?.size.height)!
       
       let flatImageView = UIImageView(image: flatImage)
-      flatImageView.frame = CGRect(x: note.location.x - flatSize.width,
-                                   y: note.location.y - flatYOffset,
+      flatImageView.frame = CGRect(x: noteLayer.location.x - flatSize.width,
+                                   y: noteLayer.location.y - flatYOffset,
                                    width: flatSize.width,
                                    height: flatSize.height)
-      if (note.accidentalImageView != nil) {
-        note.accidentalImageView?.removeFromSuperview()
+      if (noteLayer.accidentalImageView != nil) {
+        noteLayer.accidentalImageView?.removeFromSuperview()
       }
       
-      note.accidentalImageView = flatImageView
+      noteLayer.accidentalImageView = flatImageView
       self.addSubview(flatImageView)
+      
+      /* Update model */
+      if (existingNote.accidental == Accidental.Flat) {
+        existingNote.accidental = Accidental.DoubleFlat
+      } else {
+        existingNote.accidental = Accidental.Flat
+      }
     }
   }
   
   
   func gestureAddSharp() {
     print("Adding sharp")
-    let existingNote = didTapExistingNote(location: startGesture)
-    if let note = existingNote {
+    if let existingNote = didTapExistingNote(startGesture) {
+      /* Update UI */
+      let noteLayer = existingNote.noteLayer
       let sharpImage = UIImage(named: "sharp")
       let ratio = sharpSize.width / (sharpImage?.size.width)!
       sharpSize.height = ratio * (sharpImage?.size.height)!
       
       let sharpImageView = UIImageView(image: sharpImage)
-      sharpImageView.frame = CGRect(x: note.location.x - sharpSize.width,
-                                    y: note.location.y - sharpYOffset,
+      sharpImageView.frame = CGRect(x: noteLayer.location.x - sharpSize.width,
+                                    y: noteLayer.location.y - sharpYOffset,
                                     width: sharpSize.width,
                                     height: sharpSize.height)
-      if (note.accidentalImageView != nil) {
-        note.accidentalImageView?.removeFromSuperview()
+      if (noteLayer.accidentalImageView != nil) {
+        noteLayer.accidentalImageView?.removeFromSuperview()
       }
       
-      note.accidentalImageView = sharpImageView
+      noteLayer.accidentalImageView = sharpImageView
       self.addSubview(sharpImageView)
+      
+      /* Update model */
+      if (existingNote.accidental == Accidental.Flat) {
+        existingNote.accidental = Accidental.DoubleFlat
+      } else {
+        existingNote.accidental = Accidental.Flat
+      }
     }
   }
   
   
   func gestureAddNatural() {
     print("Detected natural gesture")
-    let existingNote = didTapExistingNote(location: startGesture)
-    
-    /* Add a natural accidental */
-    if let note = existingNote {
+    if let existingNote = didTapExistingNote(startGesture) {
+      /* Update UI */
+      let noteLayer = existingNote.noteLayer
       let naturalImage = UIImage(named: "natural")
       let ratio = naturalSize.width / (naturalImage?.size.width)!
       naturalSize.height = ratio * (naturalImage?.size.height)!
       
       let naturalImageView = UIImageView(image: naturalImage)
-      naturalImageView.frame = CGRect(x: note.location.x - naturalSize.width,
-                                      y: note.location.y - naturalYOffset,
+      naturalImageView.frame = CGRect(x: noteLayer.location.x - naturalSize.width,
+                                      y: noteLayer.location.y - naturalYOffset,
                                       width: naturalSize.width,
                                       height: naturalSize.height)
-      if (note.accidentalImageView != nil) {
-        note.accidentalImageView?.removeFromSuperview()
+      if (noteLayer.accidentalImageView != nil) {
+        noteLayer.accidentalImageView?.removeFromSuperview()
       }
       
-      note.accidentalImageView = naturalImageView
+      noteLayer.accidentalImageView = naturalImageView
       self.addSubview(naturalImageView)
       
+      /* Update model */
+      existingNote.accidental = Accidental.Natural
     }
   }
   
@@ -286,9 +302,10 @@ class StaffView: UIView {
   }
   
   
-  func didTapExistingNote(location: CGPoint) -> Note? {
-    for note in existingNotes {
-      if (note.shapeLayer.path?.contains(location))! {
+  func didTapExistingNote(_ location: CGPoint) -> Note? {
+    for note in measure.notes {
+      let noteLayer = note.noteLayer
+      if (noteLayer.shapeLayer.path?.contains(location))! {
         return note
       }
     }
@@ -298,33 +315,33 @@ class StaffView: UIView {
   
   // MARK - Manipulate Notes
   
-  func selectNote(_ selectedNote: Note) {
+  func selectNote(_ selectedNoteLayer: NoteLayer) {
     /* De-select all notes */
-    for note in existingNotes {
-      deselectNote(note)
+    for note in measure.notes {
+      deselectNote(note.noteLayer)
     }
     
-    selectedNote.isSelected = true
+    selectedNoteLayer.isSelected = true
     
-    selectedNote.shapeLayer.fillColor = BLUE_COLOR.cgColor
-    selectedNote.shapeLayer.lineWidth = 2
-    if (selectedNote.isFilled) {
-      selectedNote.shapeLayer.strokeColor = BLUE_COLOR.cgColor
+    selectedNoteLayer.shapeLayer.fillColor = BLUE_COLOR.cgColor
+    selectedNoteLayer.shapeLayer.lineWidth = 2
+    if (selectedNoteLayer.isFilled) {
+      selectedNoteLayer.shapeLayer.strokeColor = BLUE_COLOR.cgColor
     } else {
-      selectedNote.shapeLayer.strokeColor = UIColor.black.cgColor
+      selectedNoteLayer.shapeLayer.strokeColor = UIColor.black.cgColor
     }
     setNeedsDisplay()
   }
   
   
-  func deselectNote(_ selectedNote: Note) {
-    selectedNote.isSelected = false
+  func deselectNote(_ selectedNoteLayer: NoteLayer) {
+    selectedNoteLayer.isSelected = false
     
-    selectedNote.shapeLayer.strokeColor = UIColor.black.cgColor
-    if (selectedNote.isFilled) {
-      selectedNote.shapeLayer.fillColor = UIColor.black.cgColor
+    selectedNoteLayer.shapeLayer.strokeColor = UIColor.black.cgColor
+    if (selectedNoteLayer.isFilled) {
+      selectedNoteLayer.shapeLayer.fillColor = UIColor.black.cgColor
     } else {
-      selectedNote.shapeLayer.fillColor = UIColor.clear.cgColor
+      selectedNoteLayer.shapeLayer.fillColor = UIColor.clear.cgColor
     }
     setNeedsDisplay()
   }
@@ -343,13 +360,14 @@ class StaffView: UIView {
     let shapeLayer = CAShapeLayer()
     shapeLayer.path = notePath.cgPath
     
-    /* Add Note to array */
-    let newNote = Note(shapeLayer, isFilled)
-    newNote.location = CGPoint(x:noteX, y:noteY)
-    existingNotes.append(newNote)
+    /* Add Note to Measure */
+    let newNote = Note()
+    newNote.noteLayer = NoteLayer(shapeLayer, isFilled)
+    newNote.noteLayer.location = CGPoint(x:noteX, y:noteY)
+    measure.notes.append(newNote)
     
     /* Add note layer to superview */
-    selectNote(newNote)
+    selectNote(newNote.noteLayer)
     
     self.layer.addSublayer(shapeLayer)
   }
@@ -373,11 +391,15 @@ class StaffView: UIView {
   }
   
   
-  func eraseNote(note: Note) {
-    note.shapeLayer.removeFromSuperlayer()
-    note.accidentalImageView?.layer.removeFromSuperlayer()
-    if let index = existingNotes.index(where: {$0 === note}) {
-      existingNotes.remove(at: index)
+  func eraseNote(_ note: Note) {
+    /* Update UI */
+    let noteLayer = note.noteLayer
+    noteLayer.shapeLayer.removeFromSuperlayer()
+    noteLayer.accidentalImageView?.layer.removeFromSuperlayer()
+    
+    /* Update model */
+    if let index = measure.notes.index(where: {$0 === note}) {
+      measure.notes.remove(at: index)
     }
   }
   
@@ -391,8 +413,8 @@ class StaffView: UIView {
     }
     
     let notePath = UIBezierPath(ovalIn: CGRect(x: noteX, y: noteY, width: noteSize.width, height: noteSize.height))
-    note.shapeLayer.path = notePath.cgPath
-    note.location = CGPoint(x: noteX, y: noteY)
+    note.noteLayer.shapeLayer.path = notePath.cgPath
+    note.noteLayer.location = CGPoint(x: noteX, y: noteY)
     setNeedsDisplay()
   }
   

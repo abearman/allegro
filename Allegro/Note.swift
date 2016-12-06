@@ -64,18 +64,28 @@ enum NoteType {
   case Sixtyfourth
 }
 
+enum Accidental {
+  case Sharp
+  case Flat
+  case DoubleSharp
+  case DoubleFlat
+  case Natural
+  case None
+}
 
 class Note {
-  
-  /* LOGIC STUFF */
   var noteType: NoteType = NoteType.Quarter
   
   /* Number of divisions taken up by this note (e.g., 8th note in 3/4 time = 1/2 division */
   var duration: Float = 0.0
-  
+  var accidental: Accidental = Accidental.None
   var numDots: Int = 0
   
-  /* UI STUFF */
+  var noteLayer: NoteLayer = NoteLayer()
+}
+
+  
+class NoteLayer {
   var shapeLayer: CAShapeLayer = CAShapeLayer()
   var accidentalImageView: UIImageView? = nil
   
@@ -88,4 +98,5 @@ class Note {
     self.isFilled = isFilled
   }
   
+  init() {}
 }

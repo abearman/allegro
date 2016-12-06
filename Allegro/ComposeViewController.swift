@@ -77,8 +77,6 @@ class ComposeViewController: UIViewController {
         /* Update the displayed StaffView's state */
         if let staffView = getStaffView() {
           staffView.measure = composition.measures[currentMeasureNum]
-          print("StaffView: ", staffView)
-          print("Measure: ", staffView.measure)
         }
       }
     }
