@@ -43,8 +43,8 @@ class StaffViewController: UIViewController {
 
   // pragma MARK - Gestures
   
-  var noteGR: NoteGestureRecognizer!
-  var eraseGR: UIPanGestureRecognizer!
+  var noteGR: NoteGestureRecognizer? = nil
+  var eraseGR: UIPanGestureRecognizer? = nil
   
   func updateGestureRecognizers() {
     if let staffView = getStaffView() {
@@ -52,24 +52,37 @@ class StaffViewController: UIViewController {
       switch composeMode {
       case .Note:
         if eraseGR != nil {
-          staffView.removeGestureRecognizer(eraseGR)
+          staffView.removeGestureRecognizer(eraseGR!)
+          eraseGR = nil
         }
         
-        self.noteGR = NoteGestureRecognizer(target: self, action: #selector(handleNoteGesture(_:)))
-        staffView.addGestureRecognizer(noteGR)
+        if noteGR == nil {
+          self.noteGR = NoteGestureRecognizer(target: self, action: #selector(handleNoteGesture(_:)))
+          staffView.addGestureRecognizer(noteGR!)
+        }
         
       case .Erase:
         if noteGR != nil {
-          staffView.removeGestureRecognizer(noteGR)
+          staffView.removeGestureRecognizer(noteGR!)
           noteGR = nil
         }
         
-        self.eraseGR = UIPanGestureRecognizer(target: self, action: #selector(handleErase(_:)))
-        staffView.addGestureRecognizer(eraseGR)
+        if eraseGR == nil {
+          self.eraseGR = UIPanGestureRecognizer(target: self, action: #selector(handleErase(_:)))
+          staffView.addGestureRecognizer(eraseGR!)
+        }
         
       default:
         break
       }
+      
+      /* Printing out the gestures */
+      if let gestureRecognizers = staffView.gestureRecognizers {
+        for gr in gestureRecognizers {
+          print(gr)
+        }
+      }
+      print("")
     }
   }
   

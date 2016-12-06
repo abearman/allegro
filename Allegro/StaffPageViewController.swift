@@ -17,7 +17,10 @@ class StaffPageViewController: UIPageViewController {
   var currentIndex: Int = 0
   
   private func newStaffVC() -> StaffViewController {
-    return UIStoryboard(name: "Main", bundle: nil) .instantiateViewController(withIdentifier: "StaffVC") as! StaffViewController
+    let staffVC = UIStoryboard(name: "Main", bundle: nil) .instantiateViewController(withIdentifier: "StaffVC") as! StaffViewController
+    print("Creating new StaffVC")
+    print(staffVC.view)
+    return staffVC
   }
 
   
@@ -43,9 +46,10 @@ class StaffPageViewController: UIPageViewController {
     
     let currStaffVC = orderedViewControllers[currentIndex]
     let nextStaffVC = orderedViewControllers[nextIndex]
-    nextStaffVC.composeMode = currStaffVC.composeMode
+    //nextStaffVC.composeMode = currStaffVC.composeMode
     setViewControllers([nextStaffVC], direction: .forward, animated: true, completion: nil)
     currentIndex += 1
+    print(nextStaffVC.view)
     
   }
   
@@ -54,9 +58,11 @@ class StaffPageViewController: UIPageViewController {
     if prevIndex >= 0 {
       let currStaffVC = orderedViewControllers[currentIndex]
       let prevStaffVC = orderedViewControllers[prevIndex]
-      prevStaffVC.composeMode = currStaffVC.composeMode
+      //prevStaffVC.composeMode = currStaffVC.composeMode
       setViewControllers([orderedViewControllers[prevIndex]], direction: .reverse, animated: true, completion: nil)
       currentIndex -= 1
+      print(prevStaffVC.view)
+
     }
   }
   

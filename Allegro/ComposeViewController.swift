@@ -49,12 +49,11 @@ class ComposeViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    for childVC in self.childViewControllers {
-      if let pageVC = childVC as? StaffPageViewController {
-        let displayedStaffVC = pageVC.orderedViewControllers[pageVC.currentIndex]
-        self.staffVC = displayedStaffVC
-      }
-    }
+    /* Detect when the internal StaffVC is changed via a measure swipe */
+    updateDisplayedStaffVC()
+    NotificationCenter.default.addObserver(self, selector: #selector(updateDisplayedStaffVC), name: Notification.Name(rawValue: MEASURE_SWIPE_FORWARD_NOTIFICATION), object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(updateDisplayedStaffVC), name: Notification.Name(rawValue: MEASURE_SWIPE_REVERSE_NOTIFICATION), object: nil)
+    
     
     /* Auto-select middle note */
     selectNoteButton(noteButtons[noteButtons.count/2])
@@ -64,9 +63,25 @@ class ComposeViewController: UIViewController {
     
     /* Add observer to notification for compose mode change */
     NotificationCenter.default.addObserver(self, selector: #selector(detectComposeModeChange), name: Notification.Name(rawValue: COMPOSE_MODE_NOTIFICATION), object: nil)
-    /* Trigger change in StaffVC for initial "Note" compose mode */
-    self.composeMode = .Note
+    
+    /* Trigger change in StaffVC for initial compose mode, whatever it is */
+    //self.composeMode = .Note
+    /*if let menuVC = menuViewController, let segmentedControl = menuViewController.modeSegmentedControl {
+      self.composeMode = ComposeMode(rawValue: menuViewController.modeSegmentedControl.selectedSegmentIndex)!
+    }*/
+    
   }
+  
+  
+  func updateDisplayedStaffVC() {
+    for childVC in self.childViewControllers {
+      if let pageVC = childVC as? StaffPageViewController {
+        let displayedStaffVC = pageVC.orderedViewControllers[pageVC.currentIndex]
+        self.staffVC = displayedStaffVC
+      }
+    }
+  }
+  
   
   // pragma MARK - Menu VC
   
