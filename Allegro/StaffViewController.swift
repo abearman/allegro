@@ -103,30 +103,16 @@ class StaffViewController: UIViewController {
         case StaffGestureState.sharp:
           staffView.gestureAddSharp()
           
-        case StaffGestureState.leftSwipe:
-          staffView.gestureLeftSwipe()
-          /*if !isNaturalSwipe {
-           if let index = staffViews.index(of: self.staffView) {
-           if index > 0 {
-           let leftStaffView = staffViews[index-1]
-           leftStaffView.drawBarLines()
-           self.staffView.removeFromSuperview()
-           self.view.addSubview(leftStaffView)
-           self.staffView = leftStaffView
-           self.staffView.setNeedsDisplay()
-           }
-           }
-           }*/
+        case StaffGestureState.natural:
+          staffView.gestureAddNatural()
+
           
-        case StaffGestureState.rightSwipe:
-          staffView.gestureRightSwipe()
-          /*let staffFrame = self.staffView.frame
-           self.staffView.removeFromSuperview()
-           let newStaffView = StaffView(frame: staffFrame)
-           self.view.addSubview(newStaffView)
-           self.staffView = newStaffView
-           self.staffViews.append(newStaffView)
-           self.staffView.setNeedsDisplay()*/
+        case StaffGestureState.measureForwardSwipe:
+          staffView.gestureMeasureForwardSwipe()
+          
+        case StaffGestureState.measureReverseSwipe:
+          staffView.gestureMeasureReverseSwipe()
+          
         }
       }
     }

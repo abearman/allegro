@@ -24,8 +24,8 @@ let FLAT_KEYS = ["C Major", "F Major", "B♭ Major",
 
 /* Notifications */
 let COMPOSE_MODE_NOTIFICATION = "Compose Mode Changed"
-let MEASURE_SWIPE_RIGHT_NOTIFICATION = "Measure Swipe Right"
-let MEASURE_SWIPE_LEFT_NOTIFICATION = "Measure Swipe Left"
+let MEASURE_SWIPE_FORWARD_NOTIFICATION = "Measure Swipe Forward"
+let MEASURE_SWIPE_REVERSE_NOTIFICATION = "Measure Swipe Reverse"
 
 
 func setViewBorder(_ view: UIView, color: UIColor, width: Int) {

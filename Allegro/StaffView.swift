@@ -241,8 +241,8 @@ class StaffView: UIView {
   }
   
   
-  func gestureLeftSwipe() {
-    print("Detected left swipe")
+  func gestureAddNatural() {
+    print("Detected natural gesture")
     let existingNote = didTapExistingNote(location: startGesture)
     
     /* Add a natural accidental */
@@ -263,17 +263,18 @@ class StaffView: UIView {
       note.accidentalImageView = naturalImageView
       self.addSubview(naturalImageView)
       
-    } else {
-      print("Measure swipe left")
-      NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: MEASURE_SWIPE_LEFT_NOTIFICATION)))
-      
     }
   }
   
   
-  func gestureRightSwipe() {
-    print("Measure swipe right")
-    NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: MEASURE_SWIPE_RIGHT_NOTIFICATION)))
+  func gestureMeasureForwardSwipe() {
+    print("Measure swipe forward")
+    NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: MEASURE_SWIPE_FORWARD_NOTIFICATION)))
+  }
+  
+  func gestureMeasureReverseSwipe() {
+    print("Measure swipe reverse")
+    NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: MEASURE_SWIPE_REVERSE_NOTIFICATION)))
   }
   
   

@@ -24,10 +24,9 @@ class StaffPageViewController: UIPageViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    
     /* Add observers to notification for measure swipes */
-    NotificationCenter.default.addObserver(self, selector: #selector(measureSwipeRight), name: Notification.Name(rawValue: MEASURE_SWIPE_RIGHT_NOTIFICATION), object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(measureSwipeLeft), name: Notification.Name(rawValue: MEASURE_SWIPE_LEFT_NOTIFICATION), object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(measureSwipeForward), name: Notification.Name(rawValue: MEASURE_SWIPE_FORWARD_NOTIFICATION), object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(measureSwipeReverse), name: Notification.Name(rawValue: MEASURE_SWIPE_REVERSE_NOTIFICATION), object: nil)
     
     if let firstVC = orderedViewControllers.first {
       setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
@@ -35,7 +34,7 @@ class StaffPageViewController: UIPageViewController {
   }
   
   
-  func measureSwipeRight() {
+  func measureSwipeForward() {
     let nextIndex = currentIndex + 1
     if nextIndex < orderedViewControllers.count {
       let currStaffVC = orderedViewControllers[currentIndex]
@@ -47,7 +46,7 @@ class StaffPageViewController: UIPageViewController {
     
   }
   
-  func measureSwipeLeft() {
+  func measureSwipeReverse() {
     let prevIndex = currentIndex - 1
     if prevIndex >= 0 {
       let currStaffVC = orderedViewControllers[currentIndex]

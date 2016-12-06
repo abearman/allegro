@@ -12,8 +12,9 @@ enum StaffGestureState {
   case newNote
   case sharp
   case flat
-  case leftSwipe
-  case rightSwipe
+  case natural
+  case measureForwardSwipe
+  case measureReverseSwipe
 }
 
 class NoteGestureRecognizer: UIGestureRecognizer {
@@ -23,17 +24,19 @@ class NoteGestureRecognizer: UIGestureRecognizer {
   var noteState: StaffGestureState = .newNote
   
   private var touchedPoints = [CGPoint]() // point history
-  
+  private var twoFingers: Bool = false
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
     print("Touches began")
     super.touchesBegan(touches, with: event)
     touchedPoints.removeAll()
     
-    /* If gesture was made with more than 1 finger */
-    if touches.count != 1 {
+    /* If gesture was made with more than 2 fingers */
+    if touches.count == 2 {
+      twoFingers = true
+    } else if touches.count > 2 {
       state = .failed
-      print("More than 1 finger")
+      print("More than 2 fingers")
     }
     state = .began
   }
@@ -56,19 +59,30 @@ class NoteGestureRecognizer: UIGestureRecognizer {
     print("Touches ended")
     super.touchesEnded(touches, with: event)
     
-    /* If we have only detected a tap gesture */
-    if (state != .changed) {
-      print("Detected new note tap")
-      noteState = .newNote
-    } else {
-      if isRightSwipe() {
-        noteState = .rightSwipe
-      } else if isLeftSwipe() {
-        noteState = .leftSwipe
-      } else if isFlat() {
-        noteState = .flat
-      } else if isSharp() {
-        noteState = .sharp
+    /* Note gesture */
+    if !twoFingers {
+      /* If we have only detected a tap gesture */
+      if (state != .changed) {
+        print("Detected new note tap")
+        noteState = .newNote
+      
+      /* We detected a longer gesture */
+      } else {
+        if isNatural() {
+          noteState = .natural
+        } else if isFlat() {
+          noteState = .flat
+        } else if isSharp() {
+          noteState = .sharp
+        }
+      }
+      
+    /* Measure swipe gesture */
+    } else if twoFingers {
+      if isForwardSwipe() {
+        noteState = .measureForwardSwipe
+      } else if isReverseSwipe() {
+        noteState = .measureReverseSwipe
       }
     }
     
@@ -102,7 +116,7 @@ class NoteGestureRecognizer: UIGestureRecognizer {
     return false
   }
   
-  func isLeftSwipe() -> Bool {
+  func isNatural() -> Bool {
     if (touchedPoints.count > 1) {
       let firstPoint = touchedPoints[0]
       let lastPoint = touchedPoints[touchedPoints.count-1]
@@ -115,11 +129,22 @@ class NoteGestureRecognizer: UIGestureRecognizer {
   }
   
 
-  func isRightSwipe() -> Bool {
+  func isForwardSwipe() -> Bool {
     if (touchedPoints.count > 1) {
       let firstPoint = touchedPoints[0]
       let lastPoint = touchedPoints[touchedPoints.count-1]
-      if ((firstPoint.x > lastPoint.x) && abs(firstPoint.y - lastPoint.y) < NATURAL_ERROR) {
+      if (firstPoint.x > lastPoint.x) {
+        return true
+      }
+    }
+    return false
+  }
+  
+  func isReverseSwipe() -> Bool {
+    if (touchedPoints.count > 1) {
+      let firstPoint = touchedPoints[0]
+      let lastPoint = touchedPoints[touchedPoints.count-1]
+      if (firstPoint.x < lastPoint.x) {
         return true
       }
     }
