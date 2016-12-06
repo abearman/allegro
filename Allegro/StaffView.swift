@@ -190,7 +190,7 @@ class StaffView: UIView {
       /* Otherwise, add a new Note. */
     } else {
       print("Adding new note")
-      addNote(location, isFilled: shouldFillInNote())
+      addNote(location)
     }
   }
   
@@ -322,7 +322,9 @@ class StaffView: UIView {
   }
   
   
-  func addNote(_ tapLocation: CGPoint, isFilled: Bool) {
+  func addNote(_ tapLocation: CGPoint) {
+    let isFilled = shouldFillInNote()
+    
     let noteX = getNoteXPos(tapLocation.x)
     let noteY = getNoteBarline(tapLocation.y)
     
@@ -334,7 +336,7 @@ class StaffView: UIView {
     shapeLayer.path = notePath.cgPath
     
     /* Add Note to array */
-    let newNote = Note(shapeLayer: shapeLayer, isFilled: isFilled)
+    let newNote = Note(shapeLayer, isFilled)
     newNote.location = CGPoint(x:noteX, y:noteY)
     existingNotes.append(newNote)
     

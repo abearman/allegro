@@ -10,6 +10,9 @@ import UIKit
 
 class ComposeViewController: UIViewController {
   
+  /* Model: the composition being constructed */
+  var composition: Composition = Composition()
+  
   /* Reference to right pull-out menu */
   var menuViewController: MenuViewController!
   
@@ -55,20 +58,14 @@ class ComposeViewController: UIViewController {
     NotificationCenter.default.addObserver(self, selector: #selector(updateDisplayedStaffVC), name: Notification.Name(rawValue: MEASURE_SWIPE_REVERSE_NOTIFICATION), object: nil)
     
     
-    /* Auto-select middle note */
-    selectNoteButton(noteButtons[noteButtons.count/2])
+    /* Auto-select quarter note */
+    selectNoteButton(noteButtons[2])
     
     /* Set up right sliding menu VC */
     setUpMenuVC()
     
     /* Add observer to notification for compose mode change */
     NotificationCenter.default.addObserver(self, selector: #selector(detectComposeModeChange), name: Notification.Name(rawValue: COMPOSE_MODE_NOTIFICATION), object: nil)
-    
-    /* Trigger change in StaffVC for initial compose mode, whatever it is */
-    //self.composeMode = .Note
-    /*if let menuVC = menuViewController, let segmentedControl = menuViewController.modeSegmentedControl {
-      self.composeMode = ComposeMode(rawValue: menuViewController.modeSegmentedControl.selectedSegmentIndex)!
-    }*/
     
   }
   
