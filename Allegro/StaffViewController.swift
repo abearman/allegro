@@ -28,7 +28,8 @@ class StaffViewController: UIViewController {
     super.viewDidLoad()
     
     /* Set up gestures */
-    //updateGestureRecognizers()
+    updateGestureRecognizers()
+    
   }
   
   
@@ -103,7 +104,7 @@ class StaffViewController: UIViewController {
           staffView.gestureAddSharp()
           
         case StaffGestureState.leftSwipe:
-          let isNaturalSwipe = staffView.gestureLeftSwipe()
+          staffView.gestureLeftSwipe()
           /*if !isNaturalSwipe {
            if let index = staffViews.index(of: self.staffView) {
            if index > 0 {

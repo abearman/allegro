@@ -22,7 +22,11 @@ let FLAT_KEYS = ["C Major", "F Major", "B♭ Major",
                  "E♭ Major", "A♭ Major", "D♭ Major",
                  "G♭ Major", "C♭ Major"]
 
+/* Notifications */
 let COMPOSE_MODE_NOTIFICATION = "Compose Mode Changed"
+let MEASURE_SWIPE_RIGHT_NOTIFICATION = "Measure Swipe Right"
+let MEASURE_SWIPE_LEFT_NOTIFICATION = "Measure Swipe Left"
+
 
 func setViewBorder(_ view: UIView, color: UIColor, width: Int) {
   view.layer.borderColor = color.cgColor

@@ -241,8 +241,7 @@ class StaffView: UIView {
   }
   
   
-  /* Returns true if gesture was to add a natural */
-  func gestureLeftSwipe() -> Bool {
+  func gestureLeftSwipe() {
     print("Detected left swipe")
     let existingNote = didTapExistingNote(location: startGesture)
     
@@ -263,16 +262,18 @@ class StaffView: UIView {
       
       note.accidentalImageView = naturalImageView
       self.addSubview(naturalImageView)
-      return true
+      
+    } else {
+      print("Measure swipe left")
+      NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: MEASURE_SWIPE_LEFT_NOTIFICATION)))
       
     }
-    print("Measure swipe left")
-    return false
   }
   
   
   func gestureRightSwipe() {
     print("Measure swipe right")
+    NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: MEASURE_SWIPE_RIGHT_NOTIFICATION)))
   }
   
   
