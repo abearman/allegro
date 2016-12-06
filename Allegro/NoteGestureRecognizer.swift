@@ -79,6 +79,7 @@ class NoteGestureRecognizer: UIGestureRecognizer {
         }
       }
     } else if numFingers == 2 {
+      print("Got 2 fingers")
       if isForwardSwipe() {
         noteState = .measureForwardSwipe
       } else if isReverseSwipe() {
