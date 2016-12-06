@@ -180,8 +180,10 @@ class StaffView: UIView {
     let existingNote = didTapExistingNote(location: location)
     if let note = existingNote {
       if note.isSelected {
+        print("Deselecting note")
         deselectNote(note)
       } else {
+        print("Selecting note")
         selectNote(note)
       }
       
@@ -194,6 +196,7 @@ class StaffView: UIView {
   
   
   func gestureAddFlat() {
+    print("Adding flat")
     let existingNote = didTapExistingNote(location: startGesture)
     if let note = existingNote {
       let flatImage = UIImage(named: "flat")
@@ -216,6 +219,7 @@ class StaffView: UIView {
   
   
   func gestureAddSharp() {
+    print("Adding sharp")
     let existingNote = didTapExistingNote(location: startGesture)
     if let note = existingNote {
       let sharpImage = UIImage(named: "sharp")
@@ -239,6 +243,7 @@ class StaffView: UIView {
   
   /* Returns true if gesture was to add a natural */
   func gestureLeftSwipe() -> Bool {
+    print("Detected left swipe")
     let existingNote = didTapExistingNote(location: startGesture)
     
     /* Add a natural accidental */

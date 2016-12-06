@@ -77,6 +77,8 @@ class NoteGestureRecognizer: UIGestureRecognizer {
         state = .ended
       }
     }
+    
+    state = .ended
   }
   
   

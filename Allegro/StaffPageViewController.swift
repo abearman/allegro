@@ -11,7 +11,7 @@ import UIKit
 class StaffPageViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
 
   private(set) lazy var orderedViewControllers: [StaffViewController] = {
-    return [self.newStaffVC()]
+    return [self.newStaffVC(), self.newStaffVC(), self.newStaffVC()]
   }()
   
   var currentIndex: Int = 0

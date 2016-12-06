@@ -127,6 +127,9 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gestures" translatesAutoresizingMaskIntoConstraints="NO" id="cw5-oq-LhQ">
+                                <rect key="frame" x="57" y="112" width="552" height="150"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G4B-qR-aqV">
                                 <rect key="frame" x="556" y="312" width="91" height="43"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.56470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -145,9 +148,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="cw5-oq-LhQ" firstAttribute="centerX" secondItem="QfO-8N-ddJ" secondAttribute="centerX" id="47b-je-eTx"/>
+                            <constraint firstItem="cw5-oq-LhQ" firstAttribute="leading" secondItem="KqK-R0-7aH" secondAttribute="leadingMargin" constant="37" id="GWQ-jp-NQq"/>
                             <constraint firstItem="QfO-8N-ddJ" firstAttribute="centerX" secondItem="KqK-R0-7aH" secondAttribute="centerX" id="JKF-Wm-qMr"/>
                             <constraint firstAttribute="bottom" secondItem="G4B-qR-aqV" secondAttribute="bottom" constant="20" symbolic="YES" id="UG4-r3-amP"/>
+                            <constraint firstItem="cw5-oq-LhQ" firstAttribute="centerY" secondItem="KqK-R0-7aH" secondAttribute="centerY" id="byg-2r-pHh"/>
                             <constraint firstItem="QfO-8N-ddJ" firstAttribute="top" secondItem="T4A-cN-SS9" secondAttribute="bottom" constant="8" symbolic="YES" id="ffK-8o-FGz"/>
+                            <constraint firstItem="cw5-oq-LhQ" firstAttribute="top" secondItem="QfO-8N-ddJ" secondAttribute="bottom" constant="29" id="me5-OQ-jGK"/>
                             <constraint firstItem="G4B-qR-aqV" firstAttribute="trailing" secondItem="KqK-R0-7aH" secondAttribute="trailingMargin" id="ugk-5T-LOY"/>
                         </constraints>
                     </view>
@@ -159,7 +166,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E2V-Ig-G1L" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zWT-Nu-GE1" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-111" y="380"/>
+            <point key="canvasLocation" x="-111.44366197183099" y="379.6875"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="T1Z-ld-nIR">
@@ -448,7 +455,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g71-0V-NoR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1654" y="221"/>
+            <point key="canvasLocation" x="1844" y="285"/>
         </scene>
         <!--Time Signature View Controller-->
         <scene sceneID="gdb-n6-CMJ">
@@ -795,14 +802,18 @@
         <!--Staff View Controller-->
         <scene sceneID="5dQ-cC-qid">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uGk-Z3-Jp5" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="StaffVC" id="q7g-e2-y6R" userLabel="Staff View Controller" customClass="StaffViewController" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="amo-we-cE6"/>
+                        <viewControllerLayoutGuide type="bottom" id="Si2-eu-z67"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dnP-34-An3" customClass="StaffView" customModule="Allegro" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uGk-Z3-Jp5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1234" y="-1268"/>
         </scene>
@@ -816,6 +827,7 @@
         <image name="eraser" width="200" height="200"/>
         <image name="fermata" width="250" height="250"/>
         <image name="flat" width="2000" height="4333"/>
+        <image name="gestures" width="1380" height="375"/>
         <image name="half note small" width="25" height="48"/>
         <image name="home" width="128" height="128"/>
         <image name="logo" width="532" height="253"/>
