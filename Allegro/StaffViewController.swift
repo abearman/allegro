@@ -45,10 +45,10 @@ class StaffViewController: UIViewController {
   
   var noteGR: NoteGestureRecognizer!
   var eraseGR: UIPanGestureRecognizer!
-  var measureGR: UISwipeGestureRecognizer!
   
   func updateGestureRecognizers() {
     if let staffView = getStaffView() {
+      
       switch composeMode {
       case .Note:
         if eraseGR != nil {
@@ -105,14 +105,12 @@ class StaffViewController: UIViewController {
           
         case StaffGestureState.natural:
           staffView.gestureAddNatural()
-
           
         case StaffGestureState.measureForwardSwipe:
           staffView.gestureMeasureForwardSwipe()
           
         case StaffGestureState.measureReverseSwipe:
           staffView.gestureMeasureReverseSwipe()
-          
         }
       }
     }

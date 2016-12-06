@@ -22,9 +22,9 @@ class NoteGestureRecognizer: UIGestureRecognizer {
   let NATURAL_ERROR = CGFloat(30)
   
   var noteState: StaffGestureState = .newNote
+  var numFingers: Int = 1
   
   private var touchedPoints = [CGPoint]() // point history
-  private var twoFingers: Bool = false
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
     print("Touches began")
@@ -32,8 +32,10 @@ class NoteGestureRecognizer: UIGestureRecognizer {
     touchedPoints.removeAll()
     
     /* If gesture was made with more than 2 fingers */
-    if touches.count == 2 {
-      twoFingers = true
+    if touches.count == 1 {
+      numFingers = 1
+    } else if touches.count == 2 {
+      numFingers = 2
     } else if touches.count > 2 {
       state = .failed
       print("More than 2 fingers")
@@ -59,9 +61,9 @@ class NoteGestureRecognizer: UIGestureRecognizer {
     print("Touches ended")
     super.touchesEnded(touches, with: event)
     
-    /* Note gesture */
-    if !twoFingers {
-      /* If we have only detected a tap gesture */
+
+    /* If we have only detected a tap gesture */
+    if numFingers == 1 {
       if (state != .changed) {
         print("Detected new note tap")
         noteState = .newNote
@@ -76,9 +78,7 @@ class NoteGestureRecognizer: UIGestureRecognizer {
           noteState = .sharp
         }
       }
-      
-    /* Measure swipe gesture */
-    } else if twoFingers {
+    } else if numFingers == 2 {
       if isForwardSwipe() {
         noteState = .measureForwardSwipe
       } else if isReverseSwipe() {
