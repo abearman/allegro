@@ -60,21 +60,15 @@ class NoteGestureRecognizer: UIGestureRecognizer {
     if (state != .changed) {
       print("Detected new note tap")
       noteState = .newNote
-      state = .ended
-
     } else {
       if isRightSwipe() {
         noteState = .rightSwipe
-        state = .ended
       } else if isLeftSwipe() {
         noteState = .leftSwipe
-        state = .ended
       } else if isFlat() {
         noteState = .flat
-        state = .ended
       } else if isSharp() {
         noteState = .sharp
-        state = .ended
       }
     }
     
