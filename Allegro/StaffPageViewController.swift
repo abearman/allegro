@@ -11,7 +11,7 @@ import UIKit
 class StaffPageViewController: UIPageViewController {
 
   private(set) lazy var orderedViewControllers: [StaffViewController] = {
-    return [self.newStaffVC(), self.newStaffVC(), self.newStaffVC(), self.newStaffVC()]
+    return [self.newStaffVC()]
   }()
   
   var currentIndex: Int = 0
@@ -36,13 +36,16 @@ class StaffPageViewController: UIPageViewController {
   
   func measureSwipeForward() {
     let nextIndex = currentIndex + 1
-    if nextIndex < orderedViewControllers.count {
-      let currStaffVC = orderedViewControllers[currentIndex]
-      let nextStaffVC = orderedViewControllers[nextIndex]
-      nextStaffVC.composeMode = currStaffVC.composeMode
-      setViewControllers([nextStaffVC], direction: .forward, animated: true, completion: nil)
-      currentIndex += 1
+
+    if nextIndex >= orderedViewControllers.count {
+      orderedViewControllers.append(self.newStaffVC())
     }
+    
+    let currStaffVC = orderedViewControllers[currentIndex]
+    let nextStaffVC = orderedViewControllers[nextIndex]
+    nextStaffVC.composeMode = currStaffVC.composeMode
+    setViewControllers([nextStaffVC], direction: .forward, animated: true, completion: nil)
+    currentIndex += 1
     
   }
   
