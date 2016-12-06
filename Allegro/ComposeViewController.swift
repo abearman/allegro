@@ -10,11 +10,10 @@ import UIKit
 
 class ComposeViewController: UIViewController {
   
-  /* Model: the composition being constructed */
+  /* pragma MARK - Model: the composition being constructed */
   var composition: Composition = Composition()
+  var currentMeasureNum: Int = 0
   
-  /* Reference to right pull-out menu */
-  var menuViewController: MenuViewController!
   
   var composeMode: ComposeMode = ComposeMode.Note {
     didSet {
@@ -35,16 +34,6 @@ class ComposeViewController: UIViewController {
     return nil
   }
   
-  
-  /* Time signature */
-  var topTimeSig: Int = 4 {
-    didSet {
-      if let staffView = getStaffView() {
-        staffView.topTimeSig = topTimeSig
-      }
-    }
-  }
-  var bottomTimeSig: Int = 4
 
   /* Note duration panel */
   @IBOutlet var noteButtons: [UIButton]!
@@ -70,17 +59,36 @@ class ComposeViewController: UIViewController {
   }
   
   
+  /* Updates the ComposeVC's state and the displayed StaffView's state when a measure swipe is detected */
   func updateDisplayedStaffVC() {
     for childVC in self.childViewControllers {
       if let pageVC = childVC as? StaffPageViewController {
         let displayedStaffVC = pageVC.orderedViewControllers[pageVC.currentIndex]
+        
+        /* Update the ComposeVC's state */
         self.staffVC = displayedStaffVC
+        currentMeasureNum = pageVC.currentIndex
+        
+        /* Update the Composition state with a new Measure */
+        if currentMeasureNum >= composition.measures.count {
+          composition.measures.append(Measure())
+        }
+        
+        /* Update the displayed StaffView's state */
+        if let staffView = getStaffView() {
+          staffView.measure = composition.measures[currentMeasureNum]
+          print("StaffView: ", staffView)
+          print("Measure: ", staffView.measure)
+        }
       }
     }
   }
   
   
   // pragma MARK - Menu VC
+  
+  /* Reference to right pull-out menu */
+  var menuViewController: MenuViewController!
   
   func setUpMenuVC() {
     if self.revealViewController() != nil {
@@ -102,6 +110,9 @@ class ComposeViewController: UIViewController {
   
   
   @IBAction func noteDurationChanged(_ sender: UIButton) {
+    // Update the selected duration in the StaffVC
+    staffVC.noteDuration = sender.tag
+    
     for noteButton in noteButtons {
       noteButton.backgroundColor = UIColor.white
       setViewBorder(noteButton, color: UIColor.clear, width: 0)
@@ -114,17 +125,6 @@ class ComposeViewController: UIViewController {
     // Highlight the selected note button in blue
     noteButton.backgroundColor = BLUE_COLOR
     setViewBorder(noteButton, color: UIColor.black, width: 1)
-    
-    // Update the selected duration in the StaffVC
-    staffVC.noteDuration = noteButton.tag
-  }
-  
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if let timeSigVC = segue.destination as? TimeSignatureViewController {
-      timeSigVC.topTimeSig = topTimeSig
-      timeSigVC.bottomTimeSig = bottomTimeSig
-    }
   }
   
   
@@ -132,11 +132,12 @@ class ComposeViewController: UIViewController {
     /* Transitioning back from time signature screen */
     if let timeSigVC = sender.source as? TimeSignatureViewController {
       
+      /* Set the time signature images in the MenuVC */
       menuViewController.topTimeSigButton.setImage(UIImage(named: String(timeSigVC.topTimeSig)), for: UIControlState())
       menuViewController.bottomTimeSigButton.setImage(UIImage(named: String(timeSigVC.bottomTimeSig)), for: UIControlState())
-
-      topTimeSig = timeSigVC.topTimeSig
-      bottomTimeSig = timeSigVC.bottomTimeSig
+      
+      /* Set the time signature in the current measure */
+      composition.measures[currentMeasureNum].timeSignature = TimeSignature(timeSigVC.topTimeSig, timeSigVC.bottomTimeSig)
     }
     
     /* Transitioning back from key signature screen */
@@ -147,8 +148,11 @@ class ComposeViewController: UIViewController {
       } else {
         keySigImageName = FLAT_KEYS[keySigVC.numFlats]
       }
+      /* Set the key signature image in the MenuVC */
       menuViewController.keySigButton.setImage(UIImage(named: keySigImageName), for: UIControlState())
-
+      
+      /* Set the key signature in the current measure */
+      composition.measures[currentMeasureNum].keySignature = KeySignature(keySigVC.numSharps, keySigVC.numFlats)
     }
   }
 

@@ -11,7 +11,7 @@ import UIKit
 
 /* Right now this only supports one-part compositions */
 class Composition {
-  var measures: [Measure] = [Measure]()
+  var measures: [Measure] = [Measure()]  // Default: one measure
 }
 
 class Measure {
@@ -23,14 +23,34 @@ class Measure {
 
 
 class KeySignature {
-  var numSharps: Int = 0
+  var numSharps: Int = 0  // Default: C Major
   var numFlats: Int = 0
+  
+  init(_ numSharps: Int, _ numFlats: Int) {
+    self.numSharps = numSharps
+    self.numFlats = numFlats
+  }
+  
+  init() {}
 }
 
 
 class TimeSignature {
-  var totalDivisions: Float = 0.0
+  // Default: 4/4
+  var totalDivisions: Int = 4   // Top number
+  var durationPerDivision: Int = 4 {  // Bottom number
+    didSet {
+      divisionsPerQuarterNote = Float(durationPerDivision) / 4.0
+    }
+  }
   var divisionsPerQuarterNote: Float = 0.0
+  
+  init(_ top: Int, _ bottom: Int) {
+    self.totalDivisions = top
+    self.durationPerDivision = bottom
+  }
+  
+  init() {}
 }
 
 

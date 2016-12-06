@@ -10,9 +10,14 @@ import UIKit
 
 class StaffView: UIView {
   
-  var topTimeSig: Int = 4 {
+  /* Model: single Measure per StaffView */
+  var measure: Measure = Measure() {
     didSet {
-      setXPositions()
+      /* If we updated time signature */
+      if (oldValue.timeSignature.totalDivisions !=
+        measure.timeSignature.totalDivisions) {
+        setXPositions()
+      }
     }
   }
   
@@ -52,6 +57,9 @@ class StaffView: UIView {
   var existingNotes: [Note] = []
   
   var startGesture: CGPoint = CGPoint(x: 0, y: 0)
+  
+  
+  // pragma MARK - Barlines and horizontal positions
   
   /* List of y-value positions of the bar lines on the screen, from high to low */
   var barlines = [CGFloat]() {
@@ -106,6 +114,7 @@ class StaffView: UIView {
     var numNotes = 4
     
     /* Top time sig is 3 or 6 */
+    let topTimeSig = measure.timeSignature.totalDivisions
     if (topTimeSig == 3 || topTimeSig == 6) {
       numNotes = 6
     }
@@ -133,7 +142,6 @@ class StaffView: UIView {
   
   // MARK - Gesture Recognizers
 
-  
   /*func handlePan(_ gesture: UIPanGestureRecognizer) {
      let location = gesture.location(in: self)
      

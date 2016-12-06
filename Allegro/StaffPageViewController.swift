@@ -18,8 +18,6 @@ class StaffPageViewController: UIPageViewController {
   
   private func newStaffVC() -> StaffViewController {
     let staffVC = UIStoryboard(name: "Main", bundle: nil) .instantiateViewController(withIdentifier: "StaffVC") as! StaffViewController
-    print("Creating new StaffVC")
-    print(staffVC.view)
     return staffVC
   }
 
@@ -50,7 +48,6 @@ class StaffPageViewController: UIPageViewController {
     nextStaffVC.noteDuration = currStaffVC.noteDuration
     setViewControllers([nextStaffVC], direction: .forward, animated: true, completion: nil)
     currentIndex += 1
-    print(nextStaffVC.view)
     
   }
   
@@ -63,7 +60,6 @@ class StaffPageViewController: UIPageViewController {
       prevStaffVC.noteDuration = currStaffVC.noteDuration
       setViewControllers([orderedViewControllers[prevIndex]], direction: .reverse, animated: true, completion: nil)
       currentIndex -= 1
-      print(prevStaffVC.view)
 
     }
   }
