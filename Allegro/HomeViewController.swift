@@ -32,33 +32,18 @@ class HomeViewController: UIViewController {
   
   
   override func viewWillDisappear(_ animated: Bool) {
-    //self.navigationController?.navigationBarHidden = false
+    //self.navigationController?.isNavigationBarHidden = false
   }
   
   
   /* Prepare for segue to ComposeVC */
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     /* We're creating a new Composition */
-    if let revealVC = segue.destination as? SWRevealViewController {
+    if segue.destination is SWRevealViewController {
       lastMoveWasNewComposition = true
-    } else {
+    } else if segue.destination is CompositionsTableViewController {
       lastMoveWasNewComposition = false
     }
- 
-    /* We're creating a new Composition */
-    /*if let revealVC = segue.destination as? SWRevealViewController {
-      revealVC.loadView()
-      if let composeVC = revealVC.frontViewController as? ComposeViewController {
-        var newComposition: UnsafeMutablePointer<Composition> = UnsafeMutablePointer.allocate(capacity: 1)
-        newComposition.pointee = Composition()
-        let blah = newComposition.pointee
-        
-        composeVC._composition = newComposition
-        composeVC._composition.pointee = newComposition.pointee
-        compositions.append(newComposition)
-      }
-      revealVC.loadView()
-    }*/
   }
   
   
@@ -80,24 +65,10 @@ class HomeViewController: UIViewController {
         }
       }
     }
-    
-    /*if let composeVC = sender.source as? ComposeViewController {
-      /* Append the new Composition */
-      if lastMoveWasNewComposition {
-        compositions.append(composeVC.composition)
-        
-      /* Update the existing Composition */
-      } else {
-        if let editIndex = compositions.index(of: composeVC.composition) {
-          compositions[editIndex] = composeVC.composition
-        }
-      }
       
-      /*if let menuVC = composeVC.revealViewController() {
-        menuVC.revealToggle(animated: true)
-      }*/
+    /*if let menuVC = composeVC.revealViewController() {
+      menuVC.revealToggle(animated: true)
     }*/
   }
-  
-  
+
 }

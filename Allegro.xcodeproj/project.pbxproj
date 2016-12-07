@@ -16,6 +16,7 @@
 		BD0D73941DEE221B006E5E56 /* StaffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D73931DEE221B006E5E56 /* StaffViewController.swift */; };
 		BD0D73961DEE28FC006E5E56 /* StaffPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D73951DEE28FC006E5E56 /* StaffPageViewController.swift */; };
 		BD1DF04C1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1DF04B1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift */; };
+		BD36B3641DF793FF006B6CCA /* CompositionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD36B3631DF793FF006B6CCA /* CompositionsTableViewController.swift */; };
 		BD5C32531DDF974B007F7A92 /* KeySignatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C32521DDF974B007F7A92 /* KeySignatureViewController.swift */; };
 		BD5C32551DDFD4ED007F7A92 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C32541DDFD4ED007F7A92 /* Constants.swift */; };
 		BD81262C1DE4DBB000BDE1CC /* NoteGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81262B1DE4DBB000BDE1CC /* NoteGestureRecognizer.swift */; };
@@ -40,6 +41,7 @@
 		BD0D73931DEE221B006E5E56 /* StaffViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffViewController.swift; sourceTree = "<group>"; };
 		BD0D73951DEE28FC006E5E56 /* StaffPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaffPageViewController.swift; sourceTree = "<group>"; };
 		BD1DF04B1DDF8FBF00BB9C6F /* TimeSignatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSignatureViewController.swift; sourceTree = "<group>"; };
+		BD36B3631DF793FF006B6CCA /* CompositionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositionsTableViewController.swift; sourceTree = "<group>"; };
 		BD5C32521DDF974B007F7A92 /* KeySignatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeySignatureViewController.swift; sourceTree = "<group>"; };
 		BD5C32541DDFD4ED007F7A92 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BD81262B1DE4DBB000BDE1CC /* NoteGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteGestureRecognizer.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				BD0D738F1DEE103F006E5E56 /* HomeViewController.swift */,
+				BD36B3631DF793FF006B6CCA /* CompositionsTableViewController.swift */,
 				BD8F24701DDB9BE800BE94E9 /* InstructionsViewController.swift */,
 				BD8F24731DDBA06600BE94E9 /* ComposeViewController.swift */,
 				BD0D738B1DEB8606006E5E56 /* MenuViewController.swift */,
@@ -235,6 +238,7 @@
 				BD8F24741DDBA06600BE94E9 /* ComposeViewController.swift in Sources */,
 				BD0D738C1DEB8606006E5E56 /* MenuViewController.swift in Sources */,
 				BDA6721F1DDA6F740003938F /* Allegro.xcdatamodeld in Sources */,
+				BD36B3641DF793FF006B6CCA /* CompositionsTableViewController.swift in Sources */,
 				BD81262C1DE4DBB000BDE1CC /* NoteGestureRecognizer.swift in Sources */,
 				BD0D73921DEE107A006E5E56 /* Note.swift in Sources */,
 				BD0D73901DEE103F006E5E56 /* HomeViewController.swift in Sources */,
