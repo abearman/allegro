@@ -12,6 +12,20 @@ class ComposeViewController: UIViewController {
   
   /* pragma MARK - Model: the composition being constructed */
   var composition: Composition = Composition()
+  /*var _composition: UnsafeMutablePointer<Composition> = UnsafeMutablePointer.allocate(capacity: 1)
+  var composition: Composition {
+    get {
+      if _composition.pointee == nil {
+        let blah: Composition = _composition.pointee
+        return Composition()
+      }
+      return _composition.pointee
+    }
+    set {
+      _composition.pointee = newValue
+    }
+  }*/
+  
   var currentMeasureNum: Int = 0
   
   

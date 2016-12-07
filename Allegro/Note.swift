@@ -12,7 +12,14 @@ import UIKit
 /* Right now this only supports one-part compositions */
 class Composition {
   var measures: [Measure] = [Measure()]  // Default: one measure
+  
 }
+
+extension Composition: Equatable { }
+func ==(lhs: Composition, rhs: Composition) -> Bool {
+  return lhs === rhs
+}
+
 
 class Measure {
   var notes: [Note] = [Note]()
@@ -54,7 +61,7 @@ class TimeSignature {
 }
 
 
-enum NoteType {
+enum NoteType: Int {
   case Whole
   case Half
   case Quarter
@@ -74,7 +81,7 @@ enum Accidental {
 }
 
 class Note {
-  var noteType: NoteType = NoteType.Quarter
+  var type: NoteType = NoteType.Quarter
   
   /* Number of divisions taken up by this note (e.g., 8th note in 3/4 time = 1/2 division */
   var duration: Float = 0.0

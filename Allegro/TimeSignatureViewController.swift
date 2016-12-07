@@ -34,6 +34,7 @@ class TimeSignatureViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     /* Set default selected time signature to whatever was last selected */
     picker.selectRow(pickerData.index(of: topTimeSig)!, inComponent: 0, animated: true)
+    
     picker.selectRow(pickerData.index(of: bottomTimeSig)!, inComponent: 1, animated: true)
   }
 

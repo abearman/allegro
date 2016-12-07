@@ -348,6 +348,7 @@ class StaffView: UIView {
   
   
   func addNote(_ tapLocation: CGPoint) {
+    /* Update UI */
     let isFilled = shouldFillInNote()
     
     let noteX = getNoteXPos(tapLocation.x)
@@ -360,15 +361,16 @@ class StaffView: UIView {
     let shapeLayer = CAShapeLayer()
     shapeLayer.path = notePath.cgPath
     
-    /* Add Note to Measure */
+    /* Update model: add Note to Measure */
     let newNote = Note()
+    newNote.type = NoteType(rawValue: self.noteDuration)!
+    // TODO: add Note duration
     newNote.noteLayer = NoteLayer(shapeLayer, isFilled)
     newNote.noteLayer.location = CGPoint(x:noteX, y:noteY)
     measure.notes.append(newNote)
     
-    /* Add note layer to superview */
+    /* Add NoteLayer to superview */
     selectNote(newNote.noteLayer)
-    
     self.layer.addSublayer(shapeLayer)
   }
   
