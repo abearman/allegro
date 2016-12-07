@@ -9,7 +9,7 @@
 import UIKit
 
 class StaffViewController: UIViewController {
-
+  
   var composeMode: ComposeMode = ComposeMode.Note {
     didSet {
       updateGestureRecognizers()

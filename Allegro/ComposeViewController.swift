@@ -12,6 +12,7 @@ class ComposeViewController: UIViewController {
   
   /* pragma MARK - Model: the composition being constructed */
   var composition: Composition = Composition()
+  @IBOutlet weak var compositionNameLabel: UILabel!
   
   var currentMeasureNum: Int = 0
   
@@ -42,6 +43,8 @@ class ComposeViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    showCompositionNameAlert()
+    
     /* Detect when the internal StaffVC is changed via a measure swipe */
     updateDisplayedStaffVC()
     NotificationCenter.default.addObserver(self, selector: #selector(updateDisplayedStaffVC), name: Notification.Name(rawValue: MEASURE_SWIPE_FORWARD_NOTIFICATION), object: nil)
@@ -56,8 +59,26 @@ class ComposeViewController: UIViewController {
     
     /* Add observer to notification for compose mode change */
     NotificationCenter.default.addObserver(self, selector: #selector(detectComposeModeChange), name: Notification.Name(rawValue: COMPOSE_MODE_NOTIFICATION), object: nil)
-    
   }
+  
+  // pragma MARK - AlertController for entering Composition name
+  
+  var inputTextField: UITextField?
+  
+  func showCompositionNameAlert() {
+    let alertController = UIAlertController(title: "Enter a title for your composition", message: "", preferredStyle: .alert)
+    
+    alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) -> Void in
+      self.compositionNameLabel.text = self.inputTextField?.text
+    }))
+
+    alertController.addTextField(configurationHandler: {(textField: UITextField!) in
+      textField.placeholder = "New Composition"
+      self.inputTextField = textField
+    })
+    present(alertController, animated: true, completion: nil)
+  }
+  
   
   
   /* Updates the ComposeVC's state and the displayed StaffView's state when a measure swipe is detected */

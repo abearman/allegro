@@ -11,8 +11,8 @@ import UIKit
 
 /* Right now this only supports one-part compositions */
 class Composition {
+  var name: String = ""
   var measures: [Measure] = [Measure()]  // Default: one measure
-  
 }
 
 extension Composition: Equatable { }

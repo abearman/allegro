@@ -9,7 +9,7 @@
 import UIKit
 
 class StaffView: UIView {
-  
+
   /* Model: single Measure per StaffView */
   var measure: Measure = Measure() {
     didSet {

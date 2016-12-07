@@ -316,12 +316,23 @@
                                     <segue destination="N2D-gb-KeY" kind="embed" id="TAa-8T-YxT"/>
                                 </connections>
                             </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Composition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGd-Mi-e9M">
+                                <rect key="frame" x="213" y="7" width="142" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="142" id="3b6-nm-lHp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Qhy-Jv-X8I" firstAttribute="top" secondItem="KhA-BS-Hup" secondAttribute="top" id="5Ui-az-0Z5"/>
                             <constraint firstItem="KhA-BS-Hup" firstAttribute="top" secondItem="aLi-Wv-ic5" secondAttribute="top" id="LUc-qb-ZE6"/>
                             <constraint firstItem="Qhy-Jv-X8I" firstAttribute="bottom" secondItem="KhA-BS-Hup" secondAttribute="bottom" id="c7U-99-iiF"/>
+                            <constraint firstItem="uov-yA-1Pu" firstAttribute="top" secondItem="QGd-Mi-e9M" secondAttribute="bottom" constant="292" id="ckx-Ms-jRr"/>
+                            <constraint firstItem="QGd-Mi-e9M" firstAttribute="centerX" secondItem="aLi-Wv-ic5" secondAttribute="centerX" id="f8e-er-GOR"/>
                             <constraint firstItem="KhA-BS-Hup" firstAttribute="leading" secondItem="aLi-Wv-ic5" secondAttribute="leading" id="gv3-t1-grt"/>
                             <constraint firstItem="Qhy-Jv-X8I" firstAttribute="leading" secondItem="KhA-BS-Hup" secondAttribute="trailing" constant="8" symbolic="YES" id="on0-hg-kWg"/>
                             <constraint firstItem="Qhy-Jv-X8I" firstAttribute="trailing" secondItem="aLi-Wv-ic5" secondAttribute="trailingMargin" id="qhA-jo-PsA"/>
@@ -329,6 +340,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="STL-aI-Smk"/>
                     <connections>
+                        <outlet property="compositionNameLabel" destination="QGd-Mi-e9M" id="Fk3-ME-JKl"/>
                         <outletCollection property="noteButtons" destination="BMV-oR-FFb" collectionClass="NSMutableArray" id="FTW-Ie-MDu"/>
                         <outletCollection property="noteButtons" destination="eLu-sq-tGU" collectionClass="NSMutableArray" id="VPe-0N-4yh"/>
                         <outletCollection property="noteButtons" destination="hU9-0o-I4J" collectionClass="NSMutableArray" id="TAz-NP-NZD"/>
@@ -340,7 +352,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ubn-9q-uas" sceneMemberID="firstResponder"/>
                 <exit id="a2T-o5-6zh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="958.09859154929575" y="221.25"/>
+            <point key="canvasLocation" x="990" y="218"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="xqM-40-Dzy">
@@ -861,7 +873,7 @@
                     </view>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1234" y="-1268"/>
+            <point key="canvasLocation" x="1230" y="-1273"/>
         </scene>
     </scenes>
     <resources>
