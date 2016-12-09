@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 enum ComposeMode: Int {
   case Note = 0
@@ -14,7 +15,7 @@ enum ComposeMode: Int {
   case Dynamics = 2
 }
 
-class MenuViewController: UIViewController {
+class MenuViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
   var shouldSaveComposition = true
   var compositions: [Composition] = []
@@ -89,6 +90,46 @@ class MenuViewController: UIViewController {
   
   @IBAction func saveAndSeeOtherCompositions(_ sender: Any) {
     showCompositionWasSavedAlert()
+  }
+  
+  
+  // pragma MARK - Sharing Composition
+  
+  @IBAction func shareComposition(_ sender: Any) {
+    let mailComposeViewController = configuredMailComposeViewController()
+    if MFMailComposeViewController.canSendMail() {
+      self.present(mailComposeViewController, animated: true, completion: nil)
+    } else {
+      self.showSendMailErrorAlert()
+    }
+  }
+  
+  func configuredMailComposeViewController() -> MFMailComposeViewController {
+    let mailComposerVC = MFMailComposeViewController()
+    mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+    
+    mailComposerVC.setToRecipients(["abearman@stanford.edu"])
+    mailComposerVC.setSubject("Sending you my latest composition")
+    mailComposerVC.setMessageBody("Let me know what you think!", isHTML: false)
+    
+    return mailComposerVC
+  }
+  
+  func showSendMailErrorAlert() {
+    let sendMailErrorAlert = UIAlertController(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", preferredStyle: .alert)
+    
+    sendMailErrorAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+    present(sendMailErrorAlert, animated: true, completion: nil)
+    
+    //let sendMailErrorAlert = UIAlertController(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
+    //sendMailErrorAlert.show()
+  }
+  
+  // MARK: MFMailComposeViewControllerDelegate
+  
+  func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+    controller.dismiss(animated: true, completion: nil)
+    
   }
   
   /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
