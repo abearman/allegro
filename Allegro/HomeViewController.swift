@@ -71,6 +71,7 @@ class HomeViewController: UIViewController {
     if menuVC.shouldSaveComposition {
       /* Append the new Composition */
       if lastMoveWasNewComposition {
+        composeVC.composition.date = Date()
         compositions.append(composeVC.composition)
         
         /* Update the existing Composition */

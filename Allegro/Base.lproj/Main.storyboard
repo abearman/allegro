@@ -38,21 +38,37 @@
             </objects>
             <point key="canvasLocation" x="-1148" y="-669"/>
         </scene>
-        <!--Compositions-->
+        <!--Compositions TVC-->
         <scene sceneID="umE-9O-op2">
             <objects>
-                <tableViewController title="Compositions" id="5Qg-zc-seC" customClass="CompositionsTableViewController" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Compositions" id="5Qg-zc-seC" userLabel="Compositions TVC" customClass="CompositionsTableViewController" customModule="Allegro" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="oFj-LX-GhM">
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Composition Cell" id="5J2-LK-GXr">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Composition Cell" textLabel="bxs-OC-EkB" detailTextLabel="Dkx-Xx-Ag6" style="IBUITableViewCellStyleSubtitle" id="5J2-LK-GXr">
                                 <rect key="frame" x="0.0" y="28" width="568" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5J2-LK-GXr" id="0Ru-eI-cvE">
                                     <rect key="frame" x="0.0" y="0.0" width="535" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bxs-OC-EkB">
+                                            <rect key="frame" x="15" y="4" width="34" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Dkx-Xx-Ag6">
+                                            <rect key="frame" x="15" y="25" width="44" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="i7Y-wK-D2t" kind="show" identifier="Edit Composition" id="TFq-aP-1dK"/>

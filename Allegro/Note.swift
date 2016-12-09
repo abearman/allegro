@@ -12,6 +12,7 @@ import UIKit
 /* Right now this only supports one-part compositions */
 class Composition {
   var name: String = ""
+  var date: Date = Date()
   var measures: [Measure] = [Measure()]  // Default: one measure
 }
 

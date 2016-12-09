@@ -45,7 +45,14 @@ class CompositionsTableViewController: UITableViewController {
     
     let composition = compositions[indexPath.row]
     cell.textLabel?.text = composition.name
-
+    
+    let formatter = DateFormatter()
+    //formatter.dateFormat = "MM dd, yyyy"
+    formatter.timeStyle = .short
+    formatter.dateStyle = .long
+    
+    cell.detailTextLabel?.text = formatter.string(from: composition.date)
+    
     return cell
   }
  
