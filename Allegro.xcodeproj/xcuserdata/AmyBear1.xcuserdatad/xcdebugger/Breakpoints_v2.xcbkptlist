@@ -40,11 +40,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Allegro/HomeViewController.swift"
-            timestampString = "502949569.201868"
+            timestampString = "502999856.775382"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "prepareForUnwindToHome(_:)"
             landmarkType = "7">
             <Locations>

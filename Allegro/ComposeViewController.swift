@@ -80,10 +80,11 @@ class ComposeViewController: UIViewController {
       self.compositionNameLabel.text = self.inputTextField?.text
       self.composition.name = (self.inputTextField?.text)!
     }))
-
+ 
     alertController.addTextField(configurationHandler: {(textField: UITextField!) in
       textField.placeholder = "New Composition"
       self.inputTextField = textField
+      self.inputTextField?.autocapitalizationType = UITextAutocapitalizationType.words
     })
     present(alertController, animated: true, completion: nil)
   }
