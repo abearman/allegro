@@ -32,7 +32,7 @@ let FLAT_KEYS = ["C Major", "F Major", "B♭ Major",
 let COMPOSE_MODE_NOTIFICATION = "Compose Mode Changed"
 let MEASURE_SWIPE_FORWARD_NOTIFICATION = "Measure Swipe Forward"
 let MEASURE_SWIPE_REVERSE_NOTIFICATION = "Measure Swipe Reverse"
-
+let DELETE_COMPOSITION_NOTIFICATION = "Deleted Composition"
 
 func setViewBorder(_ view: UIView, color: UIColor, width: Int) {
   view.layer.borderColor = color.cgColor

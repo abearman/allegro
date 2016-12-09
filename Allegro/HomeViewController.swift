@@ -32,6 +32,18 @@ class HomeViewController: UIViewController {
     
     editCompositionButton.layer.borderWidth = BORDER_WIDTH
     editCompositionButton.layer.borderColor = UIColor.black.cgColor
+    
+    /* Listens for compositions that are deleted */
+    NotificationCenter.default.addObserver(self, selector: #selector(deleteComposition), name: Notification.Name(rawValue: DELETE_COMPOSITION_NOTIFICATION), object: nil)
+  }
+  
+  
+  func deleteComposition() {
+    for childVc in self.childViewControllers {
+      if let ctvc = childVc as? CompositionsTableViewController {
+        self.compositions = ctvc.compositions
+      }
+    }
   }
   
   
