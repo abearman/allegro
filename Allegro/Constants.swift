@@ -11,7 +11,12 @@ import UIKit
 
 let NUM_STAFF_LINES: Int = 7
 let MEASURE_LINE_WIDTH = CGFloat(3.0)
+
 let BLUE_COLOR = UIColor(red:0.68, green:0.92, blue:1.0, alpha:1.0)
+//let PINK_COLOR = UIColor(red:255.0, green:51.0, blue:153.0)
+//let YELLOW_COLOR = UIColor(red:253.0, green:204.0, blue:82.0)
+
+
 let RIGHT_MENU_WIDTH = CGFloat(180.0)
 
 let SHARP_KEYS = ["C Major", "G Major", "D Major",

@@ -12,6 +12,7 @@ class HomeViewController: UIViewController {
   
   @IBOutlet weak var newCompButton: UIButton!
   @IBOutlet weak var instructionsButton: UIButton!
+  @IBOutlet weak var editCompositionButton: UIButton!
   
   /* List of Compositions for the session */
   var compositions: [Composition] = [Composition]()
@@ -28,6 +29,9 @@ class HomeViewController: UIViewController {
     
     instructionsButton.layer.borderWidth = 2
     instructionsButton.layer.borderColor = UIColor.black.cgColor
+    
+    editCompositionButton.layer.borderWidth = 2
+    editCompositionButton.layer.borderColor = UIColor.black.cgColor
   }
   
   
