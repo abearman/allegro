@@ -22,6 +22,15 @@
 		BD81262C1DE4DBB000BDE1CC /* NoteGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD81262B1DE4DBB000BDE1CC /* NoteGestureRecognizer.swift */; };
 		BD8F24711DDB9BE800BE94E9 /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8F24701DDB9BE800BE94E9 /* InstructionsViewController.swift */; };
 		BD8F24741DDBA06600BE94E9 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8F24731DDBA06600BE94E9 /* ComposeViewController.swift */; };
+		BDA3E21D1DFB2EA200FFC007 /* Montserrat-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = BDA3E2131DFB2C9B00FFC007 /* Montserrat-Black.otf */; };
+		BDA3E21E1DFB2EA200FFC007 /* Montserrat-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BDA3E2141DFB2C9B00FFC007 /* Montserrat-Bold.otf */; };
+		BDA3E21F1DFB2EA200FFC007 /* Montserrat-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BDA3E2151DFB2C9B00FFC007 /* Montserrat-ExtraBold.otf */; };
+		BDA3E2201DFB2EA200FFC007 /* Montserrat-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = BDA3E2161DFB2C9B00FFC007 /* Montserrat-ExtraLight.otf */; };
+		BDA3E2211DFB2EA200FFC007 /* Montserrat-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = BDA3E2171DFB2C9B00FFC007 /* Montserrat-Light.otf */; };
+		BDA3E2221DFB2EA200FFC007 /* Montserrat-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = BDA3E2181DFB2C9B00FFC007 /* Montserrat-Medium.otf */; };
+		BDA3E2231DFB2EA200FFC007 /* Montserrat-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = BDA3E2191DFB2C9B00FFC007 /* Montserrat-Regular.otf */; };
+		BDA3E2241DFB2EA200FFC007 /* Montserrat-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BDA3E21A1DFB2C9B00FFC007 /* Montserrat-SemiBold.otf */; };
+		BDA3E2251DFB2EA200FFC007 /* Montserrat-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = BDA3E21B1DFB2C9B00FFC007 /* Montserrat-Thin.otf */; };
 		BDA672171DDA6F740003938F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA672161DDA6F740003938F /* AppDelegate.swift */; };
 		BDA6721C1DDA6F740003938F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDA6721A1DDA6F740003938F /* Main.storyboard */; };
 		BDA6721F1DDA6F740003938F /* Allegro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BDA6721D1DDA6F740003938F /* Allegro.xcdatamodeld */; };
@@ -56,6 +65,15 @@
 		BD81262B1DE4DBB000BDE1CC /* NoteGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteGestureRecognizer.swift; sourceTree = "<group>"; };
 		BD8F24701DDB9BE800BE94E9 /* InstructionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
 		BD8F24731DDBA06600BE94E9 /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
+		BDA3E2131DFB2C9B00FFC007 /* Montserrat-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.otf"; sourceTree = "<group>"; };
+		BDA3E2141DFB2C9B00FFC007 /* Montserrat-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.otf"; sourceTree = "<group>"; };
+		BDA3E2151DFB2C9B00FFC007 /* Montserrat-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.otf"; sourceTree = "<group>"; };
+		BDA3E2161DFB2C9B00FFC007 /* Montserrat-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraLight.otf"; sourceTree = "<group>"; };
+		BDA3E2171DFB2C9B00FFC007 /* Montserrat-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.otf"; sourceTree = "<group>"; };
+		BDA3E2181DFB2C9B00FFC007 /* Montserrat-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.otf"; sourceTree = "<group>"; };
+		BDA3E2191DFB2C9B00FFC007 /* Montserrat-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.otf"; sourceTree = "<group>"; };
+		BDA3E21A1DFB2C9B00FFC007 /* Montserrat-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.otf"; sourceTree = "<group>"; };
+		BDA3E21B1DFB2C9B00FFC007 /* Montserrat-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Thin.otf"; sourceTree = "<group>"; };
 		BDA672131DDA6F740003938F /* Allegro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Allegro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDA672161DDA6F740003938F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BDA6721B1DDA6F740003938F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -148,6 +166,22 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		BDA3E21C1DFB2CA200FFC007 /* Monserrat font */ = {
+			isa = PBXGroup;
+			children = (
+				BDA3E2131DFB2C9B00FFC007 /* Montserrat-Black.otf */,
+				BDA3E2141DFB2C9B00FFC007 /* Montserrat-Bold.otf */,
+				BDA3E2151DFB2C9B00FFC007 /* Montserrat-ExtraBold.otf */,
+				BDA3E2161DFB2C9B00FFC007 /* Montserrat-ExtraLight.otf */,
+				BDA3E2171DFB2C9B00FFC007 /* Montserrat-Light.otf */,
+				BDA3E2181DFB2C9B00FFC007 /* Montserrat-Medium.otf */,
+				BDA3E2191DFB2C9B00FFC007 /* Montserrat-Regular.otf */,
+				BDA3E21A1DFB2C9B00FFC007 /* Montserrat-SemiBold.otf */,
+				BDA3E21B1DFB2C9B00FFC007 /* Montserrat-Thin.otf */,
+			);
+			name = "Monserrat font";
+			sourceTree = "<group>";
+		};
 		BDA6720A1DDA6F740003938F = {
 			isa = PBXGroup;
 			children = (
@@ -175,17 +209,18 @@
 				BD81262D1DE4DBB300BDE1CC /* Gesture Recognizers */,
 				BD81262F1DE4DBC800BDE1CC /* Swift Classes */,
 				BDA672201DDA6F740003938F /* Assets.xcassets */,
-				BDB890251DFA5C4D006B9E6A /* Images */,
+				BDB890251DFA5C4D006B9E6A /* Resources */,
 			);
 			path = Allegro;
 			sourceTree = "<group>";
 		};
-		BDB890251DFA5C4D006B9E6A /* Images */ = {
+		BDB890251DFA5C4D006B9E6A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BDA3E21C1DFB2CA200FFC007 /* Monserrat font */,
 				BDB890261DFA5C52006B9E6A /* App Icons */,
 			);
-			name = Images;
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		BDB890261DFA5C52006B9E6A /* App Icons */ = {
@@ -264,15 +299,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDA3E2231DFB2EA200FFC007 /* Montserrat-Regular.otf in Resources */,
+				BDA3E21F1DFB2EA200FFC007 /* Montserrat-ExtraBold.otf in Resources */,
 				BDB890281DFA5C5A006B9E6A /* app_icon 60 @3x.png in Resources */,
+				BDA3E2211DFB2EA200FFC007 /* Montserrat-Light.otf in Resources */,
 				BDA672241DDA6F740003938F /* LaunchScreen.storyboard in Resources */,
 				BDB890361DFA5C7A006B9E6A /* app_icon 20 @3x.png in Resources */,
 				BDB890341DFA5C74006B9E6A /* app_icon 29 @2x.png in Resources */,
 				BDB8902C1DFA5C63006B9E6A /* app_icon 40 @3x.png in Resources */,
+				BDA3E2221DFB2EA200FFC007 /* Montserrat-Medium.otf in Resources */,
+				BDA3E2241DFB2EA200FFC007 /* Montserrat-SemiBold.otf in Resources */,
 				BDA672211DDA6F740003938F /* Assets.xcassets in Resources */,
 				BDB8902E1DFA5C69006B9E6A /* app_icon 40 @2x.png in Resources */,
+				BDA3E2201DFB2EA200FFC007 /* Montserrat-ExtraLight.otf in Resources */,
 				BDB890301DFA5C6D006B9E6A /* app_icon 29 @3x.png in Resources */,
 				BDA6721C1DDA6F740003938F /* Main.storyboard in Resources */,
+				BDA3E21E1DFB2EA200FFC007 /* Montserrat-Bold.otf in Resources */,
+				BDA3E2251DFB2EA200FFC007 /* Montserrat-Thin.otf in Resources */,
+				BDA3E21D1DFB2EA200FFC007 /* Montserrat-Black.otf in Resources */,
 				BDB8902A1DFA5C60006B9E6A /* app_icon 60 @2x.png in Resources */,
 				BDB890321DFA5C70006B9E6A /* app_icon 29 @3x.png in Resources */,
 				BDB890381DFA5C7F006B9E6A /* app_icon 20 @2x.png in Resources */,
@@ -351,6 +395,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -398,6 +443,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

@@ -24,13 +24,13 @@ class HomeViewController: UIViewController {
     
     self.navigationController?.isNavigationBarHidden = true
     
-    newCompButton.layer.borderWidth = 2
+    newCompButton.layer.borderWidth = BORDER_WIDTH
     newCompButton.layer.borderColor = UIColor.black.cgColor
     
-    instructionsButton.layer.borderWidth = 2
+    instructionsButton.layer.borderWidth = BORDER_WIDTH
     instructionsButton.layer.borderColor = UIColor.black.cgColor
     
-    editCompositionButton.layer.borderWidth = 2
+    editCompositionButton.layer.borderWidth = BORDER_WIDTH
     editCompositionButton.layer.borderColor = UIColor.black.cgColor
   }
   

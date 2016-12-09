@@ -23,11 +23,11 @@ class TimeSignatureViewController: UIViewController, UIPickerViewDelegate, UIPic
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    timeSignatureLabel.layer.borderWidth = 1
-    timeSignatureLabel.layer.borderColor = UIColor.black.cgColor
+    //timeSignatureLabel.layer.borderWidth = BORDER_WIDTH
+    //timeSignatureLabel.layer.borderColor = UIColor.black.cgColor
     
     doneButton.layer.borderColor = UIColor.black.cgColor
-    doneButton.layer.borderWidth = 2
+    doneButton.layer.borderWidth = BORDER_WIDTH
     
     picker.delegate = self
     picker.dataSource = self

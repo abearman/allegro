@@ -16,10 +16,10 @@ class InstructionsViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    gesturesLabel.layer.borderWidth = 1
-    gesturesLabel.layer.borderColor = UIColor.black.cgColor
+    //gesturesLabel.layer.borderWidth = BORDER_WIDTH
+    //gesturesLabel.layer.borderColor = UIColor.black.cgColor
     
-    doneButton.layer.borderWidth = 2
+    doneButton.layer.borderWidth = BORDER_WIDTH
     doneButton.layer.borderColor = UIColor.black.cgColor
   }
     

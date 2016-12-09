@@ -16,6 +16,7 @@ let BLUE_COLOR = UIColor(red:0.68, green:0.92, blue:1.0, alpha:1.0)
 //let PINK_COLOR = UIColor(red:255.0, green:51.0, blue:153.0)
 //let YELLOW_COLOR = UIColor(red:253.0, green:204.0, blue:82.0)
 
+let BORDER_WIDTH = CGFloat(1.0)
 
 let RIGHT_MENU_WIDTH = CGFloat(180.0)
 
