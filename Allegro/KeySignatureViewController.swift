@@ -41,13 +41,13 @@ class KeySignatureViewController: UIViewController {
     super.viewDidLoad()
 
     buttonView.layer.borderColor = UIColor.black.cgColor
-    buttonView.layer.borderWidth = BORDER_WIDTH
+    buttonView.layer.borderWidth = 2
     
     sharpView.layer.borderColor = UIColor.black.cgColor
-    sharpView.layer.borderWidth = BORDER_WIDTH
+    sharpView.layer.borderWidth = 2
     
     flatView.layer.borderColor = UIColor.black.cgColor
-    flatView.layer.borderWidth = BORDER_WIDTH
+    flatView.layer.borderWidth = 2
     
     doneButton.layer.borderColor = UIColor.black.cgColor
     doneButton.layer.borderWidth = BORDER_WIDTH
