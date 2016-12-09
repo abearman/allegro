@@ -60,7 +60,7 @@ class ComposeViewController: UIViewController {
     super.viewDidLoad()
     
     /* Auto-select quarter note */
-    selectNoteButton(noteButtons[2])
+    selectNoteButton(noteButtons[2], 2)
     
     /* Set up right sliding menu VC */
     setUpMenuVC()
@@ -140,18 +140,20 @@ class ComposeViewController: UIViewController {
   
   
   @IBAction func noteDurationChanged(_ sender: UIButton) {
-    // Update the selected duration in the StaffVC
-    staffVC.noteDuration = sender.tag
-    
     for noteButton in noteButtons {
       noteButton.backgroundColor = UIColor.white
       setViewBorder(noteButton, color: UIColor.clear, width: 0)
     }
-    selectNoteButton(noteButtons[sender.tag])
+    selectNoteButton(noteButtons[sender.tag], sender.tag)
   }
   
   
-  func selectNoteButton(_ noteButton: UIButton) {
+  func selectNoteButton(_ noteButton: UIButton, _ tag: Int) {
+    // Update the selected duration in the StaffVC
+    if staffVC != nil {
+      staffVC.noteDuration = tag
+    }
+    
     // Highlight the selected note button in blue
     noteButton.backgroundColor = BLUE_COLOR
     setViewBorder(noteButton, color: UIColor.black, width: 1)

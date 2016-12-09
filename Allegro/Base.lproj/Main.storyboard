@@ -47,11 +47,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Composition Cell" id="5J2-LK-GXr">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Composition Cell" id="5J2-LK-GXr">
                                 <rect key="frame" x="0.0" y="28" width="568" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5J2-LK-GXr" id="0Ru-eI-cvE">
-                                    <rect key="frame" x="0.0" y="0.0" width="568" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="535" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -386,7 +386,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2V-4n-LSK">
-                                <rect key="frame" x="402" y="103" width="57" height="18.5"/>
+                                <rect key="frame" x="402" y="102" width="57" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="57" id="s9t-8t-pNH"/>
                                 </constraints>
@@ -395,7 +395,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Jp5-Ek-4eX" userLabel="Modes Segmented Control">
-                                <rect key="frame" x="402" y="129.5" width="141" height="48"/>
+                                <rect key="frame" x="402" y="129" width="141" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="141" id="reG-rE-6OG"/>
                                     <constraint firstAttribute="height" constant="47" id="zsb-YR-iU5"/>
@@ -412,7 +412,7 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signatures" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDU-35-8Np">
-                                <rect key="frame" x="402" y="197.5" width="166" height="18.5"/>
+                                <rect key="frame" x="402" y="197" width="166" height="19"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -931,8 +931,8 @@
         <image name="whole note small" width="30" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5dt-U3-AxC"/>
-        <segue reference="dON-yc-kS6"/>
+        <segue reference="TFq-aP-1dK"/>
         <segue reference="Hr5-NQ-tmy"/>
+        <segue reference="dON-yc-kS6"/>
     </inferredMetricsTieBreakers>
 </document>

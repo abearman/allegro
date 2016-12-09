@@ -21,7 +21,7 @@ class StaffView: UIView {
     }
   }
   
-  var noteDuration: Int = 0
+  var noteDuration: Int = 2
   
   var sharpYOffset: CGFloat = 0.0
   var sharpSize: CGSize = CGSize(width: 0, height: 0) {

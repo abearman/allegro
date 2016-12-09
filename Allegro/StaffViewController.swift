@@ -16,7 +16,7 @@ class StaffViewController: UIViewController {
     }
   }
   
-  var noteDuration: Int = 0 {
+  var noteDuration: Int = 2 {
     didSet {
       if let staffView = getStaffView() {
         staffView.noteDuration = self.noteDuration
