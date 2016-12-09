@@ -52,15 +52,18 @@ class HomeViewController: UIViewController {
     if let menuVC = sender.source as? MenuViewController {
       if let revealVC = menuVC.revealViewController() {
         if let composeVC = revealVC.frontViewController as? ComposeViewController {
-                    
-          /* Append the new Composition */
-          if lastMoveWasNewComposition {
-            compositions.append(composeVC.composition)
-            
-          /* Update the existing Composition */
-          } else {
-            if let editIndex = compositions.index(of: composeVC.composition) {
-              compositions[editIndex] = composeVC.composition
+          
+          /* Only save if they said they wanted to */
+          if menuVC.shouldSaveComposition {
+            /* Append the new Composition */
+            if lastMoveWasNewComposition {
+              compositions.append(composeVC.composition)
+              
+            /* Update the existing Composition */
+            } else {
+              if let editIndex = compositions.index(of: composeVC.composition) {
+                compositions[editIndex] = composeVC.composition
+              }
             }
           }
         }

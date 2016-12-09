@@ -43,11 +43,14 @@ class MenuViewController: UIViewController {
     
     alertController.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.default, handler: { (action) -> Void in
       print("pressed save")
+      self.shouldSaveComposition = true
       self.performSegue(withIdentifier: "Unwind To Home", sender: self)
     }))
     
     alertController.addAction(UIAlertAction(title: "Don't Save", style: UIAlertActionStyle.destructive, handler: { (action) -> Void in
       print("pressed don't save")
+      self.shouldSaveComposition = false
+      self.performSegue(withIdentifier: "Unwind To Home", sender: self)
     }))
     
     present(alertController, animated: true, completion: nil)
