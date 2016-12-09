@@ -28,7 +28,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KgC-Ju-bxA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-811" y="-666"/>
+            <point key="canvasLocation" x="-1148" y="-669"/>
         </scene>
         <!--Compositions Table View Controller-->
         <scene sceneID="umE-9O-op2">
@@ -39,13 +39,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="5J2-LK-GXr">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Composition Cell" id="5J2-LK-GXr">
                                 <rect key="frame" x="0.0" y="28" width="568" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5J2-LK-GXr" id="0Ru-eI-cvE">
                                     <rect key="frame" x="0.0" y="0.0" width="568" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="i7Y-wK-D2t" kind="show" identifier="Edit Composition" id="TFq-aP-1dK"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -147,7 +150,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-113.02816901408451" y="-669.375"/>
+            <point key="canvasLocation" x="-368" y="-669"/>
         </scene>
         <!--Instructions-->
         <scene sceneID="Nv1-Sk-rH7">
@@ -352,7 +355,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ubn-9q-uas" sceneMemberID="firstResponder"/>
                 <exit id="a2T-o5-6zh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="990" y="218"/>
+            <point key="canvasLocation" x="903" y="184"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="xqM-40-Dzy">
@@ -897,6 +900,7 @@
         <image name="whole note small" width="30" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="TFq-aP-1dK"/>
         <segue reference="tgz-CV-Xg5"/>
     </inferredMetricsTieBreakers>
 </document>

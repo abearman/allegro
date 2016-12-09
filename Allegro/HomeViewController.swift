@@ -41,8 +41,9 @@ class HomeViewController: UIViewController {
     /* We're creating a new Composition */
     if segue.destination is SWRevealViewController {
       lastMoveWasNewComposition = true
-    } else if segue.destination is CompositionsTableViewController {
+    } else if let ctvc = segue.destination as? CompositionsTableViewController {
       lastMoveWasNewComposition = false
+      ctvc.compositions = self.compositions
     }
   }
   

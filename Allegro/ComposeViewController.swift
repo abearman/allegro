@@ -40,16 +40,24 @@ class ComposeViewController: UIViewController {
   /* Note duration panel */
   @IBOutlet var noteButtons: [UIButton]!
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     
-    showCompositionNameAlert()
+    if !composition.name.isEmpty {
+      self.compositionNameLabel.text = composition.name
+    } else {
+      showCompositionNameAlert()
+    }
     
     /* Detect when the internal StaffVC is changed via a measure swipe */
     updateDisplayedStaffVC()
     NotificationCenter.default.addObserver(self, selector: #selector(updateDisplayedStaffVC), name: Notification.Name(rawValue: MEASURE_SWIPE_FORWARD_NOTIFICATION), object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(updateDisplayedStaffVC), name: Notification.Name(rawValue: MEASURE_SWIPE_REVERSE_NOTIFICATION), object: nil)
     
+  }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
     /* Auto-select quarter note */
     selectNoteButton(noteButtons[2])
@@ -70,6 +78,7 @@ class ComposeViewController: UIViewController {
     
     alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) -> Void in
       self.compositionNameLabel.text = self.inputTextField?.text
+      self.composition.name = (self.inputTextField?.text)!
     }))
 
     alertController.addTextField(configurationHandler: {(textField: UITextField!) in

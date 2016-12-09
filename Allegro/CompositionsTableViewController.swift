@@ -9,6 +9,8 @@
 import UIKit
 
 class CompositionsTableViewController: UITableViewController {
+  
+  var compositions: [Composition] = [Composition]()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -30,25 +32,44 @@ class CompositionsTableViewController: UITableViewController {
   // MARK: - Table view data source
 
   override func numberOfSections(in tableView: UITableView) -> Int {
-      // #warning Incomplete implementation, return the number of sections
-      return 0
+      return 1
   }
 
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      // #warning Incomplete implementation, return the number of rows
-      return 0
+      return compositions.count
   }
 
-  /*
+  
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+    let cell = tableView.dequeueReusableCell(withIdentifier: "Composition Cell", for: indexPath)
+    
+    let composition = compositions[indexPath.row]
+    cell.textLabel?.text = composition.name
 
-      // Configure the cell...
-
-      return cell
+    return cell
   }
-    */
-
+ 
+  
+  /* Load the Composition in the composeVC */
+  /*override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    performSegue(withIdentifier: "Edit Composition", sender: self)
+  }*/
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "Edit Composition" {
+      if let revealVC = segue.destination as? SWRevealViewController {
+        revealVC.loadView()
+        if let composeVC = revealVC.frontViewController as? ComposeViewController {
+          
+          let indexPath = self.tableView.indexPathForSelectedRow
+          composeVC.composition = compositions[(indexPath?.row)!]
+          //revealVC.loadView()
+        }
+      }
+    }
+  }
+  
+  
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

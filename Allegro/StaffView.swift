@@ -347,6 +347,11 @@ class StaffView: UIView {
   }
   
   
+  func displayNote(_ noteLayer: NoteLayer) {
+    
+  }
+  
+  
   func addNote(_ tapLocation: CGPoint) {
     /* Update UI */
     let isFilled = shouldFillInNote()
