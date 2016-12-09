@@ -18,7 +18,6 @@ enum ComposeMode: Int {
 class MenuViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
   var shouldSaveComposition = true
-  var compositions: [Composition] = []
   
   var composeMode = ComposeMode.Note
   @IBOutlet weak var modeSegmentedControl: UISegmentedControl!
@@ -108,7 +107,7 @@ class MenuViewController: UIViewController, MFMailComposeViewControllerDelegate 
     let mailComposerVC = MFMailComposeViewController()
     mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
     
-    mailComposerVC.setToRecipients(["abearman@stanford.edu"])
+    //mailComposerVC.setToRecipients([""])
     mailComposerVC.setSubject("Sending you my latest composition")
     mailComposerVC.setMessageBody("Let me know what you think!", isHTML: false)
     
@@ -120,9 +119,7 @@ class MenuViewController: UIViewController, MFMailComposeViewControllerDelegate 
     
     sendMailErrorAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
     present(sendMailErrorAlert, animated: true, completion: nil)
-    
-    //let sendMailErrorAlert = UIAlertController(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
-    //sendMailErrorAlert.show()
+  
   }
   
   // MARK: MFMailComposeViewControllerDelegate
