@@ -52,20 +52,7 @@ class HomeViewController: UIViewController {
     if let menuVC = sender.source as? MenuViewController {
       if let revealVC = menuVC.revealViewController() {
         if let composeVC = revealVC.frontViewController as? ComposeViewController {
-          
-          /* Only save if they said they wanted to */
-          if menuVC.shouldSaveComposition {
-            /* Append the new Composition */
-            if lastMoveWasNewComposition {
-              compositions.append(composeVC.composition)
-              
-            /* Update the existing Composition */
-            } else {
-              if let editIndex = compositions.index(of: composeVC.composition) {
-                compositions[editIndex] = composeVC.composition
-              }
-            }
-          }
+          saveComposition(menuVC: menuVC, composeVC: composeVC)
         }
       }
     }
@@ -73,6 +60,22 @@ class HomeViewController: UIViewController {
     /*if let menuVC = composeVC.revealViewController() {
       menuVC.revealToggle(animated: true)
     }*/
+  }
+  
+  func saveComposition(menuVC: MenuViewController, composeVC: ComposeViewController) {
+    /* Only save if they said they wanted to */
+    if menuVC.shouldSaveComposition {
+      /* Append the new Composition */
+      if lastMoveWasNewComposition {
+        compositions.append(composeVC.composition)
+        
+        /* Update the existing Composition */
+      } else {
+        if let editIndex = compositions.index(of: composeVC.composition) {
+          compositions[editIndex] = composeVC.composition
+        }
+      }
+    }
   }
 
 }

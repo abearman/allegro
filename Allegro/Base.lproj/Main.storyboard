@@ -464,23 +464,26 @@
                                             <action selector="goHome:" destination="mvx-GZ-moT" eventType="touchUpInside" id="8fI-ku-Pb4"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7Z-kz-CbN" userLabel="Arrange Button">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7Z-kz-CbN" userLabel="Save Button">
                                         <rect key="frame" x="50" y="0.0" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="1r9-q1-bZu"/>
                                             <constraint firstAttribute="height" constant="40" id="JuS-Wl-6ml"/>
                                         </constraints>
-                                        <state key="normal" image="arrange">
+                                        <state key="normal" image="save">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="saveAndSeeOtherCompositions:" destination="mvx-GZ-moT" eventType="touchUpInside" id="YXv-JH-yrh"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8DU-Nd-5Uw" userLabel="Transcribe Button">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8DU-Nd-5Uw" userLabel="Share Button">
                                         <rect key="frame" x="100" y="0.0" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="3RK-Wo-zka"/>
                                             <constraint firstAttribute="width" constant="40" id="UDG-g7-aV6"/>
                                         </constraints>
-                                        <state key="normal" image="transcribe">
+                                        <state key="normal" image="share">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                     </button>
@@ -512,6 +515,7 @@
                         <outlet property="modeSegmentedControl" destination="Jp5-Ek-4eX" id="VKW-PP-fKi"/>
                         <outlet property="topTimeSigButton" destination="rfk-0F-gnG" id="h5O-vp-ZOu"/>
                         <segue destination="KFQ-NU-ygp" kind="unwind" identifier="Unwind To Home" unwindAction="prepareForUnwindToHome:" id="oMg-gL-oer"/>
+                        <segue destination="5Qg-zc-seC" kind="show" identifier="See All Compositions" id="Hr5-NQ-tmy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g71-0V-NoR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -884,7 +888,6 @@
         <image name="32nd note small" width="30" height="56"/>
         <image name="4" width="116" height="139"/>
         <image name="C Major" width="1200" height="850"/>
-        <image name="arrange" width="512" height="512"/>
         <image name="eighth note small" width="30" height="46"/>
         <image name="eraser" width="200" height="200"/>
         <image name="fermata" width="250" height="250"/>
@@ -895,13 +898,15 @@
         <image name="logo" width="532" height="253"/>
         <image name="note mode" width="200" height="200"/>
         <image name="quarter note small" width="25" height="50"/>
+        <image name="save" width="128" height="128"/>
+        <image name="share" width="128" height="128"/>
         <image name="sharp" width="461" height="1462"/>
         <image name="sixteenth note small" width="30" height="45"/>
-        <image name="transcribe" width="2126" height="2400"/>
         <image name="whole note small" width="30" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="TFq-aP-1dK"/>
+        <segue reference="Hr5-NQ-tmy"/>
         <segue reference="dON-yc-kS6"/>
     </inferredMetricsTieBreakers>
 </document>

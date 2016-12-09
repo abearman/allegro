@@ -17,6 +17,7 @@ enum ComposeMode: Int {
 class MenuViewController: UIViewController {
 
   var shouldSaveComposition = true
+  var compositions: [Composition] = []
   
   var composeMode = ComposeMode.Note
   @IBOutlet weak var modeSegmentedControl: UISegmentedControl!
@@ -61,4 +62,40 @@ class MenuViewController: UIViewController {
   }
   
   
+  func showCompositionWasSavedAlert() {
+    let alertController = UIAlertController(title: "Composition Saved", message: "", preferredStyle: .alert)
+    
+    alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (action) -> Void in
+      /*if let revealVC = self.revealViewController() {
+        if let composeVC = revealVC.frontViewController as? ComposeViewController {
+          if let navigationVC = self.navigationController {
+            for vc in navigationVC.viewControllers {
+              if let homeVC = vc as? HomeViewController {
+                homeVC.saveComposition(menuVC: self, composeVC: composeVC)
+                self.compositions = homeVC.compositions
+              }
+            }
+          }
+        }
+      }*/
+      
+      
+      //self.performSegue(withIdentifier: "See All Compositions", sender: self)
+    }))
+  
+    present(alertController, animated: true, completion: nil)
+  }
+  
+  
+  @IBAction func saveAndSeeOtherCompositions(_ sender: Any) {
+    showCompositionWasSavedAlert()
+  }
+  
+  /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "See All Compositions" {
+      if let ctvc = segue.destination as? CompositionsTableViewController {
+        ctvc.compositions = self.compositions
+      }
+    }
+  }*/
 }
