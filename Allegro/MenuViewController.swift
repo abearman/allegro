@@ -106,9 +106,21 @@ class MenuViewController: UIViewController, MFMailComposeViewControllerDelegate 
   func configuredMailComposeViewController() -> MFMailComposeViewController {
     let mailComposerVC = MFMailComposeViewController()
     mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+  
+    /* Get the Composition title, if any */
+    var compositionName = ""
+    if let revealVC = self.revealViewController() {
+      if let composeVC = revealVC.frontViewController as? ComposeViewController {
+        compositionName = composeVC.composition.name
+      }
+    }
     
     //mailComposerVC.setToRecipients([""])
-    mailComposerVC.setSubject("Sending you my latest composition")
+    var subject = "Sending you my latest composition"
+    if !compositionName.isEmpty {
+      subject += ", " + compositionName
+    }
+    mailComposerVC.setSubject(subject)
     mailComposerVC.setMessageBody("Let me know what you think!", isHTML: false)
     
     return mailComposerVC
