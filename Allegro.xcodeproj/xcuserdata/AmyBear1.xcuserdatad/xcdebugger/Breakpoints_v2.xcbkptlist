@@ -23,22 +23,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Allegro/ComposeViewController.swift"
-            timestampString = "502782338.253834"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "viewWillAppear(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Allegro/StaffView.swift"
             timestampString = "502782605.377982"
             startingColumnNumber = "9223372036854775807"
@@ -47,6 +31,54 @@
             endingLineNumber = "74"
             landmarkName = "draw(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Allegro/HomeViewController.swift"
+            timestampString = "502949569.201868"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "prepareForUnwindToHome(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Allegro.HomeViewController.prepareForUnwindToHome (__ObjC.UIStoryboardSegue) -&gt; ()"
+                  moduleName = "Allegro"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/AmyBear1/Desktop/Stanford/Coterm/cs147/Allegro/Allegro/HomeViewController.swift"
+                  timestampString = "502949951.72824"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Allegro.HomeViewController.prepareForUnwindToHome (__ObjC.UIStoryboardSegue) -&gt; ()"
+                  moduleName = "Allegro"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/AmyBear1/Desktop/Stanford/Coterm/cs147/Allegro/Allegro/HomeViewController.swift"
+                  timestampString = "502949951.730008"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "168">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

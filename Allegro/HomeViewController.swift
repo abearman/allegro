@@ -52,7 +52,7 @@ class HomeViewController: UIViewController {
     if let menuVC = sender.source as? MenuViewController {
       if let revealVC = menuVC.revealViewController() {
         if let composeVC = revealVC.frontViewController as? ComposeViewController {
-          
+                    
           /* Append the new Composition */
           if lastMoveWasNewComposition {
             compositions.append(composeVC.composition)
