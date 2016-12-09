@@ -73,6 +73,7 @@ class StaffView: UIView {
   override func draw(_ rect: CGRect) {
     drawBarLines()
     setXPositions()
+    displayNotesInMeasure()
   }
   
   
@@ -347,8 +348,12 @@ class StaffView: UIView {
   }
   
   
-  func displayNote(_ noteLayer: NoteLayer) {
-    
+  func displayNotesInMeasure() {
+    for note in self.measure.notes {
+      if note.noteLayer.shapeLayer.superlayer == nil {
+        self.layer.addSublayer(note.noteLayer.shapeLayer)
+      }
+    }
   }
   
   
